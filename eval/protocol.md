@@ -135,4 +135,29 @@ With 8 tables, 11 edges and about 45 columns, this is a **small-sample experimen
 
 ## Amendments
 
-_None yet._
+**Amendment 1 (2026-10-27, written before any `rel-avito` run).**
+**Problem:** a relationship can pass the 95% inclusion test by coincidence. For example, a column holding the small integers 1–8 can be "included"
+in any large integer key that happens to contain 1–8.
+
+**Change:** add a *feature-eligibility* rule. It applies **only** to the edges config C uses to build features. All candidates are still reported to B and C, with the flag shown.
+- Rule: the child column must have at least `min(20, 0.5 × parent rows)` distinct values.
+- Join paths are computed over eligible edges only.
+
+- **Best-parent selection:** a child column often passes the inclusion test against several keys. Candidates are ranked by
+  *parent coverage* (the share of parent keys the child references). Only the top-ranked parent is "preferred".
+  - A child column that is itself unique (key-to-key) is preferred only if each key covers at least 95% of the other.
+  - Feature-eligible = preferred, not weak, and meets the distinct-value rule.
+  - Each candidate also reports `range_density`: how much of the child's value range parent keys fill. Near 1.0 means inclusion carries little evidence.
+
+**Basis:** the general failure mode, not the Avito data, which had not been profiled when this was written.
+
+**Development results on `rel-f1`** (13 ground-truth edges; recorded for transparency):
+
+| Edge set | Precision | Recall | Edges |
+|---|---|---|---|
+| All candidates | 0.05 | 1.00 | 267 |
+| Preferred parent | 0.43 | 1.00 | 30 |
+| Feature-eligible | 0.60 | 0.92 | 20 |
+
+The remaining false positives are numeric measures (laps, positions, years) whose values fall inside dense surrogate-key ranges.
+Value overlap cannot separate these from real links on its own. Deciding between them is left to the LLM.
