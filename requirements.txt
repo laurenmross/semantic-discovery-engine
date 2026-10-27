@@ -1,0 +1,9 @@
+duckdb==2.0.0
+pandas
+pyarrow
+scikit-learn==1.9.1
+scipy
+statsmodels
+networkx
+anthropic==2.3.0
+pytest

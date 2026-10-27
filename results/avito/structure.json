@@ -1,0 +1,4109 @@
+{
+ "dataset": "avito",
+ "tables": {
+  "AdsInfo": {
+   "rows": 5960558,
+   "columns": [
+    {
+     "table": "AdsInfo",
+     "column": "AdID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 5960558,
+     "nulls": 0,
+     "distinct": 5960558,
+     "unique": true,
+     "min": "0",
+     "max": "5960557",
+     "mean": 2980278.5,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0",
+      "1",
+      "2"
+     ]
+    },
+    {
+     "table": "AdsInfo",
+     "column": "LocationID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 5960558,
+     "nulls": 24750,
+     "distinct": 3363,
+     "unique": false,
+     "min": "1",
+     "max": "3443",
+     "mean": 346.7322526267696,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "497",
+      "335",
+      "341"
+     ]
+    },
+    {
+     "table": "AdsInfo",
+     "column": "CategoryID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 5960558,
+     "nulls": 32,
+     "distinct": 52,
+     "unique": false,
+     "min": "2",
+     "max": "67",
+     "mean": 38.373036037423546,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "22",
+      "43",
+      "47"
+     ]
+    },
+    {
+     "table": "AdsInfo",
+     "column": "Price",
+     "dtype": "DOUBLE",
+     "family": "float",
+     "rows": 5960558,
+     "nulls": 63,
+     "distinct": 65562,
+     "unique": false,
+     "min": "0.0",
+     "max": "999999999999.0",
+     "mean": 5451130.026839298,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "400.0",
+      "6864.0",
+      "7800000.0"
+     ]
+    },
+    {
+     "table": "AdsInfo",
+     "column": "Title",
+     "dtype": "VARCHAR",
+     "family": "string",
+     "rows": 5960558,
+     "nulls": 0,
+     "distinct": 3246389,
+     "unique": false,
+     "min": "",
+     "max": "[redacted ad title]",
+     "mean": null,
+     "avg_len": 24.75260067933237,
+     "top_values": [],
+     "samples": [
+      "[redacted ad title]",
+      "[redacted ad title]",
+      "[redacted ad title]"
+     ]
+    },
+    {
+     "table": "AdsInfo",
+     "column": "IsContext",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 5960558,
+     "nulls": 0,
+     "distinct": 2,
+     "unique": false,
+     "min": "0.0",
+     "max": "1.0",
+     "mean": 0.004150953652325839,
+     "avg_len": null,
+     "top_values": [
+      [
+       "0.0",
+       5935816
+      ],
+      [
+       "1.0",
+       24742
+      ]
+     ],
+     "samples": [
+      "0.0",
+      "1.0"
+     ]
+    }
+   ]
+  },
+  "Category": {
+   "rows": 68,
+   "columns": [
+    {
+     "table": "Category",
+     "column": "CategoryID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 68,
+     "nulls": 0,
+     "distinct": 68,
+     "unique": true,
+     "min": "0",
+     "max": "67",
+     "mean": 33.5,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0",
+      "1",
+      "2"
+     ]
+    },
+    {
+     "table": "Category",
+     "column": "Level",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 68,
+     "nulls": 0,
+     "distinct": 3,
+     "unique": false,
+     "min": "1",
+     "max": "3",
+     "mean": 2.8088235294117645,
+     "avg_len": null,
+     "top_values": [
+      [
+       "3",
+       56
+      ],
+      [
+       "2",
+       11
+      ],
+      [
+       "1",
+       1
+      ]
+     ],
+     "samples": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    {
+     "table": "Category",
+     "column": "ParentCategoryID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 68,
+     "nulls": 0,
+     "distinct": 12,
+     "unique": false,
+     "min": "1",
+     "max": "12",
+     "mean": 6.632352941176471,
+     "avg_len": null,
+     "top_values": [
+      [
+       "12",
+       11
+      ],
+      [
+       "2",
+       9
+      ],
+      [
+       "4",
+       8
+      ],
+      [
+       "6",
+       7
+      ],
+      [
+       "8",
+       7
+      ],
+      [
+       "9",
+       7
+      ],
+      [
+       "3",
+       6
+      ],
+      [
+       "5",
+       5
+      ]
+     ],
+     "samples": [
+      "10",
+      "9",
+      "12"
+     ]
+    },
+    {
+     "table": "Category",
+     "column": "SubcategoryID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 68,
+     "nulls": 0,
+     "distinct": 57,
+     "unique": false,
+     "min": "1",
+     "max": "57",
+     "mean": 31.58823529411765,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "45",
+      "5",
+      "25"
+     ]
+    }
+   ]
+  },
+  "Location": {
+   "rows": 3512,
+   "columns": [
+    {
+     "table": "Location",
+     "column": "LocationID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 3512,
+     "nulls": 0,
+     "distinct": 3512,
+     "unique": true,
+     "min": "0",
+     "max": "3511",
+     "mean": 1755.5,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0",
+      "1",
+      "2"
+     ]
+    },
+    {
+     "table": "Location",
+     "column": "Level",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 3512,
+     "nulls": 0,
+     "distinct": 3,
+     "unique": false,
+     "min": "1.0",
+     "max": "3.0",
+     "mean": 2.9760820045558085,
+     "avg_len": null,
+     "top_values": [
+      [
+       "3.0",
+       3429
+      ],
+      [
+       "2.0",
+       82
+      ],
+      [
+       "1.0",
+       1
+      ]
+     ],
+     "samples": [
+      "2.0",
+      "3.0",
+      "1.0"
+     ]
+    },
+    {
+     "table": "Location",
+     "column": "RegionID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 3512,
+     "nulls": 1,
+     "distinct": 84,
+     "unique": false,
+     "min": "1.0",
+     "max": "84.0",
+     "mean": 41.22472230133865,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "70.0",
+      "56.0",
+      "64.0"
+     ]
+    },
+    {
+     "table": "Location",
+     "column": "CityID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 3512,
+     "nulls": 1,
+     "distinct": 3290,
+     "unique": false,
+     "min": "1.0",
+     "max": "3722.0",
+     "mean": 1856.9233836513813,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "3024.0",
+      "2791.0",
+      "1139.0"
+     ]
+    }
+   ]
+  },
+  "PhoneRequestsStream": {
+   "rows": 302974,
+   "columns": [
+    {
+     "table": "PhoneRequestsStream",
+     "column": "UserID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 302974,
+     "nulls": 1249,
+     "distinct": 37507,
+     "unique": false,
+     "min": "2",
+     "max": "98139",
+     "mean": 49413.43156185268,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "38950",
+      "18761",
+      "88796"
+     ]
+    },
+    {
+     "table": "PhoneRequestsStream",
+     "column": "IPID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 302974,
+     "nulls": 0,
+     "distinct": 36355,
+     "unique": false,
+     "min": "63.0",
+     "max": "2266665.0",
+     "mean": 1129483.7568009137,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "1629303.0",
+      "109220.0",
+      "1462925.0"
+     ]
+    },
+    {
+     "table": "PhoneRequestsStream",
+     "column": "AdID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 302974,
+     "nulls": 733,
+     "distinct": 256195,
+     "unique": false,
+     "min": "9",
+     "max": "5929465",
+     "mean": 2963348.562627175,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "1938326",
+      "3917327",
+      "3806832"
+     ]
+    },
+    {
+     "table": "PhoneRequestsStream",
+     "column": "PhoneRequestDate",
+     "dtype": "TIMESTAMP_NS",
+     "family": "time",
+     "rows": 302974,
+     "nulls": 0,
+     "distinct": 275103,
+     "unique": false,
+     "min": "2015-04-25 00:00:08",
+     "max": "2015-05-20 17:55:09",
+     "mean": null,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2015-04-25 11:50:35",
+      "2015-04-25 11:51:14",
+      "2015-04-25 12:07:43"
+     ]
+    }
+   ]
+  },
+  "SearchInfo": {
+   "rows": 2579289,
+   "columns": [
+    {
+     "table": "SearchInfo",
+     "column": "UserID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 2579289,
+     "nulls": 32713,
+     "distinct": 98137,
+     "unique": false,
+     "min": "0",
+     "max": "98240",
+     "mean": 48511.769033007455,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2139",
+      "1477",
+      "68959"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "SearchID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 2579289,
+     "nulls": 0,
+     "distinct": 2579289,
+     "unique": true,
+     "min": "0",
+     "max": "2579288",
+     "mean": 1289644.0,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0",
+      "1",
+      "2"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "SearchDate",
+     "dtype": "TIMESTAMP_NS",
+     "family": "time",
+     "rows": 2579289,
+     "nulls": 0,
+     "distinct": 1351586,
+     "unique": false,
+     "min": "2015-04-25 00:00:01",
+     "max": "2015-05-20 17:59:56",
+     "mean": null,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2015-04-25 00:00:01",
+      "2015-04-25 00:00:02",
+      "2015-04-25 00:00:03"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "IPID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 2579289,
+     "nulls": 0,
+     "distinct": 113464,
+     "unique": false,
+     "min": "28.0",
+     "max": "2266691.0",
+     "mean": 1138848.5550300877,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "837134.0",
+      "2187370.0",
+      "2089629.0"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "IsUserLoggedOn",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 2579289,
+     "nulls": 0,
+     "distinct": 2,
+     "unique": false,
+     "min": "0.0",
+     "max": "1.0",
+     "mean": 0.3206678274516737,
+     "avg_len": null,
+     "top_values": [
+      [
+       "0.0",
+       1752194
+      ],
+      [
+       "1.0",
+       827095
+      ]
+     ],
+     "samples": [
+      "1.0",
+      "0.0"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "SearchQuery",
+     "dtype": "VARCHAR",
+     "family": "string",
+     "rows": 2579289,
+     "nulls": 2170457,
+     "distinct": 17371,
+     "unique": false,
+     "min": "[redacted search query]",
+     "max": "[redacted search query]",
+     "mean": null,
+     "avg_len": 9.384067294145272,
+     "top_values": [],
+     "samples": [
+      "[redacted search query]",
+      "[redacted search query]",
+      "[redacted search query]"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "LocationID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 2579289,
+     "nulls": 2,
+     "distinct": 2038,
+     "unique": false,
+     "min": "0",
+     "max": "3443",
+     "mean": 306.5198603334953,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "497",
+      "334",
+      "375"
+     ]
+    },
+    {
+     "table": "SearchInfo",
+     "column": "CategoryID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 2579289,
+     "nulls": 0,
+     "distinct": 39,
+     "unique": false,
+     "min": "0",
+     "max": "67",
+     "mean": 29.340625653038494,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "34",
+      "22",
+      "60"
+     ]
+    }
+   ]
+  },
+  "SearchStream": {
+   "rows": 9254702,
+   "columns": [
+    {
+     "table": "SearchStream",
+     "column": "SearchID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 9254702,
+     "nulls": 14,
+     "distinct": 2546557,
+     "unique": false,
+     "min": "0",
+     "max": "2579288",
+     "mean": 1295121.730038225,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "541363",
+      "162315",
+      "1804098"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "AdID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 9254702,
+     "nulls": 3,
+     "distinct": 2610692,
+     "unique": false,
+     "min": "1",
+     "max": "5929464",
+     "mean": 2977800.152098842,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "806173",
+      "4316980",
+      "2059012"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "Position",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 9254702,
+     "nulls": 0,
+     "distinct": 5,
+     "unique": false,
+     "min": "1.0",
+     "max": "8.0",
+     "mean": 4.362273036992439,
+     "avg_len": null,
+     "top_values": [
+      [
+       "1.0",
+       2546548
+      ],
+      [
+       "7.0",
+       2281343
+      ],
+      [
+       "2.0",
+       1826066
+      ],
+      [
+       "6.0",
+       1301252
+      ],
+      [
+       "8.0",
+       1299493
+      ]
+     ],
+     "samples": [
+      "8.0",
+      "2.0",
+      "7.0"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "ObjectType",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 9254702,
+     "nulls": 0,
+     "distinct": 3,
+     "unique": false,
+     "min": "1.0",
+     "max": "3.0",
+     "mean": 2.073670227307157,
+     "avg_len": null,
+     "top_values": [
+      [
+       "3.0",
+       4493367
+      ],
+      [
+       "1.0",
+       3811571
+      ],
+      [
+       "2.0",
+       949764
+      ]
+     ],
+     "samples": [
+      "1.0",
+      "3.0",
+      "2.0"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "HistCTR",
+     "dtype": "DOUBLE",
+     "family": "float",
+     "rows": 9254702,
+     "nulls": 4761335,
+     "distinct": 46688,
+     "unique": false,
+     "min": "1e-05",
+     "max": "1.0",
+     "mean": 0.010553375849337325,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0.005902",
+      "0.049664",
+      "0.002413"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "IsClick",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 9254702,
+     "nulls": 4939582,
+     "distinct": 2,
+     "unique": false,
+     "min": "0.0",
+     "max": "1.0",
+     "mean": 0.006034362891414375,
+     "avg_len": null,
+     "top_values": [
+      [
+       "None",
+       4939582
+      ],
+      [
+       "0.0",
+       4289081
+      ],
+      [
+       "1.0",
+       26039
+      ]
+     ],
+     "samples": [
+      "0.0",
+      "1.0"
+     ]
+    },
+    {
+     "table": "SearchStream",
+     "column": "SearchDate",
+     "dtype": "TIMESTAMP_NS",
+     "family": "time",
+     "rows": 9254702,
+     "nulls": 0,
+     "distinct": 1343285,
+     "unique": false,
+     "min": "2015-04-25 00:00:01",
+     "max": "2015-05-20 17:59:56",
+     "mean": null,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2015-04-30 20:57:06",
+      "2015-04-26 23:19:37",
+      "2015-05-12 18:11:59"
+     ]
+    }
+   ]
+  },
+  "UserInfo": {
+   "rows": 98250,
+   "columns": [
+    {
+     "table": "UserInfo",
+     "column": "UserID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 98250,
+     "nulls": 0,
+     "distinct": 98250,
+     "unique": true,
+     "min": "0",
+     "max": "98249",
+     "mean": 49124.5,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "0",
+      "1",
+      "2"
+     ]
+    },
+    {
+     "table": "UserInfo",
+     "column": "UserAgentID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 98250,
+     "nulls": 1,
+     "distinct": 7046,
+     "unique": false,
+     "min": "3.0",
+     "max": "64016.0",
+     "mean": 33068.51004081467,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "54898.0",
+      "15248.0",
+      "12555.0"
+     ]
+    },
+    {
+     "table": "UserInfo",
+     "column": "UserAgentOSID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 98250,
+     "nulls": 1,
+     "distinct": 32,
+     "unique": false,
+     "min": "1.0",
+     "max": "51.0",
+     "mean": 22.954452462620484,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "20.0",
+      "35.0",
+      "30.0"
+     ]
+    },
+    {
+     "table": "UserInfo",
+     "column": "UserDeviceID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 98250,
+     "nulls": 1,
+     "distinct": 892,
+     "unique": false,
+     "min": "5.0",
+     "max": "4205.0",
+     "mean": 2034.593705788354,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2014.0",
+      "4093.0",
+      "2019.0"
+     ]
+    },
+    {
+     "table": "UserInfo",
+     "column": "UserAgentFamilyID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 98250,
+     "nulls": 1,
+     "distinct": 45,
+     "unique": false,
+     "min": "1.0",
+     "max": "89.0",
+     "mean": 42.594011134973385,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "85.0",
+      "25.0",
+      "9.0"
+     ]
+    }
+   ]
+  },
+  "VisitStream": {
+   "rows": 6454562,
+   "columns": [
+    {
+     "table": "VisitStream",
+     "column": "UserID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 6454562,
+     "nulls": 28203,
+     "distinct": 76574,
+     "unique": false,
+     "min": "0",
+     "max": "98217",
+     "mean": 49103.66219425339,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "76240",
+      "88796",
+      "77228"
+     ]
+    },
+    {
+     "table": "VisitStream",
+     "column": "IPID",
+     "dtype": "DOUBLE",
+     "family": "integral_float",
+     "rows": 6454562,
+     "nulls": 0,
+     "distinct": 92845,
+     "unique": false,
+     "min": "73.0",
+     "max": "2266670.0",
+     "mean": 1136391.5315823134,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "711105.0",
+      "1462925.0",
+      "964705.0"
+     ]
+    },
+    {
+     "table": "VisitStream",
+     "column": "AdID",
+     "dtype": "BIGINT",
+     "family": "int",
+     "rows": 6454562,
+     "nulls": 15290,
+     "distinct": 3811150,
+     "unique": false,
+     "min": "0",
+     "max": "5960390",
+     "mean": 2965239.245727312,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2270750",
+      "4865813",
+      "4635684"
+     ]
+    },
+    {
+     "table": "VisitStream",
+     "column": "ViewDate",
+     "dtype": "TIMESTAMP_NS",
+     "family": "time",
+     "rows": 6454562,
+     "nulls": 0,
+     "distinct": 1805877,
+     "unique": false,
+     "min": "2015-04-25 00:00:00",
+     "max": "2015-05-20 17:59:19",
+     "mean": null,
+     "avg_len": null,
+     "top_values": [],
+     "samples": [
+      "2015-05-17 15:19:02",
+      "2015-05-17 15:42:14",
+      "2015-05-17 15:45:06"
+     ]
+    }
+   ]
+  }
+ },
+ "keys": [
+  [
+   "AdsInfo",
+   "AdID"
+  ],
+  [
+   "Category",
+   "CategoryID"
+  ],
+  [
+   "Location",
+   "LocationID"
+  ],
+  [
+   "SearchInfo",
+   "SearchID"
+  ],
+  [
+   "UserInfo",
+   "UserID"
+  ]
+ ],
+ "relationships": [
+  {
+   "child_table": "AdsInfo",
+   "child_column": "LocationID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3363,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 1765.03,
+   "rows_per_parent_max": 929887,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "CategoryID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 52,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 114625.5,
+   "rows_per_parent_max": 741045,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "IsContext",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2980279.0,
+   "rows_per_parent_max": 5935816,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "CategoryID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 68,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "Level",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 22.67,
+   "rows_per_parent_max": 56,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "ParentCategoryID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 12,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 5.67,
+   "rows_per_parent_max": 11,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "SubcategoryID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 57,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1.19,
+   "rows_per_parent_max": 12,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "LocationID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3512,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "Level",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1170.67,
+   "rows_per_parent_max": 3429,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "RegionID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 84,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 41.8,
+   "rows_per_parent_max": 221,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "CityID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3290,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 1.07,
+   "rows_per_parent_max": 10,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "UserID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 37507,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0063,
+   "rows_per_parent_avg": 8.04,
+   "rows_per_parent_max": 1123,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "IPID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 36355,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0061,
+   "rows_per_parent_avg": 8.33,
+   "rows_per_parent_max": 1123,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "AdID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 256195,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.043,
+   "rows_per_parent_avg": 1.18,
+   "rows_per_parent_max": 83,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "UserID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 98137,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0165,
+   "rows_per_parent_avg": 25.95,
+   "rows_per_parent_max": 5592,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "SearchID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2579289,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.4327,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 1,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IPID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 113464,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.019,
+   "rows_per_parent_avg": 22.73,
+   "rows_per_parent_max": 5592,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IsUserLoggedOn",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1289644.5,
+   "rows_per_parent_max": 1752194,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "LocationID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2038,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0003,
+   "rows_per_parent_avg": 1265.6,
+   "rows_per_parent_max": 346481,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "CategoryID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 39,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 66135.62,
+   "rows_per_parent_max": 282406,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "SearchID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2546557,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.4272,
+   "rows_per_parent_avg": 3.63,
+   "rows_per_parent_max": 6,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "AdID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2610692,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.438,
+   "rows_per_parent_avg": 3.54,
+   "rows_per_parent_max": 28986,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "Position",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 5,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1850940.4,
+   "rows_per_parent_max": 2546548,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "ObjectType",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 3084900.67,
+   "rows_per_parent_max": 4493367,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "IsClick",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2157560.0,
+   "rows_per_parent_max": 4289081,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 98250,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0165,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 7046,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0012,
+   "rows_per_parent_avg": 13.94,
+   "rows_per_parent_max": 7167,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentOSID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 32,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 3070.28,
+   "rows_per_parent_max": 55038,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 5,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserDeviceID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 892,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0001,
+   "rows_per_parent_avg": 110.14,
+   "rows_per_parent_max": 85657,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentFamilyID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 45,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2183.31,
+   "rows_per_parent_max": 39148,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "UserID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 76574,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0128,
+   "rows_per_parent_avg": 83.92,
+   "rows_per_parent_max": 7747,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "IPID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 92845,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.0156,
+   "rows_per_parent_avg": 69.52,
+   "rows_per_parent_max": 7747,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "AdID",
+   "parent_table": "AdsInfo",
+   "parent_column": "AdID",
+   "inclusion": 1.0,
+   "child_distinct": 3811150,
+   "parent_rows": 5960558,
+   "parent_coverage": 0.6394,
+   "rows_per_parent_avg": 1.69,
+   "rows_per_parent_max": 368,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "CategoryID",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 52,
+   "parent_rows": 68,
+   "parent_coverage": 0.7647,
+   "rows_per_parent_avg": 114625.5,
+   "rows_per_parent_max": 741045,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "IsContext",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 68,
+   "parent_coverage": 0.0294,
+   "rows_per_parent_avg": 2980279.0,
+   "rows_per_parent_max": 5935816,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "Category",
+   "child_column": "Level",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 68,
+   "parent_coverage": 0.0441,
+   "rows_per_parent_avg": 22.67,
+   "rows_per_parent_max": 56,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "Category",
+   "child_column": "ParentCategoryID",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 12,
+   "parent_rows": 68,
+   "parent_coverage": 0.1765,
+   "rows_per_parent_avg": 5.67,
+   "rows_per_parent_max": 11,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "Category",
+   "child_column": "SubcategoryID",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 57,
+   "parent_rows": 68,
+   "parent_coverage": 0.8382,
+   "rows_per_parent_avg": 1.19,
+   "rows_per_parent_max": 12,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "Location",
+   "child_column": "Level",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 68,
+   "parent_coverage": 0.0441,
+   "rows_per_parent_avg": 1170.67,
+   "rows_per_parent_max": 3429,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IsUserLoggedOn",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 68,
+   "parent_coverage": 0.0294,
+   "rows_per_parent_avg": 1289644.5,
+   "rows_per_parent_max": 1752194,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "CategoryID",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 39,
+   "parent_rows": 68,
+   "parent_coverage": 0.5735,
+   "rows_per_parent_avg": 66135.62,
+   "rows_per_parent_max": 282406,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "Position",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 5,
+   "parent_rows": 68,
+   "parent_coverage": 0.0735,
+   "rows_per_parent_avg": 1850940.4,
+   "rows_per_parent_max": 2546548,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "ObjectType",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 68,
+   "parent_coverage": 0.0441,
+   "rows_per_parent_avg": 3084900.67,
+   "rows_per_parent_max": 4493367,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "IsClick",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 68,
+   "parent_coverage": 0.0294,
+   "rows_per_parent_avg": 2157560.0,
+   "rows_per_parent_max": 4289081,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentOSID",
+   "parent_table": "Category",
+   "parent_column": "CategoryID",
+   "inclusion": 1.0,
+   "child_distinct": 32,
+   "parent_rows": 68,
+   "parent_coverage": 0.4706,
+   "rows_per_parent_avg": 3070.28,
+   "rows_per_parent_max": 55038,
+   "weak": true,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "LocationID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 3363,
+   "parent_rows": 3512,
+   "parent_coverage": 0.9576,
+   "rows_per_parent_avg": 1765.03,
+   "rows_per_parent_max": 929887,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "CategoryID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 52,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0148,
+   "rows_per_parent_avg": 114625.5,
+   "rows_per_parent_max": 741045,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "IsContext",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 2980279.0,
+   "rows_per_parent_max": 5935816,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "CategoryID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 68,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0194,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 1,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "Level",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0009,
+   "rows_per_parent_avg": 22.67,
+   "rows_per_parent_max": 56,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "ParentCategoryID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 12,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0034,
+   "rows_per_parent_avg": 5.67,
+   "rows_per_parent_max": 11,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "SubcategoryID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 57,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0162,
+   "rows_per_parent_avg": 1.19,
+   "rows_per_parent_max": 12,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "Level",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0009,
+   "rows_per_parent_avg": 1170.67,
+   "rows_per_parent_max": 3429,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "RegionID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 84,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0239,
+   "rows_per_parent_avg": 41.8,
+   "rows_per_parent_max": 221,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IsUserLoggedOn",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 1289644.5,
+   "rows_per_parent_max": 1752194,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "LocationID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 2038,
+   "parent_rows": 3512,
+   "parent_coverage": 0.5803,
+   "rows_per_parent_avg": 1265.6,
+   "rows_per_parent_max": 346481,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "CategoryID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 39,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0111,
+   "rows_per_parent_avg": 66135.62,
+   "rows_per_parent_max": 282406,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "Position",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 5,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0014,
+   "rows_per_parent_avg": 1850940.4,
+   "rows_per_parent_max": 2546548,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "ObjectType",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0009,
+   "rows_per_parent_avg": 3084900.67,
+   "rows_per_parent_max": 4493367,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "IsClick",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 2157560.0,
+   "rows_per_parent_max": 4289081,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentOSID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 32,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0091,
+   "rows_per_parent_avg": 3070.28,
+   "rows_per_parent_max": 55038,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentFamilyID",
+   "parent_table": "Location",
+   "parent_column": "LocationID",
+   "inclusion": 1.0,
+   "child_distinct": 45,
+   "parent_rows": 3512,
+   "parent_coverage": 0.0128,
+   "rows_per_parent_avg": 2183.31,
+   "rows_per_parent_max": 39148,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "LocationID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3363,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0013,
+   "rows_per_parent_avg": 1765.03,
+   "rows_per_parent_max": 929887,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "CategoryID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 52,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 114625.5,
+   "rows_per_parent_max": 741045,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "IsContext",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2980279.0,
+   "rows_per_parent_max": 5935816,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "CategoryID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 68,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "Level",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 22.67,
+   "rows_per_parent_max": 56,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "ParentCategoryID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 12,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 5.67,
+   "rows_per_parent_max": 11,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "SubcategoryID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 57,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1.19,
+   "rows_per_parent_max": 12,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "LocationID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3512,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0014,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "Level",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1170.67,
+   "rows_per_parent_max": 3429,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "RegionID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 84,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 41.8,
+   "rows_per_parent_max": 221,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "CityID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3290,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0013,
+   "rows_per_parent_avg": 1.07,
+   "rows_per_parent_max": 10,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "UserID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 37507,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0145,
+   "rows_per_parent_avg": 8.04,
+   "rows_per_parent_max": 1123,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "IPID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 36355,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0141,
+   "rows_per_parent_avg": 8.33,
+   "rows_per_parent_max": 1123,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "UserID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 98137,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.038,
+   "rows_per_parent_avg": 25.95,
+   "rows_per_parent_max": 5592,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IPID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 113464,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.044,
+   "rows_per_parent_avg": 22.73,
+   "rows_per_parent_max": 5592,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IsUserLoggedOn",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1289644.5,
+   "rows_per_parent_max": 1752194,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "LocationID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 2038,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0008,
+   "rows_per_parent_avg": 1265.6,
+   "rows_per_parent_max": 346481,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "CategoryID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 39,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 66135.62,
+   "rows_per_parent_max": 282406,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "SearchID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 2546557,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.9873,
+   "rows_per_parent_avg": 3.63,
+   "rows_per_parent_max": 6,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "Position",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 5,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1850940.4,
+   "rows_per_parent_max": 2546548,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "ObjectType",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 3084900.67,
+   "rows_per_parent_max": 4493367,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "IsClick",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2157560.0,
+   "rows_per_parent_max": 4289081,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 98250,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0381,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 1,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 7046,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0027,
+   "rows_per_parent_avg": 13.94,
+   "rows_per_parent_max": 7167,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentOSID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 32,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 3070.28,
+   "rows_per_parent_max": 55038,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 4,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserDeviceID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 892,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0003,
+   "rows_per_parent_avg": 110.14,
+   "rows_per_parent_max": 85657,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentFamilyID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 45,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2183.31,
+   "rows_per_parent_max": 39148,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "UserID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 76574,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.0297,
+   "rows_per_parent_avg": 83.92,
+   "rows_per_parent_max": 7747,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "IPID",
+   "parent_table": "SearchInfo",
+   "parent_column": "SearchID",
+   "inclusion": 1.0,
+   "child_distinct": 92845,
+   "parent_rows": 2579289,
+   "parent_coverage": 0.036,
+   "rows_per_parent_avg": 69.52,
+   "rows_per_parent_max": 7747,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "LocationID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3363,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0342,
+   "rows_per_parent_avg": 1765.03,
+   "rows_per_parent_max": 929887,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "CategoryID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 52,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0005,
+   "rows_per_parent_avg": 114625.5,
+   "rows_per_parent_max": 741045,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "AdsInfo",
+   "child_column": "IsContext",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2980279.0,
+   "rows_per_parent_max": 5935816,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "CategoryID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 68,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0007,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "Level",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 22.67,
+   "rows_per_parent_max": 56,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "ParentCategoryID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 12,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0001,
+   "rows_per_parent_avg": 5.67,
+   "rows_per_parent_max": 11,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Category",
+   "child_column": "SubcategoryID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 57,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0006,
+   "rows_per_parent_avg": 1.19,
+   "rows_per_parent_max": 12,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "LocationID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3512,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0357,
+   "rows_per_parent_avg": 1.0,
+   "rows_per_parent_max": 1,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": true,
+   "parent_rank": 1,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "Level",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1170.67,
+   "rows_per_parent_max": 3429,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "RegionID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 84,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0009,
+   "rows_per_parent_avg": 41.8,
+   "rows_per_parent_max": 221,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "Location",
+   "child_column": "CityID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3290,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0335,
+   "rows_per_parent_avg": 1.07,
+   "rows_per_parent_max": 10,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "PhoneRequestsStream",
+   "child_column": "UserID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 37507,
+   "parent_rows": 98250,
+   "parent_coverage": 0.3818,
+   "rows_per_parent_avg": 8.04,
+   "rows_per_parent_max": 1123,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "UserID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 98137,
+   "parent_rows": 98250,
+   "parent_coverage": 0.9988,
+   "rows_per_parent_avg": 25.95,
+   "rows_per_parent_max": 5592,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "IsUserLoggedOn",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 1289644.5,
+   "rows_per_parent_max": 1752194,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "LocationID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 2038,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0207,
+   "rows_per_parent_avg": 1265.6,
+   "rows_per_parent_max": 346481,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchInfo",
+   "child_column": "CategoryID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 39,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0004,
+   "rows_per_parent_avg": 66135.62,
+   "rows_per_parent_max": 282406,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "Position",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 5,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0001,
+   "rows_per_parent_avg": 1850940.4,
+   "rows_per_parent_max": 2546548,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "ObjectType",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 3,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 3084900.67,
+   "rows_per_parent_max": 4493367,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "SearchStream",
+   "child_column": "IsClick",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 2,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0,
+   "rows_per_parent_avg": 2157560.0,
+   "rows_per_parent_max": 4289081,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 7046,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0717,
+   "rows_per_parent_avg": 13.94,
+   "rows_per_parent_max": 7167,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentOSID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 32,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0003,
+   "rows_per_parent_avg": 3070.28,
+   "rows_per_parent_max": 55038,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 3,
+   "best_parent": false
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserDeviceID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 892,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0091,
+   "rows_per_parent_avg": 110.14,
+   "rows_per_parent_max": 85657,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  },
+  {
+   "child_table": "UserInfo",
+   "child_column": "UserAgentFamilyID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 45,
+   "parent_rows": 98250,
+   "parent_coverage": 0.0005,
+   "rows_per_parent_avg": 2183.31,
+   "rows_per_parent_max": 39148,
+   "weak": false,
+   "feature_eligible": false,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 2,
+   "best_parent": false
+  },
+  {
+   "child_table": "VisitStream",
+   "child_column": "UserID",
+   "parent_table": "UserInfo",
+   "parent_column": "UserID",
+   "inclusion": 1.0,
+   "child_distinct": 76574,
+   "parent_rows": 98250,
+   "parent_coverage": 0.7794,
+   "rows_per_parent_avg": 83.92,
+   "rows_per_parent_max": 7747,
+   "weak": false,
+   "feature_eligible": true,
+   "range_density": 1.0,
+   "child_is_key": false,
+   "parent_rank": 1,
+   "best_parent": true
+  }
+ ],
+ "time_columns": {
+  "PhoneRequestsStream": [
+   "PhoneRequestDate"
+  ],
+  "SearchInfo": [
+   "SearchDate"
+  ],
+  "SearchStream": [
+   "SearchDate"
+  ],
+  "VisitStream": [
+   "ViewDate"
+  ]
+ },
+ "join_paths": [
+  [
+   "AdsInfo",
+   "Location",
+   "SearchInfo"
+  ],
+  [
+   "AdsInfo",
+   "Location",
+   "UserInfo"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "Location"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "PhoneRequestsStream"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "Location",
+   "SearchInfo"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "SearchStream"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "Location",
+   "UserInfo"
+  ],
+  [
+   "Category",
+   "AdsInfo",
+   "VisitStream"
+  ],
+  [
+   "Location",
+   "AdsInfo",
+   "PhoneRequestsStream"
+  ],
+  [
+   "Location",
+   "AdsInfo",
+   "SearchStream"
+  ],
+  [
+   "Location",
+   "AdsInfo",
+   "VisitStream"
+  ],
+  [
+   "PhoneRequestsStream",
+   "AdsInfo",
+   "SearchStream"
+  ],
+  [
+   "PhoneRequestsStream",
+   "AdsInfo",
+   "VisitStream"
+  ],
+  [
+   "SearchStream",
+   "SearchInfo",
+   "UserInfo"
+  ],
+  [
+   "SearchStream",
+   "AdsInfo",
+   "VisitStream"
+  ]
+ ],
+ "ambiguities": [
+  {
+   "type": "multiple_parents",
+   "table": "AdsInfo",
+   "column": "CategoryID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "AdsInfo",
+   "column": "LocationID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Category",
+   "column": "CategoryID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Category",
+   "column": "Level",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Location",
+   "column": "CityID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Location",
+   "column": "Level",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Location",
+   "column": "LocationID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "Location",
+   "column": "RegionID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "PhoneRequestsStream",
+   "column": "IPID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "PhoneRequestsStream",
+   "column": "UserID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchInfo",
+   "column": "IPID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchInfo",
+   "column": "LocationID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchInfo",
+   "column": "UserID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "SearchStream",
+   "column": "SearchID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "UserInfo",
+   "column": "UserAgentFamilyID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "UserInfo",
+   "column": "UserAgentID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": [
+    "AdsInfo.AdID",
+    "Category.CategoryID",
+    "Location.LocationID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "UserInfo",
+   "column": "UserDeviceID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "UserInfo",
+   "column": "UserID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "VisitStream",
+   "column": "IPID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID"
+   ]
+  },
+  {
+   "type": "multiple_parents",
+   "table": "VisitStream",
+   "column": "UserID",
+   "detail": [
+    "AdsInfo.AdID",
+    "SearchInfo.SearchID",
+    "UserInfo.UserID"
+   ]
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "LocationID",
+   "detail": "AdsInfo.AdID: only 3363 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "CategoryID",
+   "detail": "AdsInfo.AdID: only 52 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": "AdsInfo.AdID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "CategoryID",
+   "detail": "AdsInfo.AdID: only 68 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "Level",
+   "detail": "AdsInfo.AdID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": "AdsInfo.AdID: only 12 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": "AdsInfo.AdID: only 57 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "LocationID",
+   "detail": "AdsInfo.AdID: only 3512 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "Level",
+   "detail": "AdsInfo.AdID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "RegionID",
+   "detail": "AdsInfo.AdID: only 84 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "CityID",
+   "detail": "AdsInfo.AdID: only 3290 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "PhoneRequestsStream",
+   "column": "UserID",
+   "detail": "AdsInfo.AdID: only 37507 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "PhoneRequestsStream",
+   "column": "IPID",
+   "detail": "AdsInfo.AdID: only 36355 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "UserID",
+   "detail": "AdsInfo.AdID: only 98137 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "SearchID",
+   "detail": "AdsInfo.AdID: only 2579289 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "IPID",
+   "detail": "AdsInfo.AdID: only 113464 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": "AdsInfo.AdID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "LocationID",
+   "detail": "AdsInfo.AdID: only 2038 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": "AdsInfo.AdID: only 39 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "SearchID",
+   "detail": "AdsInfo.AdID: only 2546557 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": "AdsInfo.AdID: only 5 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": "AdsInfo.AdID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": "AdsInfo.AdID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserID",
+   "detail": "AdsInfo.AdID: only 98250 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentID",
+   "detail": "AdsInfo.AdID: only 7046 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": "AdsInfo.AdID: only 32 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserDeviceID",
+   "detail": "AdsInfo.AdID: only 892 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentFamilyID",
+   "detail": "AdsInfo.AdID: only 45 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "VisitStream",
+   "column": "UserID",
+   "detail": "AdsInfo.AdID: only 76574 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "VisitStream",
+   "column": "IPID",
+   "detail": "AdsInfo.AdID: only 92845 distinct child values; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "Category",
+   "column": "Level",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "Location",
+   "column": "Level",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "weak_overlap",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": "Category.CategoryID: small overlapping integer ranges; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "CategoryID",
+   "detail": "Location.LocationID: only 52 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": "Location.LocationID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "CategoryID",
+   "detail": "Location.LocationID: only 68 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "Level",
+   "detail": "Location.LocationID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": "Location.LocationID: only 12 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": "Location.LocationID: only 57 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "Level",
+   "detail": "Location.LocationID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": "Location.LocationID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": "Location.LocationID: only 39 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": "Location.LocationID: only 5 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": "Location.LocationID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": "Location.LocationID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": "Location.LocationID: only 32 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "LocationID",
+   "detail": "SearchInfo.SearchID: only 3363 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "CategoryID",
+   "detail": "SearchInfo.SearchID: only 52 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": "SearchInfo.SearchID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "CategoryID",
+   "detail": "SearchInfo.SearchID: only 68 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "Level",
+   "detail": "SearchInfo.SearchID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": "SearchInfo.SearchID: only 12 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": "SearchInfo.SearchID: only 57 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "LocationID",
+   "detail": "SearchInfo.SearchID: only 3512 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "Level",
+   "detail": "SearchInfo.SearchID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "RegionID",
+   "detail": "SearchInfo.SearchID: only 84 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "CityID",
+   "detail": "SearchInfo.SearchID: only 3290 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "PhoneRequestsStream",
+   "column": "UserID",
+   "detail": "SearchInfo.SearchID: only 37507 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "UserID",
+   "detail": "SearchInfo.SearchID: only 98137 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": "SearchInfo.SearchID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "LocationID",
+   "detail": "SearchInfo.SearchID: only 2038 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": "SearchInfo.SearchID: only 39 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": "SearchInfo.SearchID: only 5 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": "SearchInfo.SearchID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": "SearchInfo.SearchID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserID",
+   "detail": "SearchInfo.SearchID: only 98250 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentID",
+   "detail": "SearchInfo.SearchID: only 7046 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": "SearchInfo.SearchID: only 32 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserDeviceID",
+   "detail": "SearchInfo.SearchID: only 892 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentFamilyID",
+   "detail": "SearchInfo.SearchID: only 45 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "VisitStream",
+   "column": "UserID",
+   "detail": "SearchInfo.SearchID: only 76574 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "LocationID",
+   "detail": "UserInfo.UserID: only 3363 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "CategoryID",
+   "detail": "UserInfo.UserID: only 52 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "AdsInfo",
+   "column": "IsContext",
+   "detail": "UserInfo.UserID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "CategoryID",
+   "detail": "UserInfo.UserID: only 68 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "Level",
+   "detail": "UserInfo.UserID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "ParentCategoryID",
+   "detail": "UserInfo.UserID: only 12 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Category",
+   "column": "SubcategoryID",
+   "detail": "UserInfo.UserID: only 57 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "LocationID",
+   "detail": "UserInfo.UserID: only 3512 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "Level",
+   "detail": "UserInfo.UserID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "Location",
+   "column": "RegionID",
+   "detail": "UserInfo.UserID: only 84 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "IsUserLoggedOn",
+   "detail": "UserInfo.UserID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "LocationID",
+   "detail": "UserInfo.UserID: only 2038 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchInfo",
+   "column": "CategoryID",
+   "detail": "UserInfo.UserID: only 39 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "Position",
+   "detail": "UserInfo.UserID: only 5 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "ObjectType",
+   "detail": "UserInfo.UserID: only 3 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "SearchStream",
+   "column": "IsClick",
+   "detail": "UserInfo.UserID: only 2 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentOSID",
+   "detail": "UserInfo.UserID: only 32 distinct child values; may be coincidental"
+  },
+  {
+   "type": "low_support",
+   "table": "UserInfo",
+   "column": "UserAgentFamilyID",
+   "detail": "UserInfo.UserID: only 45 distinct child values; may be coincidental"
+  },
+  {
+   "type": "no_candidate_key",
+   "table": "PhoneRequestsStream",
+   "column": null,
+   "detail": "no single column is unique and non-null (event log, or composite key?)"
+  },
+  {
+   "type": "no_candidate_key",
+   "table": "SearchStream",
+   "column": null,
+   "detail": "no single column is unique and non-null (event log, or composite key?)"
+  },
+  {
+   "type": "no_candidate_key",
+   "table": "VisitStream",
+   "column": null,
+   "detail": "no single column is unique and non-null (event log, or composite key?)"
+  }
+ ]
+}
