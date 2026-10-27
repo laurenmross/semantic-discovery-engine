@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "dataset": "rel-avito (RelBench), derived from the Kaggle 'Avito Context Ad Clicks' competition data",
+    "sources": {
+      "relationships": "RelBench provenance/avito.py (fkey_col_to_pkey_table, pkey_col, time_col), github.com/snap-stanford/relbench",
+      "semantics": "Avito Context Ad Clicks data description (Kaggle) and the RelBench dataset description; reconstructed by the developer, so it needs human verification"
+    },
+    "status": "provisional: the semantic key needs human verification; the relationship key is authoritative (RelBench)",
+    "written_before_any_scoring": true
+  },
+  "primary_keys": {
+    "AdsInfo": "AdID",
+    "Category": "CategoryID",
+    "Location": "LocationID",
+    "SearchInfo": "SearchID",
+    "UserInfo": "UserID"
+  },
+  "time_columns": {
+    "PhoneRequestsStream": "PhoneRequestDate",
+    "SearchInfo": "SearchDate",
+    "SearchStream": "SearchDate",
+    "VisitStream": "ViewDate"
+  },
+  "foreign_keys": [
+    ["AdsInfo", "LocationID", "Location"],
+    ["AdsInfo", "CategoryID", "Category"],
+    ["PhoneRequestsStream", "UserID", "UserInfo"],
+    ["PhoneRequestsStream", "AdID", "AdsInfo"],
+    ["SearchInfo", "UserID", "UserInfo"],
+    ["SearchInfo", "LocationID", "Location"],
+    ["SearchInfo", "CategoryID", "Category"],
+    ["SearchStream", "SearchID", "SearchInfo"],
+    ["SearchStream", "AdID", "AdsInfo"],
+    ["VisitStream", "UserID", "UserInfo"],
+    ["VisitStream", "AdID", "AdsInfo"]
+  ],
+  "adjudication_candidates": {
+    "_note": "Plausible edges that are NOT in RelBench's metadata. They count as false positives in the primary metric and are listed separately for human adjudication.",
+    "edges": [
+      ["Category", "ParentCategoryID", "Category"]
+    ]
+  },
+  "entities": {
+    "AdsInfo": {"kind": "entity", "concept": "A classified advertisement (listing) posted on the marketplace, with its category, location, price and title; includes both regular listings and paid contextual ads."},
+    "Category": {"kind": "dimension", "concept": "Ad category taxonomy (a hierarchy of categories and subcategories)."},
+    "Location": {"kind": "dimension", "concept": "Geographic location (region/city hierarchy) of ads and searches."},
+    "UserInfo": {"kind": "entity", "concept": "A site user/visitor, described by browser and device attributes (user agent, OS, device)."},
+    "SearchInfo": {"kind": "event", "concept": "A search event: a user ran a search (a query and/or category/location filters) at a point in time."},
+    "SearchStream": {"kind": "event", "concept": "Ad impressions within search results: which ads were shown for each search, at what position, of what type, and whether the ad was clicked."},
+    "VisitStream": {"kind": "event", "concept": "Ad page views: a user opened/viewed an ad's page at a point in time."},
+    "PhoneRequestsStream": {"kind": "event", "concept": "Contact requests: a user asked to reveal the seller's phone number for an ad (a lead/contact event)."}
+  },
+  "columns": {
+    "AdsInfo.AdID": "Unique identifier of the ad (primary key).",
+    "AdsInfo.LocationID": "Location of the ad (foreign key to Location).",
+    "AdsInfo.CategoryID": "Category of the ad (foreign key to Category).",
+    "AdsInfo.Price": "Price of the item or service advertised.",
+    "AdsInfo.Title": "Title text of the ad.",
+    "AdsInfo.IsContext": "Flag: whether the ad is a contextual (paid, highlighted-in-search) ad rather than a regular listing.",
+    "Category.CategoryID": "Unique identifier of the category (primary key).",
+    "Category.Level": "Depth of the category in the category hierarchy.",
+    "Category.ParentCategoryID": "Identifier of the parent category in the hierarchy.",
+    "Category.SubcategoryID": "Subcategory identifier / code within the hierarchy. Not documented; acceptable: any hierarchy-related identifier.",
+    "Location.LocationID": "Unique identifier of the location (primary key).",
+    "Location.Level": "Granularity level of the location (e.g., country/region/city). Not documented; acceptable: hierarchy level.",
+    "Location.RegionID": "Identifier of the region containing the location.",
+    "Location.CityID": "Identifier of the city of the location.",
+    "PhoneRequestsStream.UserID": "User who requested the phone number (foreign key to UserInfo).",
+    "PhoneRequestsStream.IPID": "Anonymized identifier of the requester's IP address (not a foreign key to any table).",
+    "PhoneRequestsStream.AdID": "Ad whose seller phone number was requested (foreign key to AdsInfo).",
+    "PhoneRequestsStream.PhoneRequestDate": "Timestamp of the phone-number request.",
+    "SearchInfo.UserID": "User who performed the search (foreign key to UserInfo).",
+    "SearchInfo.SearchID": "Unique identifier of the search event (primary key).",
+    "SearchInfo.SearchDate": "Timestamp of the search.",
+    "SearchInfo.IPID": "Anonymized identifier of the searcher's IP address (not a foreign key).",
+    "SearchInfo.IsUserLoggedOn": "Flag: whether the user was logged in when searching.",
+    "SearchInfo.SearchQuery": "Free-text search query entered by the user (may be empty).",
+    "SearchInfo.LocationID": "Location filter/context of the search (foreign key to Location).",
+    "SearchInfo.CategoryID": "Category filter/context of the search (foreign key to Category).",
+    "SearchStream.SearchID": "The search in which the ad was shown (foreign key to SearchInfo).",
+    "SearchStream.AdID": "The ad that was shown (foreign key to AdsInfo).",
+    "SearchStream.Position": "Position (rank/slot) of the ad on the search results page.",
+    "SearchStream.ObjectType": "Type of ad shown: regular, highlighted, or contextual (categorical code).",
+    "SearchStream.HistCTR": "Historical click-through rate of the ad (for contextual ads).",
+    "SearchStream.IsClick": "Flag: whether the shown ad was clicked (recorded for contextual ads; missing otherwise).",
+    "SearchStream.SearchDate": "Timestamp of the search in which the impression occurred.",
+    "UserInfo.UserID": "Unique identifier of the user (primary key).",
+    "UserInfo.UserAgentID": "Identifier of the user's browser user-agent string.",
+    "UserInfo.UserAgentOSID": "Identifier of the user's operating system.",
+    "UserInfo.UserDeviceID": "Identifier of the user's device type/model.",
+    "UserInfo.UserAgentFamilyID": "Identifier of the user's browser family.",
+    "VisitStream.UserID": "User who viewed the ad (foreign key to UserInfo).",
+    "VisitStream.IPID": "Anonymized identifier of the viewer's IP address (not a foreign key).",
+    "VisitStream.AdID": "Ad whose page was viewed (foreign key to AdsInfo).",
+    "VisitStream.ViewDate": "Timestamp of the ad view."
+  },
+  "non_obvious_columns": [
+    "AdsInfo.IsContext",
+    "Category.Level",
+    "Category.SubcategoryID",
+    "Location.Level",
+    "PhoneRequestsStream.IPID",
+    "SearchInfo.IPID",
+    "SearchInfo.IsUserLoggedOn",
+    "SearchStream.Position",
+    "SearchStream.ObjectType",
+    "SearchStream.HistCTR",
+    "SearchStream.IsClick",
+    "UserInfo.UserAgentID",
+    "UserInfo.UserAgentOSID",
+    "UserInfo.UserDeviceID",
+    "UserInfo.UserAgentFamilyID",
+    "VisitStream.IPID"
+  ],
+  "outcome": {
+    "task": "RelBench rel-avito user-visits",
+    "definition": "For each (UserID, cutoff timestamp t), label = 1 if the user visits more than one ad in [t, t + 4 days). Label column in the task files: num_click (bool).",
+    "splits": {"val_from": "2015-05-08", "test_from": "2015-05-14"}
+  }
+}
