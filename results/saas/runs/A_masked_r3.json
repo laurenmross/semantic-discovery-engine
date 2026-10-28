@@ -1,0 +1,860 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "request_sha": "ae4344c39725ed30",
+ "seconds": 72.1,
+ "usage": {
+  "input_tokens": 4407,
+  "output_tokens": 9268,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.203,
+ "stop_reason": "end_turn",
+ "output": {
+  "tables": [
+   {
+    "table": "T05",
+    "concept": "Core account/user entity (the outcome entity); one row per account with a creation timestamp and several categorical attributes",
+    "kind": "entity",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:T05",
+     "S:c:T05.c01",
+     "S:c:T05.c02",
+     "S:c:T05.c06"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "concept": "Objects (e.g. workspaces/projects) created by or linked to accounts; the first rows share the account creation timestamp, suggesting a default object made at signup",
+    "kind": "entity",
+    "confidence": 0.45,
+    "evidence": [
+     "S:t:T06",
+     "S:c:T06.c01",
+     "S:c:T05.c01",
+     "S:c:T06.c04",
+     "S:c:T06.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "concept": "High-volume activity/usage event log tied to T06 objects, each with a numeric measure and timestamp",
+    "kind": "event",
+    "confidence": 0.5,
+    "evidence": [
+     "S:t:T01",
+     "S:c:T01.c02",
+     "S:c:T01.c03",
+     "S:c:T01.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "concept": "Paid subscriptions (or similar commercial contracts) per account, with a start and an end timestamp and a plan-like code",
+    "kind": "entity",
+    "confidence": 0.5,
+    "evidence": [
+     "S:t:T02",
+     "S:c:T02.c03",
+     "S:c:T02.c05",
+     "S:c:T02.c06"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "concept": "Billing/charge records per subscription at roughly 30-day intervals, with signed amounts (charges and credits/refunds)",
+    "kind": "event",
+    "confidence": 0.55,
+    "evidence": [
+     "S:t:T04",
+     "S:c:T04.c01",
+     "S:c:T04.c03",
+     "S:c:T04.c04",
+     "S:c:T02.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "concept": "Account-to-object interaction records with two timestamps (e.g. invitations/shares created then accepted), plus small codes",
+    "kind": "event",
+    "confidence": 0.3,
+    "evidence": [
+     "S:t:T03",
+     "S:c:T03.c01",
+     "S:c:T03.c03",
+     "S:c:T03.c05",
+     "S:c:T03.c07"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "concept": "Daily scheduled messages/notifications to accounts with two binary outcome flags (e.g. opened, clicked)",
+    "kind": "event",
+    "confidence": 0.4,
+    "evidence": [
+     "S:t:T08",
+     "S:c:T08.c03",
+     "S:c:T08.c04",
+     "S:c:T08.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "concept": "Small lookup of ~40 entries with a signed small value that resembles a UTC offset (e.g. country/region dimension)",
+    "kind": "dimension",
+    "confidence": 0.3,
+    "evidence": [
+     "S:t:T07",
+     "S:c:T07.c02",
+     "S:c:T07.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T09",
+    "concept": "Plan/pricing tier lookup: price, plan id, capacity limit (e.g. seats), tier order",
+    "kind": "dimension",
+    "confidence": 0.55,
+    "evidence": [
+     "S:t:T09",
+     "S:c:T09.c01",
+     "S:c:T09.c03"
+    ],
+    "needs_human_validation": true
+   }
+  ],
+  "columns": [
+   {
+    "table": "T01",
+    "column": "c01",
+    "meaning": "Row/event identifier (examples increasing, non-contiguous); could alternatively be an event type code",
+    "role": "primary_key",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T01.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c02",
+    "meaning": "Reference to the T06 object the event belongs to",
+    "role": "foreign_key",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T01.c02",
+     "S:c:T06.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c03",
+    "meaning": "Numeric event measure (e.g. duration, size or count)",
+    "role": "measure",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T01.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c04",
+    "meaning": "Event timestamp",
+    "role": "timestamp",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:T01.c04"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T02",
+    "column": "c01",
+    "meaning": "Plan/tier code of the subscription (possibly T09.c02)",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T02.c01",
+     "S:c:T09.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c02",
+    "meaning": "Surrogate row id of the subscription",
+    "role": "primary_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T02.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c03",
+    "meaning": "Subscription start timestamp (matches first billing timestamp in T04.c04)",
+    "role": "timestamp",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T02.c03",
+     "S:c:T04.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c04",
+    "meaning": "Subscription business identifier referenced by T04.c01",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T02.c04",
+     "S:c:T04.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c05",
+    "meaning": "Account owning the subscription",
+    "role": "foreign_key",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T02.c05",
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c06",
+    "meaning": "Subscription end/cancellation or renewal timestamp",
+    "role": "timestamp",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T02.c06"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c01",
+    "meaning": "Later timestamp of the interaction (e.g. accepted/completed time)",
+    "role": "timestamp",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T03.c01",
+     "S:c:T03.c07"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c02",
+    "meaning": "Small categorical code (e.g. role or type)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T03.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c03",
+    "meaning": "Reference to the T06 object involved",
+    "role": "foreign_key",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T03.c03",
+     "S:c:T06.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c04",
+    "meaning": "Small categorical code (e.g. status or channel)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T03.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c05",
+    "meaning": "Account involved in the interaction",
+    "role": "foreign_key",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T03.c05",
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c06",
+    "meaning": "7-digit identifier (e.g. interaction/invitation id or invitee id); unclear target",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.25,
+    "evidence": [
+     "S:c:T03.c06"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c07",
+    "meaning": "Earlier timestamp of the interaction (e.g. created/sent time)",
+    "role": "timestamp",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T03.c07",
+     "S:c:T03.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c01",
+    "meaning": "Subscription the billing record belongs to",
+    "role": "foreign_key",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T04.c01",
+     "S:c:T02.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c02",
+    "meaning": "Small code (e.g. billing period number, plan or transaction type)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T04.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c03",
+    "meaning": "Signed monetary amount (charges positive, credits/refunds negative), possibly in minor units",
+    "role": "measure",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T04.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c04",
+    "meaning": "Billing period/charge timestamp at 30-day increments from subscription start",
+    "role": "timestamp",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T04.c04",
+     "S:c:T02.c03"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T04",
+    "column": "c05",
+    "meaning": "8-digit identifier, possibly invoice/transaction id or payer account",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.25,
+    "evidence": [
+     "S:c:T04.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c01",
+    "meaning": "Account creation/signup timestamp",
+    "role": "timestamp",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T05.c01",
+     "S:c:T06.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c02",
+    "meaning": "Account identifier (outcome entity)",
+    "role": "primary_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T05",
+    "column": "c03",
+    "meaning": "Small categorical attribute (e.g. segment/acquisition channel)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T05.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c04",
+    "meaning": "Small categorical attribute (e.g. company size band)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T05.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c05",
+    "meaning": "Small categorical attribute (e.g. use-case or industry)",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T05.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c06",
+    "meaning": "Categorical code with up to ~22+ values, possibly country/region referencing T07.c03",
+    "role": "categorical_code",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T05.c06",
+     "S:c:T07.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "column": "c01",
+    "meaning": "Object creation timestamp",
+    "role": "timestamp",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T06.c01"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T06",
+    "column": "c02",
+    "meaning": "Surrogate row id",
+    "role": "primary_key",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T06.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "column": "c03",
+    "meaning": "Reference to another object in the same id domain (e.g. parent/source/template object)",
+    "role": "foreign_key",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T06.c03",
+     "S:c:T06.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "column": "c04",
+    "meaning": "Account that created/owns the object",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T06.c04",
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "column": "c05",
+    "meaning": "Object business identifier referenced by T01.c02 and T03.c03",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T06.c05",
+     "S:c:T01.c02",
+     "S:c:T03.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "column": "c01",
+    "meaning": "Small grouping code (e.g. region/continent)",
+    "role": "categorical_code",
+    "confidence": 0.25,
+    "evidence": [
+     "S:c:T07.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "column": "c02",
+    "meaning": "Signed small integer, resembles a UTC offset in hours",
+    "role": "measure",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T07.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "column": "c03",
+    "meaning": "Lookup key",
+    "role": "primary_key",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T07.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c01",
+    "meaning": "Row id",
+    "role": "primary_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T08.c01"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T08",
+    "column": "c02",
+    "meaning": "Recipient account",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T08.c02",
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c03",
+    "meaning": "Binary flag (e.g. opened/engaged)",
+    "role": "flag",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T08.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c04",
+    "meaning": "Scheduled send timestamp (daily at a fixed time of day, offset from signup time)",
+    "role": "timestamp",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T08.c04",
+     "S:c:T05.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c05",
+    "meaning": "Binary flag (e.g. clicked/acted)",
+    "role": "flag",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T08.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T09",
+    "column": "c01",
+    "meaning": "Plan price (29/79/149)",
+    "role": "measure",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T09.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T09",
+    "column": "c02",
+    "meaning": "Plan id",
+    "role": "primary_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T09.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T09",
+    "column": "c03",
+    "meaning": "Plan capacity limit (e.g. seats 3/10/25)",
+    "role": "measure",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T09.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T09",
+    "column": "c04",
+    "meaning": "Tier order/level code",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T09.c04"
+    ],
+    "needs_human_validation": true
+   }
+  ],
+  "relationships": [
+   {
+    "from_table": "T06",
+    "from_column": "c04",
+    "to_table": "T05",
+    "to_column": "c02",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T06.c04",
+     "S:c:T05.c02"
+    ]
+   },
+   {
+    "from_table": "T08",
+    "from_column": "c02",
+    "to_table": "T05",
+    "to_column": "c02",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T08.c02",
+     "S:c:T05.c02"
+    ]
+   },
+   {
+    "from_table": "T03",
+    "from_column": "c05",
+    "to_table": "T05",
+    "to_column": "c02",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T03.c05",
+     "S:c:T05.c02"
+    ]
+   },
+   {
+    "from_table": "T02",
+    "from_column": "c05",
+    "to_table": "T05",
+    "to_column": "c02",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T02.c05",
+     "S:c:T05.c02"
+    ]
+   },
+   {
+    "from_table": "T01",
+    "from_column": "c02",
+    "to_table": "T06",
+    "to_column": "c05",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T01.c02",
+     "S:c:T06.c05"
+    ]
+   },
+   {
+    "from_table": "T03",
+    "from_column": "c03",
+    "to_table": "T06",
+    "to_column": "c05",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T03.c03",
+     "S:c:T06.c05"
+    ]
+   },
+   {
+    "from_table": "T04",
+    "from_column": "c01",
+    "to_table": "T02",
+    "to_column": "c04",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T04.c01",
+     "S:c:T02.c04",
+     "S:c:T04.c04",
+     "S:c:T02.c03"
+    ]
+   },
+   {
+    "from_table": "T06",
+    "from_column": "c03",
+    "to_table": "T06",
+    "to_column": "c05",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T06.c03",
+     "S:c:T06.c05"
+    ]
+   },
+   {
+    "from_table": "T02",
+    "from_column": "c01",
+    "to_table": "T09",
+    "to_column": "c02",
+    "confidence": 0.3,
+    "evidence": [
+     "S:c:T02.c01",
+     "S:c:T09.c02"
+    ]
+   },
+   {
+    "from_table": "T05",
+    "from_column": "c06",
+    "to_table": "T07",
+    "to_column": "c03",
+    "confidence": 0.25,
+    "evidence": [
+     "S:c:T05.c06",
+     "S:c:T07.c03"
+    ]
+   }
+  ],
+  "outcome_insights": [
+   {
+    "statement": "The conversion milestone may correspond to starting a paid subscription (a row in T02); T02 has 4229 rows versus 20000 accounts in T05, consistent with a minority of accounts converting.",
+    "kind": "hypothesis",
+    "confidence": 0.4,
+    "evidence": [
+     "S:t:T02",
+     "S:t:T05",
+     "S:c:T02.c05",
+     "S:c:T02.c03"
+    ]
+   },
+   {
+    "statement": "Pre-cutoff product usage (T01 events via T06 objects), collaboration-like interactions (T03) and message engagement flags (T08) are candidate signals that might be associated with conversion; no association statistics were provided to confirm this.",
+    "kind": "hypothesis",
+    "confidence": 0.25,
+    "evidence": [
+     "S:t:T01",
+     "S:t:T03",
+     "S:t:T08",
+     "S:c:T08.c03",
+     "S:c:T08.c05"
+    ]
+   },
+   {
+    "statement": "Account attributes in T05 (c03-c06) may segment conversion rates, but no predictive evidence is available.",
+    "kind": "hypothesis",
+    "confidence": 0.2,
+    "evidence": [
+     "S:c:T05.c03",
+     "S:c:T05.c04",
+     "S:c:T05.c05",
+     "S:c:T05.c06"
+    ]
+   }
+  ],
+  "ambiguities": [
+   {
+    "description": "What exactly defines the conversion milestone (subscription start in T02, first positive charge in T04, or something else)?",
+    "evidence": [
+     "S:t:T02",
+     "S:t:T04"
+    ]
+   },
+   {
+    "description": "T06 has two columns (c03, c05) in the same 9-digit id domain; which is the object key and what the other means (parent, template, referrer) is unclear.",
+    "evidence": [
+     "S:c:T06.c03",
+     "S:c:T06.c05",
+     "S:c:T01.c02"
+    ]
+   },
+   {
+    "description": "Targets of T03.c06 and T04.c05 are unknown; they could be standalone ids or references to tables not identified.",
+    "evidence": [
+     "S:c:T03.c06",
+     "S:c:T04.c05"
+    ]
+   },
+   {
+    "description": "Whether T02.c01 and T04.c02 are plan codes referencing T09, and whether T05.c06 references T07, is not established.",
+    "evidence": [
+     "S:c:T02.c01",
+     "S:c:T04.c02",
+     "S:c:T09.c02",
+     "S:c:T05.c06",
+     "S:c:T07.c03"
+    ]
+   },
+   {
+    "description": "Meaning of T01.c03 measure and units of T04.c03 amounts (cents vs units) are unknown.",
+    "evidence": [
+     "S:c:T01.c03",
+     "S:c:T04.c03"
+    ]
+   },
+   {
+    "description": "Meaning of the two T08 flags and the two T03 timestamps is inferred only from value patterns.",
+    "evidence": [
+     "S:c:T08.c03",
+     "S:c:T08.c05",
+     "S:c:T03.c01",
+     "S:c:T03.c07"
+    ]
+   }
+  ],
+  "next_investigations": [
+   "Compute value-containment rates for every candidate FK (e.g. T01.c02 in T06.c05, T04.c01 in T02.c04, T02.c01 in T09.c02, T05.c06 in T07.c03, T04.c05 in T05.c02) to confirm relationships",
+   "Confirm with the business which event constitutes conversion and check whether it aligns with T02.c03 timing",
+   "Check uniqueness of T05.c02, T06.c05, T02.c04, T09.c02, T07.c03 to validate keys",
+   "Compare T04.c03 amounts with T09.c01 prices to confirm plan linkage and currency units",
+   "Build per-account pre-cutoff features (T01 event counts/measure sums, T03 counts, T08 flag rates, T05 attributes) and measure their association with the conversion label",
+   "Profile distributions of T05 categorical codes and T07.c02 to interpret them"
+  ]
+ }
+}

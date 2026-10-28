@@ -1,0 +1,339 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "f815bb19fe865ac8",
+ "seconds": 24.5,
+ "usage": {
+  "input_tokens": 6167,
+  "output_tokens": 3028,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0852,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 1,
+    "rationale": "It identifies an identifier but not that it is the geography key."
+   },
+   {
+    "id": "i002",
+    "score": 0,
+    "rationale": "The reference is a plan foreign key; the prediction guesses seat count."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "A categorical segment code is within the acceptable range."
+   },
+   {
+    "id": "i004",
+    "score": 1,
+    "rationale": "It identifies a user reference but misses the inviter meaning."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "It matches paid subscriptions with start, end and code."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "It matches the user usage event log."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "An end or completion timestamp is consistent with the close time."
+   },
+   {
+    "id": "i008",
+    "score": 0,
+    "rationale": "The reference is a tier rank; the prediction says plan identifier."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "It matches the creation or join timestamp."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "It matches the plan price."
+   },
+   {
+    "id": "i011",
+    "score": 1,
+    "rationale": "It hedges between tickets and other readings and calls the meaning unclear."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "A billing type code is within the acceptable range."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "It matches the event timestamp."
+   },
+   {
+    "id": "i014",
+    "score": 0,
+    "rationale": "The reference is the user primary key; the prediction says a related user."
+   },
+   {
+    "id": "i015",
+    "score": 1,
+    "rationale": "It hedges between duration and size."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "It matches the subscription start timestamp."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "It names a clicked flag."
+   },
+   {
+    "id": "i018",
+    "score": 1,
+    "rationale": "It hedges between email sends and activity snapshots."
+   },
+   {
+    "id": "i019",
+    "score": 0,
+    "rationale": "The reference is a role code; the prediction says row identifier."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "It matches the end or cancellation timestamp."
+   },
+   {
+    "id": "i021",
+    "score": 1,
+    "rationale": "It hedges among type, priority and status."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "It names an opened flag."
+   },
+   {
+    "id": "i023",
+    "score": 0,
+    "rationale": "The reference is a template or step number; the prediction says row identifier."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "A categorical account attribute is within the acceptable range."
+   },
+   {
+    "id": "i025",
+    "score": 0,
+    "rationale": "The reference is an event type code; the prediction says row identifier."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "A categorical tier attribute is within the acceptable range."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "It matches the account identifier."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "It matches the accounts table."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "It matches the associated account."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "It matches the geography lookup with offset and group code."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "It matches the invoice line identifier."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "It matches the UTC offset."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "It matches the amount in cents with negative credits."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "It matches the account holding the subscription."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "It matches the subscription being billed."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "A start timestamp is consistent with the ticket opened time."
+   },
+   {
+    "id": "i037",
+    "score": 1,
+    "rationale": "It hedges between plan id and status."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "It matches the plan limit."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "It matches the subscription identifier."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "It matches the associated user."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "It matches the monthly billing timestamp."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "It matches users with an inviter reference."
+   },
+   {
+    "id": "i043",
+    "score": 1,
+    "rationale": "It gives a daily timestamp but does not say email sent time."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "It matches the geography foreign key."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "It matches the user who performed the event."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "A group code is within the acceptable range."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "It matches the account the user belongs to."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "It identifies the account."
+   },
+   {
+    "id": "i049",
+    "score": 1,
+    "rationale": "It is a generic record identifier and does not name the ticket."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "It matches the account creation timestamp."
+   },
+   {
+    "id": "i051",
+    "score": 0,
+    "rationale": "The reference is the plan primary key; the prediction says tier or period code."
+   },
+   {
+    "id": "i052",
+    "score": 0,
+    "rationale": "It is too vague and does not identify a satisfaction rating."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "It matches recurring invoice lines with credits."
+   },
+   {
+    "id": "i054",
+    "score": 2,
+    "rationale": "It matches the plan catalogue."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "No statement mentions event code 7."
+   },
+   {
+    "id": "P2",
+    "verdict": "not_stated",
+    "rationale": "No statement mentions event code 4."
+   },
+   {
+    "id": "P3",
+    "verdict": "not_stated",
+    "rationale": "No statement mentions event code 11."
+   },
+   {
+    "id": "P4",
+    "verdict": "not_stated",
+    "rationale": "No statement mentions ticket severity."
+   },
+   {
+    "id": "P5",
+    "verdict": "not_stated",
+    "rationale": "Usage is called a plausible source of signals, but no direction is claimed."
+   },
+   {
+    "id": "P6",
+    "verdict": "not_stated",
+    "rationale": "No statement makes a claim about emails opened."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "No statement claims the email count is associated with conversion."
+   }
+  ]
+ }
+}

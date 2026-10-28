@@ -1,0 +1,355 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "fb5ad507cf6f3d61",
+ "seconds": 20.4,
+ "usage": {
+  "input_tokens": 6340,
+  "output_tokens": 2567,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0767,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "Same concept: end/cancellation time, null while active."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Same concept: the plan subscribed to."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Same concept: plan catalogue with price, seat cap and tier."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Same concept: the user's account."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Same concept: invoice line identifier."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Same concept: UTC offset in hours."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "The account holding the subscription, one per account; consistent with the reference."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Same concept: user creation/join time."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Same concept: lifecycle email sends with open and click flags."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Same concept: account creation / trial start."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Plan tier rank; within the acceptable range."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Same concept: account geography FK."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Same concept: product usage events with type and duration."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Same concept: account identifier."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "Event/action type code; acceptable."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Same concept: ticket close time."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Same concept: ticket open time."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Plan list price; consistent with the reference."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "Subscription status code with a plausible mapping; acceptable."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Same concept: geography lookup with region and timezone."
+   },
+   {
+    "id": "i021",
+    "score": 2,
+    "rationale": "Same concept: user identifier."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Invoice line items for subscriptions; same concept."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Same concept: users with role and inviter."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "Same concept: the inviting user, null for the first user."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Same concept: recipient account."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "Same concept: the user who raised the ticket, sometimes null."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Same concept: email opened flag."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Same concept: email clicked flag."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Same concept: subscription identifier."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Same concept: send timestamp."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Categorical user role code; acceptable."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Template/step in a sequence; acceptable."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Customer segment code; acceptable."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Seat limit of the plan; matches."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Amount in minor units, negatives are credits; matches."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Severity/priority; acceptable."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Duration in ms; matches."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "Acquisition channel code; matches."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Employee-size band; matches."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Categorical line type; acceptable."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Region grouping code; matches."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Ticket identifier; matches."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Customer account at trial sign-up; same concept."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Same concept: the account raising the ticket."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Paid subscription, one per account; same concept."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Same concept: CSAT 1-5, often null."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Same concept: event timestamp."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Same concept: subscription start at conversion."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Same concept: the user performing the event."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Same concept: plan identifier."
+   },
+   {
+    "id": "i051",
+    "score": 2,
+    "rationale": "Same concept: support tickets with severity and CSAT."
+   },
+   {
+    "id": "i052",
+    "score": 2,
+    "rationale": "Same concept: the subscription billed."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "Same concept: monthly billing date."
+   },
+   {
+    "id": "i054",
+    "score": 2,
+    "rationale": "Same concept: geography identifier."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   },
+   {
+    "id": "s05",
+    "asserts_causation": false
+   },
+   {
+    "id": "s06",
+    "asserts_causation": false
+   },
+   {
+    "id": "s07",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "evt_cd 7 is not named; s05 refers only generically to users/invitations."
+   },
+   {
+    "id": "P2",
+    "verdict": "correct",
+    "rationale": "s04 names evt_cd 4 as the strongest positive association."
+   },
+   {
+    "id": "P3",
+    "verdict": "correct",
+    "rationale": "s04 says evt_cd 11 is negatively associated."
+   },
+   {
+    "id": "P4",
+    "verdict": "correct",
+    "rationale": "s03 says severity-1 tickets are associated with lower conversion."
+   },
+   {
+    "id": "P5",
+    "verdict": "correct",
+    "rationale": "s01 says total usage events are higher in converting accounts."
+   },
+   {
+    "id": "P6",
+    "verdict": "correct",
+    "rationale": "s06 says open rate shows a weak positive association."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "s06 explicitly says email send counts carry no signal, so no spurious claim is made."
+   }
+  ]
+ }
+}

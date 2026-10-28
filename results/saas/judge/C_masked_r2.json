@@ -1,0 +1,359 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "81fe9a8e5caad84f",
+ "seconds": 24.2,
+ "usage": {
+  "input_tokens": 6760,
+  "output_tokens": 3009,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0872,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 1,
+    "rationale": "Identifies a lookup primary key but does not say it is a geography/location."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Matches: the subscribed plan, referencing PLN_REF."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "A categorical account segment code is within the acceptable range."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Matches: the inviting user, as a self-reference."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Matches: paid subscription tied to conversion, with an end date."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Matches: product usage event log."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Matches: ticket closure timestamp."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "A plan tier is within the acceptable range."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Matches: user creation/join timestamp."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Plan price matches."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Matches: support tickets raised by an account."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "A categorical transaction type is acceptable."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Matches: event timestamp."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Matches: user identifier."
+   },
+   {
+    "id": "i015",
+    "score": 1,
+    "rationale": "Hedges between duration and size; no unit given."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Matches: subscription start at conversion."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Identifies the clicked flag."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Matches: scheduled lifecycle emails with opened and clicked flags."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "User role, with owner correctly identified."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Matches: subscription end timestamp."
+   },
+   {
+    "id": "i021",
+    "score": 0,
+    "rationale": "Category/channel is not severity or priority."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Identifies the opened flag."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Matches: step in a sequence."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "A categorical account code is within the acceptable range."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Matches: event type code."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "A categorical account attribute is within the acceptable range."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Matches: account identifier."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Matches: customer account that signed up for a trial."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Matches: the ticket's account foreign key."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Geography lookup with timezone offset matches."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Identifier of the invoice line/transaction."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Matches: UTC offset."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Signed amount with negatives as credits matches."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Matches: account holding the subscription, one per account."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Matches: subscription being billed."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Matches: ticket creation timestamp."
+   },
+   {
+    "id": "i037",
+    "score": 1,
+    "rationale": "Hedges between billing interval and status."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "A plan limit such as seats matches."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Matches: subscription identifier."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Matches: user who raised the ticket, null when unattributed."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Matches: monthly billing timestamp."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Matches: users of an account with an inviter link."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Matches: send timestamp."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Matches: geography foreign key."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Matches: user who performed the action."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "A grouping/region code is acceptable."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Matches: the user's account."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Matches: the recipient account."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Matches: ticket identifier."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Matches: account signup timestamp."
+   },
+   {
+    "id": "i051",
+    "score": 2,
+    "rationale": "Matches: plan identifier."
+   },
+   {
+    "id": "i052",
+    "score": 2,
+    "rationale": "Matches: satisfaction rating, often missing."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "Billing line items for a subscription match."
+   },
+   {
+    "id": "i054",
+    "score": 2,
+    "rationale": "Matches: plan catalogue."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   },
+   {
+    "id": "s05",
+    "asserts_causation": false
+   },
+   {
+    "id": "s06",
+    "asserts_causation": false
+   },
+   {
+    "id": "s07",
+    "asserts_causation": false
+   },
+   {
+    "id": "s08",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "correct",
+    "rationale": "s04 lists evt_cd=7 as associated with conversion."
+   },
+   {
+    "id": "P2",
+    "verdict": "correct",
+    "rationale": "s04 lists evt_cd=4 as associated with conversion."
+   },
+   {
+    "id": "P3",
+    "verdict": "correct",
+    "rationale": "s04 says evt_cd=11 is associated with non-conversion."
+   },
+   {
+    "id": "P4",
+    "verdict": "correct",
+    "rationale": "s03 says sev=1 tickets are associated with lower conversion."
+   },
+   {
+    "id": "P5",
+    "verdict": "correct",
+    "rationale": "s01 says higher total usage events are associated with conversion."
+   },
+   {
+    "id": "P6",
+    "verdict": "correct",
+    "rationale": "s06 links a higher open rate to a positive association with conversion."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "s06 says message counts carry no signal, so no spurious claim is made."
+   }
+  ]
+ }
+}

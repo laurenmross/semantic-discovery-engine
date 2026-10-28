@@ -1,0 +1,339 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "5ac413f9f4dd47b1",
+ "seconds": 26.9,
+ "usage": {
+  "input_tokens": 6349,
+  "output_tokens": 3199,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0894,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 1,
+    "rationale": "Hedges between end/cancellation, which is correct, and renewal, which is a different concept."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Identifies the plan of the subscription."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Plan catalogue with price, seat limit and tier."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Correctly identifies the owning-account foreign key."
+   },
+   {
+    "id": "i005",
+    "score": 1,
+    "rationale": "Hedges between an invoice id and a payer account."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Identifies a UTC offset in hours."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Account owning the subscription."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Creation timestamp of the row entity."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Scheduled messages with opened and clicked flags."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Account creation/signup timestamp."
+   },
+   {
+    "id": "i011",
+    "score": 0,
+    "rationale": "Calls it a plan id rather than a tier rank."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Geography foreign key to GEO_REF."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Usage event log with a numeric measure."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Account identifier."
+   },
+   {
+    "id": "i015",
+    "score": 1,
+    "rationale": "Hedges between a row id and an event type code."
+   },
+   {
+    "id": "i016",
+    "score": 1,
+    "rationale": "A later completion timestamp, but the ticket context is misread."
+   },
+   {
+    "id": "i017",
+    "score": 1,
+    "rationale": "A created timestamp, but the ticket context is misread."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Plan price."
+   },
+   {
+    "id": "i019",
+    "score": 0,
+    "rationale": "Calls it a row id rather than a status code."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Geography lookup with a UTC offset."
+   },
+   {
+    "id": "i021",
+    "score": 1,
+    "rationale": "Recognises the primary key but not that it identifies a user."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Billing records with charges and credits."
+   },
+   {
+    "id": "i023",
+    "score": 0,
+    "rationale": "Calls them workspaces/projects instead of users/seats."
+   },
+   {
+    "id": "i024",
+    "score": 1,
+    "rationale": "A self-reference, but the inviter meaning is missed."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Recipient account."
+   },
+   {
+    "id": "i026",
+    "score": 1,
+    "rationale": "Correct user foreign key, but the ticket-opener role is missed."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Opened flag."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Clicked flag."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Subscription identifier."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Send timestamp."
+   },
+   {
+    "id": "i031",
+    "score": 0,
+    "rationale": "Calls it a row id rather than a role code."
+   },
+   {
+    "id": "i032",
+    "score": 0,
+    "rationale": "Calls it a row id rather than a template/step."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Segment code is within the acceptable range."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Seat capacity limit."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Signed amount in minor units."
+   },
+   {
+    "id": "i036",
+    "score": 0,
+    "rationale": "Calls it role/type rather than severity."
+   },
+   {
+    "id": "i037",
+    "score": 1,
+    "rationale": "Hedges duration with other measures."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "A categorical account attribute, which is within the acceptable range."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "A categorical account attribute, which is within the acceptable range."
+   },
+   {
+    "id": "i040",
+    "score": 1,
+    "rationale": "Hedges transaction type with incorrect readings."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Region grouping code."
+   },
+   {
+    "id": "i042",
+    "score": 1,
+    "rationale": "An identifier, but of the wrong entity and hedged."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Account entity with creation timestamp and categorical attributes."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Account foreign key."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Paid subscriptions per account."
+   },
+   {
+    "id": "i046",
+    "score": 0,
+    "rationale": "Calls it status/channel rather than a satisfaction rating."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Event timestamp."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Subscription start timestamp."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "User foreign key for the event."
+   },
+   {
+    "id": "i050",
+    "score": 0,
+    "rationale": "Calls it a tier level rather than the plan's primary key."
+   },
+   {
+    "id": "i051",
+    "score": 0,
+    "rationale": "Calls it invitations rather than support tickets."
+   },
+   {
+    "id": "i052",
+    "score": 2,
+    "rationale": "Subscription foreign key."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "Billing timestamp."
+   },
+   {
+    "id": "i054",
+    "score": 2,
+    "rationale": "Lookup key of the geography table."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "No event code is named."
+   },
+   {
+    "id": "P2",
+    "verdict": "not_stated",
+    "rationale": "No event code is named."
+   },
+   {
+    "id": "P3",
+    "verdict": "not_stated",
+    "rationale": "No event code is named."
+   },
+   {
+    "id": "P4",
+    "verdict": "not_stated",
+    "rationale": "Ticket severity is not mentioned."
+   },
+   {
+    "id": "P5",
+    "verdict": "not_stated",
+    "rationale": "Usage is named only as a candidate, with no direction."
+   },
+   {
+    "id": "P6",
+    "verdict": "not_stated",
+    "rationale": "Engagement flags are named only as candidates, with no direction."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "No association with the count of emails sent is claimed."
+   }
+  ]
+ }
+}

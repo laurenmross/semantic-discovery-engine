@@ -1,0 +1,394 @@
+[
+ {
+  "key": "column:PLN_REF.seat_cap",
+  "reference": "Seat / user limit included in the plan. Hard to determine; acceptable: a capacity, limit or quota of the plan.",
+  "prediction": "Plan capacity quota (3 to 500), e.g. seats or projects.",
+  "id": "i001",
+  "score": 2,
+  "rationale": "A capacity quota of the plan is within the acceptable range."
+ },
+ {
+  "key": "column:TKT_LOG.cls_ts",
+  "reference": "Timestamp the ticket was closed / resolved; empty if still open.",
+  "prediction": "Second timestamp of the record, typically after c07 (e.g. resolved/updated time).",
+  "id": "i002",
+  "score": 1,
+  "rationale": "Mentions resolved time but hedges with an updated time."
+ },
+ {
+  "key": "column:ACCT_MSTR.acct_key",
+  "reference": "Unique identifier of the account (primary key).",
+  "prediction": "Entity primary key (the outcome entity).",
+  "id": "i003",
+  "score": 2,
+  "rationale": "Primary key of the account entity."
+ },
+ {
+  "key": "column:GEO_REF.tz_off",
+  "reference": "Timezone offset in hours from UTC.",
+  "prediction": "Signed small integer (-9 to 10), possibly a UTC offset or score.",
+  "id": "i004",
+  "score": 1,
+  "rationale": "Hedges between a UTC offset and a score."
+ },
+ {
+  "key": "table:PLN_REF",
+  "reference": "Subscription plan catalogue: monthly list price, seat limit and tier.",
+  "prediction": "Plan/pricing tier dimension: 6 plans, each with a price and a capacity quota.",
+  "id": "i005",
+  "score": 2,
+  "rationale": "Plan pricing catalogue with price and quota."
+ },
+ {
+  "key": "column:USR_XREF.crt_ts",
+  "reference": "Timestamp the user was created / joined the account.",
+  "prediction": "Object creation timestamp; type-1 rows coincide with the entity's signup time.",
+  "id": "i006",
+  "score": 2,
+  "rationale": "Creation timestamp of the user row."
+ },
+ {
+  "key": "column:USR_XREF.acct_key",
+  "reference": "Account the user belongs to (foreign key to ACCT_MSTR).",
+  "prediction": "Owning entity (ACCT_MSTR).",
+  "id": "i007",
+  "score": 2,
+  "rationale": "Foreign key to ACCT_MSTR."
+ },
+ {
+  "key": "column:TKT_LOG.opn_ts",
+  "reference": "Timestamp the ticket was opened.",
+  "prediction": "Creation timestamp of the record.",
+  "id": "i008",
+  "score": 2,
+  "rationale": "Creation (opened) timestamp of the ticket."
+ },
+ {
+  "key": "column:ACCT_MSTR.crt_ts",
+  "reference": "Timestamp the account was created, i.e. trial start.",
+  "prediction": "Entity creation/signup timestamp.",
+  "id": "i009",
+  "score": 2,
+  "rationale": "Signup/creation timestamp."
+ },
+ {
+  "key": "table:EVT_STRM_01",
+  "reference": "Product usage events: actions performed by users in the product, with an action/event type code and a duration.",
+  "prediction": "High-volume activity/usage event log recorded against USR_XREF objects, with an event-type code and a numeric magnitude.",
+  "id": "i010",
+  "score": 2,
+  "rationale": "Usage event log with an event code and a magnitude."
+ },
+ {
+  "key": "column:TKT_LOG.usr_key",
+  "reference": "User who opened the ticket (foreign key to USR_XREF); empty when raised without a specific user.",
+  "prediction": "Optional reference to the related USR_XREF object.",
+  "id": "i011",
+  "score": 2,
+  "rationale": "Optional foreign key to USR_XREF."
+ },
+ {
+  "key": "column:PLN_REF.tier_rank",
+  "reference": "Plan tier rank. Not determinable from data alone; acceptable: an ordinal rank/tier/level of the plan.",
+  "prediction": "Plan tier/family group (5 values over 6 plans).",
+  "id": "i012",
+  "score": 2,
+  "rationale": "A tier group is within the acceptable range."
+ },
+ {
+  "key": "column:PLN_REF.list_px",
+  "reference": "Monthly list price of the plan.",
+  "prediction": "Plan price (15, 29, 79, 149, 399, 999).",
+  "id": "i013",
+  "score": 2,
+  "rationale": "Plan price."
+ },
+ {
+  "key": "column:TKT_LOG.sev",
+  "reference": "Ticket severity / priority level (1 most severe). Hard to determine; acceptable: severity, priority or level of the ticket.",
+  "prediction": "Record type/category code (4 values).",
+  "id": "i014",
+  "score": 0,
+  "rationale": "A type/category code is not severity or priority."
+ },
+ {
+  "key": "column:ACCT_MSTR.geo_ref",
+  "reference": "Geography of the account (foreign key to GEO_REF).",
+  "prediction": "Reference to GEO_REF lookup (40 values, full coverage), e.g. country.",
+  "id": "i015",
+  "score": 2,
+  "rationale": "Foreign key to GEO_REF."
+ },
+ {
+  "key": "column:USR_XREF.inv_by",
+  "reference": "The user who invited this user (self-reference to USR_XREF.usr_key); empty for the account's first user.",
+  "prediction": "Parent object id (self-reference). Null share 23.6% matches the 20000 type-1 root rows.",
+  "id": "i016",
+  "score": 1,
+  "rationale": "Correctly identifies the self-reference but reads it as a parent object, not the inviting user."
+ },
+ {
+  "key": "column:ACCT_MSTR.seg_cd",
+  "reference": "Customer segment code (1 SMB, 2 mid-market, 3 enterprise, 4 education). Not determinable from data alone; acceptable: a categorical segment/classification code of the account.",
+  "prediction": "Entity attribute code (4 values, skewed), e.g. segment or signup source.",
+  "id": "i017",
+  "score": 2,
+  "rationale": "A categorical code such as segment is acceptable."
+ },
+ {
+  "key": "table:GEO_REF",
+  "reference": "Geography reference: location IDs with region code and timezone offset.",
+  "prediction": "Small 40-row lookup referenced by ACCT_MSTR.geo_ref. Possibly country/locale, with a region group and a UTC-offset-like value.",
+  "id": "i018",
+  "score": 2,
+  "rationale": "Geography lookup with a region group and a UTC offset."
+ },
+ {
+  "key": "column:USR_XREF.usr_key",
+  "reference": "Unique identifier of the user (primary key).",
+  "prediction": "Object primary key.",
+  "id": "i019",
+  "score": 2,
+  "rationale": "Primary key."
+ },
+ {
+  "key": "table:INV_LN",
+  "reference": "Invoice / billing line items for subscriptions: base charge, seat overage, tax and credits (negative), billed monthly.",
+  "prediction": "Billing/invoice line events per subscription, recurring roughly monthly. Has a type code and a signed amount, apparently in minor currency units.",
+  "id": "i020",
+  "score": 2,
+  "rationale": "Monthly invoice lines per subscription."
+ },
+ {
+  "key": "table:USR_XREF",
+  "reference": "Users (seats) belonging to an account, with role and the user who invited them (teammate invitations).",
+  "prediction": "Hierarchical objects owned by the entity (e.g. workspaces/projects and child items). Exactly one type-1 root row per entity, created at the entity's signup time; type 2/3 rows reference a parent row.",
+  "id": "i021",
+  "score": 0,
+  "rationale": "Reads the table as workspaces/projects rather than users."
+ },
+ {
+  "key": "column:EVT_STRM_01.dur_ms",
+  "reference": "Duration of the action in milliseconds.",
+  "prediction": "Numeric magnitude of the event (whole numbers 100-115377), e.g. duration in ms or size; matches no key.",
+  "id": "i022",
+  "score": 1,
+  "rationale": "Hedges between duration in ms and size."
+ },
+ {
+  "key": "column:SUB_HDR.end_ts",
+  "reference": "Subscription end / cancellation timestamp; empty while active.",
+  "prediction": "Cancellation/end timestamp (null while active).",
+  "id": "i023",
+  "score": 2,
+  "rationale": "Cancellation/end timestamp."
+ },
+ {
+  "key": "column:INV_LN.ln_typ",
+  "reference": "Line type code (1 base charge, 2 seat overage, 3 tax, 4 credit). Not determinable precisely; acceptable: a categorical type of charge/line.",
+  "prediction": "Billing line type. Types 1 and 3 have identical counts (25360, equal to the distinct timestamps), suggesting paired lines such as charge and payment per cycle; 2 is likely an extra charge and 4 a rare refund/credit.",
+  "id": "i024",
+  "score": 2,
+  "rationale": "A billing line type code is acceptable."
+ },
+ {
+  "key": "column:SUB_HDR.acct_key",
+  "reference": "Account that holds the subscription (foreign key to ACCT_MSTR; at most one per account).",
+  "prediction": "Entity (ACCT_MSTR) that owns the subscription; unique, so at most one subscription per entity.",
+  "id": "i025",
+  "score": 2,
+  "rationale": "Owning account, at most one subscription each."
+ },
+ {
+  "key": "column:SUB_HDR.pln_id",
+  "reference": "Plan subscribed to (foreign key to PLN_REF).",
+  "prediction": "Subscribed plan code, referencing PLN_REF.pln_id.",
+  "id": "i026",
+  "score": 2,
+  "rationale": "Foreign key to the plan."
+ },
+ {
+  "key": "table:EVT_STRM_02",
+  "reference": "Outbound lifecycle / onboarding emails sent to accounts on a fixed schedule, with opened and clicked flags.",
+  "prediction": "Scheduled lifecycle/onboarding message sequence per entity (steps 1-8), with two binary engagement flags such as opened and clicked.",
+  "id": "i027",
+  "score": 2,
+  "rationale": "Scheduled lifecycle emails with opened and clicked flags."
+ },
+ {
+  "key": "column:EVT_STRM_01.evt_cd",
+  "reference": "Type of product action/event (code). Not determinable precisely; acceptable: an event/action type code.",
+  "prediction": "Activity/event type code (15 values).",
+  "id": "i028",
+  "score": 2,
+  "rationale": "Event type code."
+ },
+ {
+  "key": "column:SUB_HDR.sub_key",
+  "reference": "Unique identifier of the subscription (primary key).",
+  "prediction": "Subscription primary key.",
+  "id": "i029",
+  "score": 2,
+  "rationale": "Primary key."
+ },
+ {
+  "key": "column:USR_XREF.role_cd",
+  "reference": "User role code (1 admin/owner, 2 member, 3 viewer). Not determinable from data alone; acceptable: a categorical role/type code of the user.",
+  "prediction": "Object type/level. Type 1 occurs once per entity (20000) as the root; types 2 and 3 are children.",
+  "id": "i030",
+  "score": 2,
+  "rationale": "A categorical type code of the user is acceptable."
+ },
+ {
+  "key": "column:INV_LN.inv_ln_key",
+  "reference": "Unique identifier of the invoice line (primary key).",
+  "prediction": "Billing line primary key.",
+  "id": "i031",
+  "score": 2,
+  "rationale": "Primary key."
+ },
+ {
+  "key": "column:SUB_HDR.stat_cd",
+  "reference": "Subscription status code (1 active, 2 cancelled, 3 past due). Not determinable precisely; acceptable: a status code of the subscription.",
+  "prediction": "Subscription status code. Value 2 (729 rows) matches exactly the 729 non-null cancellation timestamps, so 2 likely means cancelled; 1 likely active; 3 another state (e.g. past due/paused).",
+  "id": "i032",
+  "score": 2,
+  "rationale": "Status code with the correct inference for cancelled."
+ },
+ {
+  "key": "column:INV_LN.amt",
+  "reference": "Amount of the line in cents (negative for credits).",
+  "prediction": "Signed monetary amount, likely in minor currency units (e.g. 7900 ~ plan price 79). Negative values may be payments or refunds.",
+  "id": "i033",
+  "score": 2,
+  "rationale": "Signed amount in minor currency units."
+ },
+ {
+  "key": "column:ACCT_MSTR.src_cd",
+  "reference": "Acquisition channel / signup source code. Not determinable from data alone; acceptable: a categorical code describing the account (channel, source, type).",
+  "prediction": "Entity attribute code (6 values). Overlap with PLN_REF plan ids is possible but unproven (e.g. plan of interest), more likely an independent category such as company size.",
+  "id": "i034",
+  "score": 2,
+  "rationale": "A categorical account attribute is acceptable."
+ },
+ {
+  "key": "column:ACCT_MSTR.emp_band",
+  "reference": "Company size band (employee-count band). Not determinable from data alone; acceptable: an ordinal/categorical attribute of the account such as size band or tier.",
+  "prediction": "Entity attribute code (7 values), e.g. acquisition channel.",
+  "id": "i035",
+  "score": 2,
+  "rationale": "A categorical account attribute is acceptable."
+ },
+ {
+  "key": "column:GEO_REF.rgn_cd",
+  "reference": "Region code grouping locations. Not determinable from data alone; acceptable: a grouping/region/category code.",
+  "prediction": "Grouping code (5 values), e.g. region/continent.",
+  "id": "i036",
+  "score": 2,
+  "rationale": "Region grouping code."
+ },
+ {
+  "key": "column:TKT_LOG.tkt_no",
+  "reference": "Unique identifier of the ticket (primary key).",
+  "prediction": "Record primary key.",
+  "id": "i037",
+  "score": 2,
+  "rationale": "Primary key."
+ },
+ {
+  "key": "table:ACCT_MSTR",
+  "reference": "A customer account (a company/workspace) that signed up for a free trial; created at trial start, with segment, acquisition channel, company size and geography.",
+  "prediction": "Outcome entity (likely user/account). One row per entity with a creation/signup timestamp and several categorical attributes.",
+  "id": "i038",
+  "score": 1,
+  "rationale": "Hedges between user and account; trial context is missing."
+ },
+ {
+  "key": "column:TKT_LOG.acct_key",
+  "reference": "Account that raised the ticket (foreign key to ACCT_MSTR).",
+  "prediction": "Entity (ACCT_MSTR) the record belongs to.",
+  "id": "i039",
+  "score": 2,
+  "rationale": "Foreign key to the account."
+ },
+ {
+  "key": "table:SUB_HDR",
+  "reference": "Paid subscriptions: an account's paid plan, started when a trial converts to paid, with an end date if cancelled and a status.",
+  "prediction": "Paid subscriptions: at most one per entity, with a plan code, a status code, a start timestamp and a nullable cancellation timestamp. Possibly the source of the conversion milestone.",
+  "id": "i040",
+  "score": 2,
+  "rationale": "Paid subscriptions with the correct structure."
+ },
+ {
+  "key": "column:TKT_LOG.csat",
+  "reference": "Customer satisfaction rating (1-5) given after the ticket; often missing.",
+  "prediction": "Optional 1-5 rating/score (roughly uniform, 40% null), e.g. satisfaction or severity.",
+  "id": "i041",
+  "score": 1,
+  "rationale": "Hedges between satisfaction and severity."
+ },
+ {
+  "key": "column:EVT_STRM_01.evt_ts",
+  "reference": "Timestamp of the product event.",
+  "prediction": "Event timestamp.",
+  "id": "i042",
+  "score": 2,
+  "rationale": "Event timestamp."
+ },
+ {
+  "key": "column:SUB_HDR.st_ts",
+  "reference": "Subscription start timestamp (the moment the trial converted to paid).",
+  "prediction": "Subscription start timestamp; also the first INV_LN billing timestamp.",
+  "id": "i043",
+  "score": 2,
+  "rationale": "Subscription start timestamp."
+ },
+ {
+  "key": "column:EVT_STRM_01.usr_key",
+  "reference": "User who performed the action (foreign key to USR_XREF).",
+  "prediction": "Reference to the USR_XREF object the event occurred on.",
+  "id": "i044",
+  "score": 2,
+  "rationale": "Foreign key to USR_XREF."
+ },
+ {
+  "key": "column:PLN_REF.pln_id",
+  "reference": "Unique identifier of the plan (primary key).",
+  "prediction": "Plan primary key (1-6).",
+  "id": "i045",
+  "score": 2,
+  "rationale": "Primary key."
+ },
+ {
+  "key": "table:TKT_LOG",
+  "reference": "Customer support tickets opened by an account (often by a specific user), with severity, satisfaction rating and close time.",
+  "prediction": "Entity-level interaction records (e.g. support tickets, feedback or issues) with a type code and an optional 1-5 rating. Optionally tied to a USR_XREF object; has two timestamps.",
+  "id": "i046",
+  "score": 2,
+  "rationale": "Support tickets with a rating and two timestamps."
+ },
+ {
+  "key": "column:INV_LN.sub_key",
+  "reference": "Subscription being billed (foreign key to SUB_HDR).",
+  "prediction": "Subscription the billing line belongs to.",
+  "id": "i047",
+  "score": 2,
+  "rationale": "Subscription foreign key."
+ },
+ {
+  "key": "column:INV_LN.bill_ts",
+  "reference": "Billing timestamp of the invoice line (monthly billing date).",
+  "prediction": "Billing timestamp; recurs at ~30-day intervals from subscription start.",
+  "id": "i048",
+  "score": 2,
+  "rationale": "Monthly billing timestamp."
+ },
+ {
+  "key": "column:GEO_REF.geo_id",
+  "reference": "Unique identifier of the geography/location (primary key).",
+  "prediction": "Lookup primary key (1-40).",
+  "id": "i049",
+  "score": 2,
+  "rationale": "Primary key."
+ }
+]

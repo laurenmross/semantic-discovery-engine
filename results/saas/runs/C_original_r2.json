@@ -1,0 +1,938 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "request_sha": "8023da128374bb04",
+ "seconds": 83.0,
+ "usage": {
+  "input_tokens": 24499,
+  "output_tokens": 10680,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.3116,
+ "stop_reason": "end_turn",
+ "output": {
+  "tables": [
+   {
+    "table": "ACCT_MSTR",
+    "concept": "Customer account (trial sign-up); the outcome entity for trial-to-paid conversion",
+    "kind": "entity",
+    "confidence": 0.85,
+    "evidence": [
+     "S:t:ACCT_MSTR",
+     "S:k:ACCT_MSTR.acct_key",
+     "S:c:ACCT_MSTR.crt_ts",
+     "S:r:9",
+     "S:r:30"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_01",
+    "concept": "Product usage event log at user level (one row per in-app action, with duration)",
+    "kind": "event",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:EVT_STRM_01",
+     "S:a:37",
+     "S:r:8",
+     "S:c:EVT_STRM_01.evt_cd",
+     "S:c:EVT_STRM_01.dur_ms"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "EVT_STRM_02",
+    "concept": "Lifecycle/onboarding email (drip campaign) sends per account with open and click flags",
+    "kind": "event",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:EVT_STRM_02",
+     "S:c:EVT_STRM_02.tmpl_cd",
+     "S:c:EVT_STRM_02.snd_ts",
+     "S:c:EVT_STRM_02.opn_flg",
+     "S:c:EVT_STRM_02.clk_flg",
+     "S:r:9"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "GEO_REF",
+    "concept": "Geography reference (country/area) with region and time-zone offset",
+    "kind": "dimension",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:GEO_REF",
+     "S:k:GEO_REF.geo_id",
+     "S:c:GEO_REF.tz_off",
+     "S:c:GEO_REF.rgn_cd"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "INV_LN",
+    "concept": "Invoice line items billed against paid subscriptions (charges, taxes, credits/refunds)",
+    "kind": "event",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:INV_LN",
+     "S:r:15",
+     "S:c:INV_LN.amt",
+     "S:c:INV_LN.ln_typ",
+     "S:c:INV_LN.bill_ts"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "PLN_REF",
+    "concept": "Subscription plan catalogue (price, seat capacity, tier)",
+    "kind": "dimension",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:PLN_REF",
+     "S:c:PLN_REF.list_px",
+     "S:c:PLN_REF.seat_cap",
+     "S:c:PLN_REF.tier_rank",
+     "S:r:20"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SUB_HDR",
+    "concept": "Paid subscription header (at most one per account); likely source of the conversion label",
+    "kind": "entity",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:SUB_HDR",
+     "S:k:SUB_HDR.acct_key",
+     "S:r:19",
+     "S:c:SUB_HDR.st_ts",
+     "S:c:SUB_HDR.end_ts",
+     "S:c:SUB_HDR.stat_cd"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "TKT_LOG",
+    "concept": "Customer support ticket log (open/close times, severity, satisfaction rating)",
+    "kind": "event",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:TKT_LOG",
+     "S:k:TKT_LOG.tkt_no",
+     "S:c:TKT_LOG.sev",
+     "S:c:TKT_LOG.csat",
+     "S:a:41"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "USR_XREF",
+    "concept": "Users (seats) belonging to accounts, with role and inviting user; links users to accounts",
+    "kind": "entity",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:USR_XREF",
+     "S:k:USR_XREF.usr_key",
+     "S:r:30",
+     "S:r:31",
+     "S:c:USR_XREF.role_cd"
+    ],
+    "needs_human_validation": false
+   }
+  ],
+  "columns": [
+   {
+    "table": "ACCT_MSTR",
+    "column": "acct_key",
+    "meaning": "Account identifier",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:ACCT_MSTR.acct_key",
+     "S:c:ACCT_MSTR.acct_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "ACCT_MSTR",
+    "column": "seg_cd",
+    "meaning": "Customer segment code (4 levels, skewed to 1); not a plan reference",
+    "role": "categorical_code",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:ACCT_MSTR.seg_cd",
+     "S:r:3",
+     "S:a:27"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "ACCT_MSTR",
+    "column": "crt_ts",
+    "meaning": "Account creation / trial start timestamp",
+    "role": "timestamp",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:ACCT_MSTR.crt_ts",
+     "S:c:USR_XREF.crt_ts"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "ACCT_MSTR",
+    "column": "src_cd",
+    "meaning": "Acquisition source/channel code (6 levels)",
+    "role": "categorical_code",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:ACCT_MSTR.src_cd",
+     "S:r:5",
+     "S:a:28"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "ACCT_MSTR",
+    "column": "geo_ref",
+    "meaning": "Account geography, reference to GEO_REF",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:ACCT_MSTR.geo_ref",
+     "S:r:2",
+     "S:a:14"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "ACCT_MSTR",
+    "column": "emp_band",
+    "meaning": "Company size (employee count) band, ordinal 1-7",
+    "role": "categorical_code",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:ACCT_MSTR.emp_band",
+     "S:r:1",
+     "S:a:15"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "EVT_STRM_01",
+    "column": "usr_key",
+    "meaning": "User who performed the event",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:8",
+     "S:c:EVT_STRM_01.usr_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_01",
+    "column": "evt_cd",
+    "meaning": "Event/action type code (15 types); not a geography reference",
+    "role": "categorical_code",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:EVT_STRM_01.evt_cd",
+     "S:r:7",
+     "S:a:16"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "EVT_STRM_01",
+    "column": "evt_ts",
+    "meaning": "Event timestamp",
+    "role": "timestamp",
+    "confidence": 0.9,
+    "evidence": [
+     "S:c:EVT_STRM_01.evt_ts"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_01",
+    "column": "dur_ms",
+    "meaning": "Event/session duration in milliseconds",
+    "role": "measure",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:EVT_STRM_01.dur_ms",
+     "S:a:38"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_02",
+    "column": "acct_key",
+    "meaning": "Recipient account",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:9",
+     "S:c:EVT_STRM_02.acct_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_02",
+    "column": "tmpl_cd",
+    "meaning": "Email template / campaign step (1-8); steps 1-2 sent to all 20000 accounts, later steps to fewer",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:EVT_STRM_02.tmpl_cd",
+     "S:r:10",
+     "S:a:17"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "EVT_STRM_02",
+    "column": "snd_ts",
+    "meaning": "Send timestamp; examples share the time-of-day of account creation offset by 9h on day 0,1,3, suggesting a fixed schedule",
+    "role": "timestamp",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:EVT_STRM_02.snd_ts",
+     "S:c:ACCT_MSTR.crt_ts"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "EVT_STRM_02",
+    "column": "opn_flg",
+    "meaning": "Email opened flag",
+    "role": "flag",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:EVT_STRM_02.opn_flg"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "EVT_STRM_02",
+    "column": "clk_flg",
+    "meaning": "Email link clicked flag",
+    "role": "flag",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:EVT_STRM_02.clk_flg"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "GEO_REF",
+    "column": "geo_id",
+    "meaning": "Geography identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:GEO_REF.geo_id"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "GEO_REF",
+    "column": "rgn_cd",
+    "meaning": "Region grouping code (5 regions)",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:GEO_REF.rgn_cd",
+     "S:a:3"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "GEO_REF",
+    "column": "tz_off",
+    "meaning": "UTC time-zone offset in hours",
+    "role": "measure",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:GEO_REF.tz_off"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "INV_LN",
+    "column": "inv_ln_key",
+    "meaning": "Invoice line identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:INV_LN.inv_ln_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "INV_LN",
+    "column": "sub_key",
+    "meaning": "Subscription being billed",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:15"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "INV_LN",
+    "column": "ln_typ",
+    "meaning": "Line type; types 1 and 3 each occur once per billing event (25360 = distinct bill_ts), e.g. base charge and tax/payment; 2 and 4 rarer (discount/refund?)",
+    "role": "categorical_code",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:INV_LN.ln_typ",
+     "S:c:INV_LN.bill_ts",
+     "S:a:30"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "INV_LN",
+    "column": "amt",
+    "meaning": "Line amount, likely in cents (7900 matches a 79.0 list price; 632 = 8% of 7900, plausible tax); negatives are credits/refunds/payments",
+    "role": "measure",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:INV_LN.amt",
+     "S:c:PLN_REF.list_px"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "INV_LN",
+    "column": "bill_ts",
+    "meaning": "Billing date; ~30-day cadence, first equals subscription start",
+    "role": "timestamp",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:INV_LN.bill_ts",
+     "S:c:SUB_HDR.st_ts"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PLN_REF",
+    "column": "pln_id",
+    "meaning": "Plan identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:PLN_REF.pln_id"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PLN_REF",
+    "column": "list_px",
+    "meaning": "Plan list price per period (15 to 999)",
+    "role": "measure",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:PLN_REF.list_px"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PLN_REF",
+    "column": "seat_cap",
+    "meaning": "Maximum seats/users allowed by plan",
+    "role": "measure",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:PLN_REF.seat_cap"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PLN_REF",
+    "column": "tier_rank",
+    "meaning": "Plan tier ordinal (two plans share rank 1); not a plan reference",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:PLN_REF.tier_rank",
+     "S:r:17",
+     "S:a:31"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "sub_key",
+    "meaning": "Subscription identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:SUB_HDR.sub_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "acct_key",
+    "meaning": "Account that converted to paid (unique: one subscription per account)",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:19",
+     "S:k:SUB_HDR.acct_key",
+     "S:a:11"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "pln_id",
+    "meaning": "Plan purchased",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:r:20",
+     "S:a:32"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "st_ts",
+    "meaning": "Paid subscription start (conversion) timestamp",
+    "role": "timestamp",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:SUB_HDR.st_ts",
+     "S:c:INV_LN.bill_ts"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "end_ts",
+    "meaning": "Subscription end/cancellation timestamp; null while active",
+    "role": "timestamp",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:SUB_HDR.end_ts",
+     "S:c:SUB_HDR.stat_cd"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SUB_HDR",
+    "column": "stat_cd",
+    "meaning": "Subscription status; count of 2 (729) equals non-null end_ts count, so 2 likely = cancelled/ended, 1 = active, 3 = other (e.g. past due/paused)",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:SUB_HDR.stat_cd",
+     "S:c:SUB_HDR.end_ts",
+     "S:a:33"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "tkt_no",
+    "meaning": "Support ticket number",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:TKT_LOG.tkt_no"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "acct_key",
+    "meaning": "Account that raised the ticket",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:24"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "usr_key",
+    "meaning": "User who raised the ticket (null ~20%, e.g. submitted without login)",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:29",
+     "S:c:TKT_LOG.usr_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "opn_ts",
+    "meaning": "Ticket opened timestamp",
+    "role": "timestamp",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:TKT_LOG.opn_ts",
+     "S:a:41"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "sev",
+    "meaning": "Ticket severity/priority (1-4); direction of scale unknown",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:TKT_LOG.sev",
+     "S:a:34"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "csat",
+    "meaning": "Customer satisfaction rating 1-5; null when unrated",
+    "role": "measure",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:TKT_LOG.csat",
+     "S:a:35"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "TKT_LOG",
+    "column": "cls_ts",
+    "meaning": "Ticket closed timestamp",
+    "role": "timestamp",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:TKT_LOG.cls_ts"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "USR_XREF",
+    "column": "usr_key",
+    "meaning": "User identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:USR_XREF.usr_key"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "USR_XREF",
+    "column": "acct_key",
+    "meaning": "Account the user belongs to",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:30"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "USR_XREF",
+    "column": "role_cd",
+    "meaning": "User role; role 1 occurs exactly once per account (20000) so likely owner/creator, 2 and 3 other roles (member/admin/viewer)",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:USR_XREF.role_cd",
+     "S:a:36"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "USR_XREF",
+    "column": "inv_by",
+    "meaning": "User who invited this user (null for account creators/self sign-ups)",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:31",
+     "S:c:USR_XREF.inv_by"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "USR_XREF",
+    "column": "crt_ts",
+    "meaning": "User creation/join timestamp; first user's matches account creation time",
+    "role": "timestamp",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:USR_XREF.crt_ts",
+     "S:c:ACCT_MSTR.crt_ts"
+    ],
+    "needs_human_validation": false
+   }
+  ],
+  "relationships": [
+   {
+    "from_table": "EVT_STRM_01",
+    "from_column": "usr_key",
+    "to_table": "USR_XREF",
+    "to_column": "usr_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:8"
+    ]
+   },
+   {
+    "from_table": "EVT_STRM_02",
+    "from_column": "acct_key",
+    "to_table": "ACCT_MSTR",
+    "to_column": "acct_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:9"
+    ]
+   },
+   {
+    "from_table": "USR_XREF",
+    "from_column": "acct_key",
+    "to_table": "ACCT_MSTR",
+    "to_column": "acct_key",
+    "confidence": 0.92,
+    "evidence": [
+     "S:r:30"
+    ]
+   },
+   {
+    "from_table": "USR_XREF",
+    "from_column": "inv_by",
+    "to_table": "USR_XREF",
+    "to_column": "usr_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:31"
+    ]
+   },
+   {
+    "from_table": "TKT_LOG",
+    "from_column": "acct_key",
+    "to_table": "ACCT_MSTR",
+    "to_column": "acct_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:24"
+    ]
+   },
+   {
+    "from_table": "TKT_LOG",
+    "from_column": "usr_key",
+    "to_table": "USR_XREF",
+    "to_column": "usr_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:29"
+    ]
+   },
+   {
+    "from_table": "INV_LN",
+    "from_column": "sub_key",
+    "to_table": "SUB_HDR",
+    "to_column": "sub_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:15"
+    ]
+   },
+   {
+    "from_table": "SUB_HDR",
+    "from_column": "acct_key",
+    "to_table": "ACCT_MSTR",
+    "to_column": "acct_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:19",
+     "S:a:11"
+    ]
+   },
+   {
+    "from_table": "SUB_HDR",
+    "from_column": "pln_id",
+    "to_table": "PLN_REF",
+    "to_column": "pln_id",
+    "confidence": 0.65,
+    "evidence": [
+     "S:r:20",
+     "S:a:32"
+    ]
+   },
+   {
+    "from_table": "ACCT_MSTR",
+    "from_column": "geo_ref",
+    "to_table": "GEO_REF",
+    "to_column": "geo_id",
+    "confidence": 0.65,
+    "evidence": [
+     "S:r:2",
+     "S:a:14"
+    ]
+   }
+  ],
+  "outcome_insights": [
+   {
+    "statement": "Total pre-cutoff product usage event volume across an account's users is the strongest single association with conversion (higher in converters, AUROC ~0.70, stable).",
+    "kind": "observed_association",
+    "confidence": 0.85,
+    "evidence": [
+     "P:f:f042",
+     "P:path:1"
+    ]
+   },
+   {
+    "statement": "Most event types (e.g. evt_cd 4, 8, 5, 1, 7) are more frequent in converting accounts, while evt_cd 11 is less frequent; evt_cd 11 may represent a friction/error or exploratory-only action, but its meaning is unknown.",
+    "kind": "observed_association",
+    "confidence": 0.7,
+    "evidence": [
+     "P:f:f048",
+     "P:f:f052",
+     "P:f:f049",
+     "P:f:f045",
+     "P:f:f051",
+     "P:f:f055"
+    ]
+   },
+   {
+    "statement": "Accounts with more support tickets (especially sev=1 tickets) before the cutoff convert less often; satisfaction ratings show no stable association.",
+    "kind": "observed_association",
+    "confidence": 0.7,
+    "evidence": [
+     "P:f:f060",
+     "P:f:f063",
+     "P:f:f018",
+     "P:f:f023",
+     "P:f:f062",
+     "P:f:f022"
+    ]
+   },
+   {
+    "statement": "Accounts with more users, more distinct inviters and more recent user additions are modestly more likely to convert (team adoption).",
+    "kind": "observed_association",
+    "confidence": 0.65,
+    "evidence": [
+     "P:f:f034",
+     "P:f:f041",
+     "P:f:f036",
+     "P:f:f037"
+    ]
+   },
+   {
+    "statement": "Email send counts and templates carry no signal (AUROC exactly 0.5), consistent with a fixed drip schedule identical for all trials; email open rate is mildly higher in converters.",
+    "kind": "observed_association",
+    "confidence": 0.7,
+    "evidence": [
+     "P:f:f004",
+     "P:f:f010",
+     "P:f:f011",
+     "P:f:f008",
+     "P:f:f009"
+    ]
+   },
+   {
+    "statement": "Firmographic attributes (segment, source, size band, geography) are weakly associated with conversion at most.",
+    "kind": "observed_association",
+    "confidence": 0.6,
+    "evidence": [
+     "P:f:f000",
+     "P:f:f001",
+     "P:f:f003",
+     "P:f:f002"
+    ]
+   },
+   {
+    "statement": "A combined model reaches test AUROC ~0.74 versus 0.57 for the best single count baseline, suggesting early usage depth plus support friction jointly carry predictive signal.",
+    "kind": "observed_association",
+    "confidence": 0.75,
+    "evidence": [
+     "P:m:1",
+     "P:m:2"
+    ]
+   },
+   {
+    "statement": "Ticket volume may partly reflect product friction during trial, and usage volume may reflect activation; these are interpretations, not established causes.",
+    "kind": "hypothesis",
+    "confidence": 0.4,
+    "evidence": [
+     "P:f:f060",
+     "P:f:f042"
+    ]
+   }
+  ],
+  "ambiguities": [
+   {
+    "description": "Small-integer code columns overlap with GEO_REF.geo_id and PLN_REF.pln_id by coincidence; seg_cd, src_cd, emp_band, evt_cd, tmpl_cd, ln_typ, stat_cd, sev, csat, role_cd, rgn_cd, tier_rank are treated as codes, not foreign keys.",
+    "evidence": [
+     "S:a:1",
+     "S:a:2",
+     "S:a:12",
+     "S:a:16",
+     "S:a:27"
+    ]
+   },
+   {
+    "description": "Direction of the TKT_LOG.sev scale (1 = lowest or highest severity) is unknown, so the sev=1 association cannot be interpreted.",
+    "evidence": [
+     "S:c:TKT_LOG.sev",
+     "P:f:f063"
+    ]
+   },
+   {
+    "description": "Meaning of INV_LN.ln_typ codes and units of amt (cents assumed) are unconfirmed.",
+    "evidence": [
+     "S:c:INV_LN.ln_typ",
+     "S:c:INV_LN.amt"
+    ]
+   },
+   {
+    "description": "SUB_HDR.stat_cd value 3 meaning unknown; whether SUB_HDR is the exact source of the conversion label (21% of accounts vs ~18.5% positive rate, with early converters excluded).",
+    "evidence": [
+     "S:c:SUB_HDR.stat_cd",
+     "S:r:19"
+    ]
+   },
+   {
+    "description": "Ticket counts per account reach 95, and window=all equals window=16 features; need to confirm features only use activity before day 5 and that tickets belong to the trial period.",
+    "evidence": [
+     "P:f:f018",
+     "P:f:f019",
+     "S:r:24"
+    ]
+   },
+   {
+    "description": "Later email templates reach fewer accounts; unclear whether sends stop on conversion (possible post-cutoff leakage) or by other suppression.",
+    "evidence": [
+     "S:c:EVT_STRM_02.tmpl_cd"
+    ]
+   },
+   {
+    "description": "Meanings of the 15 evt_cd event types and of role_cd 2 vs 3 are unknown.",
+    "evidence": [
+     "S:c:EVT_STRM_01.evt_cd",
+     "S:c:USR_XREF.role_cd"
+    ]
+   }
+  ],
+  "next_investigations": [
+   "Obtain a data dictionary for EVT_STRM_01.evt_cd and investigate evt_cd 11 vs high-signal event types",
+   "Confirm SUB_HDR.st_ts defines the conversion label and verify no post-cutoff leakage in features",
+   "Clarify TKT_LOG.sev scale and analyse ticket topics/timing relative to trial start",
+   "Build per-user activation features (share of users active, days active, distinct event types in first 5 days)",
+   "Analyse email engagement timing (open/click before cutoff only) and whether later templates are suppressed after conversion",
+   "Check conversion rates by plan and seat_cap vs users invited to understand plan choice",
+   "Validate INV_LN line types and amount units against PLN_REF prices"
+  ]
+ }
+}

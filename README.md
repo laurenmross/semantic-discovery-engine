@@ -3,11 +3,13 @@
 **An experimental AI system that combines relational analysis, outcome-driven modeling, and LLM reasoning to automatically infer
 business meaning and discover insights from unfamiliar datasets.**
 
-> **Status: first vertical slice, first experiment run.**
-> - All three components run end to end on a public 25M-row database.
-> - The pre-registered A/B/C comparison found **no detectable difference**, because the schema-only baseline already scored near-perfectly,
->   even with every name masked. The model very probably recognized the public dataset, so this run **cannot answer the central question.**
-> - See [EVALUATION.md](EVALUATION.md).
+> **Status: working prototype, two experiments run.**
+> - **Experiment 1 (public RelBench Avito):** inconclusive. The model recognized the dataset even with names masked, so the schema-only baseline hit the ceiling.
+> - **Experiment 2 (synthetic SaaS warehouse the model cannot have seen):**
+>   - With names masked, *structural* evidence raised column-meaning accuracy from 0.68 to 0.94.
+>   - *Outcome* evidence surfaced 94% of the planted business signals, with no wrong-direction or spurious claims, but did not improve interpretation further.
+>   - With real (even cryptic) names, every configuration was near-perfect.
+> - See [EVALUATION.md](EVALUATION.md). The structural result is exploratory: the pre-registered H1 measured relationships and fell inside run-to-run noise.
 
 ## The problem
 
@@ -86,10 +88,16 @@ Run the deterministic stages (no API key needed; about 30 seconds):
 .venv/bin/python -m sde outcome && .venv/bin/python -m sde packets && .venv/bin/python -m sde report
 ```
 
-Run the full experiment: 18 interpretation calls and 18 judge calls on `claude-opus-5-5`, estimated at $5–10:
+Run the full experiment: 18 interpretation calls and 18 judge calls on `claude-opus-5-5`, about $6 per dataset:
 
 ```bash
 .venv/bin/python -m sde all
+```
+
+Run it on the synthetic SaaS warehouse. The data is generated locally from a fixed seed, in about a minute:
+
+```bash
+.venv/bin/python -m sde all --dataset saas
 ```
 
 Re-score and re-report from the recorded LLM responses without calling the API:
@@ -122,14 +130,19 @@ On RelBench `rel-avito`. These are measured; full detail is in [EVALUATION.md](E
 - **Outcome-driven analysis** scores 0.671 test AUROC on the user-visits task, against 0.655 for one activity count.
   - It correctly concentrates importance on the table the outcome is defined on, without being told which table that is.
   - Two features built on a *false* join still pass multiple-testing correction. This is a concrete case of statistical significance that is not semantic validity.
-- **LLM comparison** (18 runs, $5.55): every configuration recovered all 11 relationships and all 8 table concepts.
+- **Synthetic SaaS warehouse** (Experiment 2, 18 runs, $5.93):
+  - masked-name column accuracy was 0.68 with schema only, 0.94 with structural evidence, 0.91 with outcome evidence as well;
+  - planted signals recovered: 0%, 0% and 94%;
+  - zero invalid citations, zero overconfident errors and zero spurious claims in every configuration.
+- **Avito LLM comparison** (Experiment 1, 18 runs, $5.55): every configuration recovered all 11 relationships and all 8 table concepts.
   - With masked names, column-meaning scores were 0.94–0.96 in every configuration. The structural and outcome evidence added cost (1.4–1.6×) with no measurable accuracy gain.
   - The baseline was at the ceiling, probably from recognizing the dataset, so this does **not** show the evidence is useless. It shows this benchmark can't measure it.
 
 ## Limitations
 
 - **One dataset, one domain.** Every claim is specific to `rel-avito`.
-- **The central hypothesis is still untested.** On `rel-avito`, the baseline hit the ceiling, so the comparison could not discriminate.
+- **Evidence for the hypothesis is partial and comes from one synthetic dataset.** Structural evidence helped interpretation (exploratory). Outcome evidence helped discovery but not interpretation.
+  The synthetic generator is far cleaner than a real warehouse.
 - The semantic ground truth was reconstructed from public documentation by the developer and needs human verification.
 - **The data is public**, so the model may have memorized it. The masked-name condition is the main mitigation; it is not a guarantee.
 - Static tables with no timestamps cannot be time-filtered.

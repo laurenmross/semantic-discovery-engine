@@ -1,0 +1,334 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "06c130f8393a651b",
+ "seconds": 27.2,
+ "usage": {
+  "input_tokens": 6706,
+  "output_tokens": 3219,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0912,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "A capacity quota of the plan is within the acceptable range."
+   },
+   {
+    "id": "i002",
+    "score": 1,
+    "rationale": "Mentions resolved time but hedges with an updated time."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Primary key of the account entity."
+   },
+   {
+    "id": "i004",
+    "score": 1,
+    "rationale": "Hedges between a UTC offset and a score."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Plan pricing catalogue with price and quota."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Creation timestamp of the user row."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Foreign key to ACCT_MSTR."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Creation (opened) timestamp of the ticket."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Signup/creation timestamp."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Usage event log with an event code and a magnitude."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Optional foreign key to USR_XREF."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "A tier group is within the acceptable range."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Plan price."
+   },
+   {
+    "id": "i014",
+    "score": 0,
+    "rationale": "A type/category code is not severity or priority."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "Foreign key to GEO_REF."
+   },
+   {
+    "id": "i016",
+    "score": 1,
+    "rationale": "Correctly identifies the self-reference but reads it as a parent object, not the inviting user."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "A categorical code such as segment is acceptable."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Geography lookup with a region group and a UTC offset."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "Primary key."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Monthly invoice lines per subscription."
+   },
+   {
+    "id": "i021",
+    "score": 0,
+    "rationale": "Reads the table as workspaces/projects rather than users."
+   },
+   {
+    "id": "i022",
+    "score": 1,
+    "rationale": "Hedges between duration in ms and size."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Cancellation/end timestamp."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "A billing line type code is acceptable."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Owning account, at most one subscription each."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "Foreign key to the plan."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Scheduled lifecycle emails with opened and clicked flags."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Event type code."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Primary key."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "A categorical type code of the user is acceptable."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Primary key."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Status code with the correct inference for cancelled."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Signed amount in minor currency units."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "A categorical account attribute is acceptable."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "A categorical account attribute is acceptable."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Region grouping code."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Primary key."
+   },
+   {
+    "id": "i038",
+    "score": 1,
+    "rationale": "Hedges between user and account; trial context is missing."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Foreign key to the account."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Paid subscriptions with the correct structure."
+   },
+   {
+    "id": "i041",
+    "score": 1,
+    "rationale": "Hedges between satisfaction and severity."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Event timestamp."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Subscription start timestamp."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Foreign key to USR_XREF."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Primary key."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Support tickets with a rating and two timestamps."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Subscription foreign key."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Monthly billing timestamp."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Primary key."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   },
+   {
+    "id": "s05",
+    "asserts_causation": false
+   },
+   {
+    "id": "s06",
+    "asserts_causation": false
+   },
+   {
+    "id": "s07",
+    "asserts_causation": false
+   },
+   {
+    "id": "s08",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "Event type 7 is not mentioned."
+   },
+   {
+    "id": "P2",
+    "verdict": "correct",
+    "rationale": "s04 says type 4 counts are associated with conversion."
+   },
+   {
+    "id": "P3",
+    "verdict": "correct",
+    "rationale": "s04 says type 11 counts are associated with non-conversion."
+   },
+   {
+    "id": "P4",
+    "verdict": "correct",
+    "rationale": "s03 says sev = 1 tickets are associated with lower conversion."
+   },
+   {
+    "id": "P5",
+    "verdict": "correct",
+    "rationale": "s01 says higher total event counts are associated with conversion."
+   },
+   {
+    "id": "P6",
+    "verdict": "correct",
+    "rationale": "s06 says the opened-flag rate shows a weak positive association."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "s06 explicitly says message counts carry no signal, so no spurious claim is made."
+   }
+  ]
+ }
+}

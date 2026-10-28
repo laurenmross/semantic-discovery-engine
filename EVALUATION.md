@@ -15,6 +15,7 @@ LLM output existed. The git history is the evidence for that ordering.
 | Outcome-driven component (B in the brief) | **Implemented and measured** |
 | LLM interpretation, configurations A/B/C × original/masked names | **Run:** 18 runs plus 18 judge calls on `claude-opus-5-5`, run on 2026-10-27, total cost **$5.55** |
 | Blinded LLM judge | Run. **The human audit of 30 judge decisions is still pending**, as is human verification of the semantic key. |
+| **Experiment 2: synthetic SaaS warehouse** | **Run:** pre-registered in protocol amendment 2; 18 runs plus 18 judge calls, cost **$5.93**. See [Experiment 2](#experiment-2-synthetic-saas-warehouse-saas). |
 
 ## Method in brief
 
@@ -144,13 +145,106 @@ LLM-on-public-data demos look better than they are.
 - **The judge gave full marks to every original-name answer.** That could mean the answers were all correct, or that the judge is lenient. The pending human audit
   (`results/avito/judge_audit/`) is needed before trusting the semantic scores.
 
+## Experiment 2: synthetic SaaS warehouse (`saas`)
+
+**Why.** Experiment 1 could not discriminate, because the model recognized `rel-avito`. Experiment 2 uses a warehouse generated fresh for a
+fictional company (`sde/synth.py`, seed 20261027). Its ground truth is *true by construction*. The design was pre-registered in protocol
+amendment 2, and the answer key and evidence packets were committed before any LLM run.
+
+**Data**
+- 9 tables with legacy-style names (`ACCT_MSTR`, `EVT_STRM_01`, …) and sparse random entity keys.
+- 20,000 trial accounts, about 85k users, 13.6M usage events, 4.2k subscriptions.
+- Outcome: trial-to-paid conversion. Labels are evaluated at trial day 5; 18.5% positive.
+- Planted in the data:
+  - positive signals: usage codes 7 and 4, overall usage, email opens;
+  - negative signals: usage code 11, severity-1 tickets;
+  - a null signal: the number of scheduled emails.
+- A leakage trap: usage surges after conversion.
+
+### Deterministic components
+
+| Structural edge set | Precision | Recall | Edges |
+|---|---|---|---|
+| All candidates | 0.30 | 1.00 | 33 |
+| Preferred parent | 0.43 | 0.90 | 21 |
+| Feature-eligible | **1.00** | 0.70 | 7 |
+
+- **Structural misses match the prediction recorded in the protocol:** two joins to dense lookup tables (flagged "weak") and the optional 1:1 `SUB_HDR.acct_key` link, which the key-to-key rule rejects.
+- **Outcome model:** test AUROC 0.746 (logistic regression; gradient boosting 0.740). The best single activity count scores 0.570.
+  - The label check matches 100%.
+  - The leakage trap was not triggered. Using future rows would give about 0.99.
+  - All 6 planted signals appear in the outcome evidence with the correct direction. The null signal shows AUROC 0.500 and q = 1.
+
+### LLM configurations
+
+Mean across 3 runs (min–max). Full table: [`results/saas/summary.md`](results/saas/summary.md).
+
+| Metric | A / original | A / masked | B / original | B / masked | C / original | C / masked |
+|---|---|---|---|---|---|---|
+| Relationship F1 | 1.00 | 0.835 (0.71–1) | 1.00 | 0.968 (0.95–1) | 1.00 | 0.984 (0.95–1) |
+| Entity concept score | 1.00 | 0.759 (0.61–0.89) | 1.00 | 1.000 | 1.00 | 0.944 (0.83–1) |
+| Column semantics, all 45 | 1.00 | 0.678 (0.57–0.74) | 1.00 | 0.944 (0.93–0.96) | 1.00 | 0.907 (0.81–0.97) |
+| Column semantics, 33 recoverable | 1.00 | 0.732 (0.59–0.80) | 1.00 | 0.985 | 1.00 | 0.919 (0.80–0.99) |
+| Planted signals recovered (of 6) | 0 | 0 | 0 | 0 | 0.944 (0.83–1) | 0.944 (0.83–1) |
+| Wrong-direction signal claims | 0 | 0 | 0 | 0 | 0 | 0 |
+| Spurious claims on the null signal | 0 | 0 | 0 | 0 | 0 | 0 |
+| Invalid citations / overconfident errors / causal claims | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| Items flagged for human review | 24 | 46.3 | 18 | 35 | 19.7 | 35 |
+| Cost per run (USD) | 0.21 | 0.19 | 0.27 | 0.24 | 0.31 | 0.28 |
+
+Total cost of Experiment 2: **$5.93**.
+
+**Pre-registered hypotheses (masked names, primary)**
+
+| Hypothesis | Result |
+|---|---|
+| H1: B beats A on relationship F1 | **No detectable difference.** The mean rose from 0.835 to 0.968, but A's run-to-run range (0.71–1.0) is wider than the gap. |
+| H2: C beats B on entities / columns / recoverable columns | **No detectable difference.** C is slightly *below* B on average. See the error analysis. |
+| H3: C adds no overconfident errors | Confirmed: there were none in any cell. |
+| H4: C recovers more planted signals than B | **Improvement**, from 0 to 94%. This was expected by construction, but the important part is the *quality*: zero wrong-direction claims and zero spurious claims on the null signal, across all 6 C runs. |
+| H5: C adds no spurious claims | Confirmed: none. |
+
+**Exploratory comparisons, A vs B (masked).** These were not pre-registered as hypotheses. Same decision rule:
+- **Column semantics improve:** all columns 0.678 → 0.944; recoverable columns 0.732 → 0.985. Both gaps are larger than the run-to-run range.
+- **Items flagged for human review drop** from 46 to 35.
+- Entity concepts rise from 0.76 to 1.00. That gap is still within A's large run-to-run range.
+
+### What Experiment 2 shows
+
+1. **With no prior knowledge to lean on, structural evidence is what turns guesses into understanding.**
+   - With masked names, schema-only A got about two-thirds of column meanings right and was erratic: one run misread the ticket table and the user table.
+   - Adding deterministic structure (B) brought recoverable-column accuracy to 98.5%, identical across runs. It also made the model *less* uncertain where it had reason to be.
+   - This is the clearest evidence so far for part of the hypothesis. It is exploratory, though, because the pre-registered H1 measured relationships rather than column meaning.
+2. **Outcome evidence (C) adds discovery, not understanding.**
+   - C found 94% of the planted business signals with no wrong-direction or spurious claims. B and A cannot do this at all.
+   - C did *not* improve semantic interpretation over B. The planted signals live in code values (event code 7, severity 1) whose business meaning no data can reveal.
+   - **So C can tell you "event code 4 precedes conversion; find out what code 4 is", but not "code 4 is connecting an integration".** That is the distinction the project brief asked us to keep explicit.
+3. **More evidence carried a reliability cost.**
+   - One of the three C/masked runs (r3) left an entire table (5 columns) out of its output despite the instruction to cover every column. That single run drives C's lower average.
+   - The same run also misread the users table as a hierarchy of objects. The cause appears to be the self-referencing `inv_by` column, not the outcome evidence.
+   - This is one run in three, so it is weak evidence. But it is a real risk for larger databases: bigger evidence packets may need chunking or a completeness check.
+4. **Even cryptic legacy names gave the model almost everything.** With original names, every configuration scored 1.0 on every semantic metric.
+   - Names like `TKT_LOG.sev` and `SUB_HDR.end_ts` were enough. The judge may also be somewhat lenient; the human audit is pending.
+   - In practice, names, however abbreviated, are the strongest single source of meaning. Structural and outcome evidence matter most when names are missing or misleading.
+
+### Error analysis (masked runs)
+
+| Item | Who missed it | Why |
+|---|---|---|
+| `TKT_LOG.sev`, `SUB_HDR.stat_cd`, `USR_XREF.role_cd`, `PLN_REF.tier_rank` | All configurations | Pure categorical codes. Their meaning cannot be recovered from data. Expected; excluded from the recoverable metric. |
+| Email table columns (`EVT_STRM_02.*`) | C run 3 | **Omitted** from the output (scored 0). Its table-level concept was correct. |
+| `USR_XREF` concept | A runs 1 and 3; C run 3 | Read as a hierarchy of objects or as something other than users. |
+| `EVT_STRM_01.dur_ms` | Most runs, partial credit | Called "a duration or size measure" rather than definitely a duration. A defensible hedge. |
+| Planted signal P1 (event code 7) | C run 3, both namings | Not mentioned. The other 5 were stated correctly. |
+
 ## Threats to validity (and what is done about each)
 
 | Threat | Status |
 |---|---|
 | **Memorization**: Avito/RelBench are public | The masked condition is primary. Original names are reported as secondary, to *measure* how much names and memory contribute. |
 | **The developer knew the schema** | Structural rules use no names; thresholds were fixed in the protocol and tuned on `rel-f1`. Disclosed in the protocol. |
-| **Semantic key written by the developer** | Marked provisional. A human should verify it before semantic results are final. |
+| **Semantic key written by the developer** | Avito: marked provisional; a human should verify it. Synthetic: true by construction. |
+| **Synthetic data is simpler than real data** | One generator, one domain, clean values. The developer knew the planted structure, though the LLM never saw it. Results show what the method can do when signals exist; they are not real-world accuracy. |
 | **LLM judge bias** | The judge is blinded to configuration and naming. Every decision is saved to `judge_audit/`. A human audits 30 decisions and the agreement rate is reported. |
 | **Small sample**: 8 tables, 11 edges, 42 columns, 3 runs | The decision rule requires the gap to exceed run-to-run range. Results describe this dataset only. |
 | **One dataset, one domain** | Not addressed in V1. This is the main limit on generalization (see next steps). |
@@ -160,6 +254,11 @@ LLM-on-public-data demos look better than they are.
 | **Causal language** | Prohibited in the prompt and counted as an unsupported claim (keyword check plus judge). |
 
 ## Lessons learned so far
+
+- **Structure helps understanding; outcomes help discovery.** On data the model could not have seen, structural evidence raised masked column accuracy from 0.68 to 0.94.
+  Outcome evidence surfaced the planted business signals reliably, but did not improve interpretation further.
+- **The extra evidence does not cause hallucinated certainty.** Across 36 synthetic and 36 Avito calls: zero invalid citations, zero overconfident errors, and
+  (synthetic) zero claims about the null signal.
 
 0. **A public benchmark can be useless for testing semantic discovery, even with names masked.** The model's prior knowledge of the
    dataset saturated the easiest baseline. The next experiment needs data the model cannot have seen, or much deeper anonymization.

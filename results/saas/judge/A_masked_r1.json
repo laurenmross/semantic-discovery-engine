@@ -1,0 +1,339 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "eb9b0634090e8e40",
+ "seconds": 31.3,
+ "usage": {
+  "input_tokens": 6091,
+  "output_tokens": 3815,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.1007,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 0,
+    "rationale": "The reference describes account seats with a role and an inviter. The prediction reads the table as user-to-item links, which is a different concept."
+   },
+   {
+    "id": "i002",
+    "score": 0,
+    "rationale": "The reference is the acting user's foreign key. The prediction calls it an item identifier."
+   },
+   {
+    "id": "i003",
+    "score": 1,
+    "rationale": "The prediction correctly identifies the primary key of the outcome entity. However, it labels the entity a user rather than an account."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Plan quota/limit falls within the acceptable range."
+   },
+   {
+    "id": "i005",
+    "score": 1,
+    "rationale": "It is an entity key, but it is called a user id rather than the account foreign key, so the user/account distinction is lost."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "A categorical attribute of the outcome entity is within the acceptable range."
+   },
+   {
+    "id": "i007",
+    "score": 0,
+    "rationale": "The reference is the user's primary key. The prediction calls it an item id."
+   },
+   {
+    "id": "i008",
+    "score": 0,
+    "rationale": "The reference is the foreign key of the user who opened the ticket. The prediction calls it an item identifier."
+   },
+   {
+    "id": "i009",
+    "score": 1,
+    "rationale": "\"Lookup id\" is vague and does not say it identifies a geography."
+   },
+   {
+    "id": "i010",
+    "score": 0,
+    "rationale": "The reference is the plan foreign key. The prediction calls it a subscription row identifier."
+   },
+   {
+    "id": "i011",
+    "score": 1,
+    "rationale": "It is a creation timestamp, but of a misidentified link record rather than a user joining the account."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Billing transactions per subscription, with credits as negative amounts, match the reference."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "A plan catalogue with price, limit and tier matches the reference."
+   },
+   {
+    "id": "i014",
+    "score": 1,
+    "rationale": "A later timestamp is the right shape, but it is not identified as the ticket close time."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "The billing timestamp matches."
+   },
+   {
+    "id": "i016",
+    "score": 1,
+    "rationale": "The prediction hedges between plan id and status."
+   },
+   {
+    "id": "i017",
+    "score": 1,
+    "rationale": "It is identified as an identifier, but of an event rather than a ticket."
+   },
+   {
+    "id": "i018",
+    "score": 1,
+    "rationale": "An earlier creation time is the right shape, but the ticket context is missing."
+   },
+   {
+    "id": "i019",
+    "score": 0,
+    "rationale": "The reference is the plan primary key. The prediction calls it a tier rank or billing period code."
+   },
+   {
+    "id": "i020",
+    "score": 0,
+    "rationale": "A row id is not a template or sequence step."
+   },
+   {
+    "id": "i021",
+    "score": 0,
+    "rationale": "A row identifier is not an event type code."
+   },
+   {
+    "id": "i022",
+    "score": 0,
+    "rationale": "The reference is the inviter self-reference. The prediction calls it a related item id."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "A categorical attribute is within the acceptable range."
+   },
+   {
+    "id": "i024",
+    "score": 0,
+    "rationale": "A plan id is not a tier rank."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "A transaction identifier matches the invoice line primary key."
+   },
+   {
+    "id": "i026",
+    "score": 0,
+    "rationale": "A row identifier is not a role code."
+   },
+   {
+    "id": "i027",
+    "score": 0,
+    "rationale": "An event subtype or channel is not a satisfaction rating."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "The send timestamp matches."
+   },
+   {
+    "id": "i029",
+    "score": 1,
+    "rationale": "The prediction hedges, and only one of its readings (transaction type) is correct."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "The signup/creation timestamp matches."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "The subscription foreign key matches."
+   },
+   {
+    "id": "i032",
+    "score": 1,
+    "rationale": "A generic observation timestamp in a misread table."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "A categorical attribute is within the acceptable range."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "The prediction proposes timezone offset hours, which matches."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "The opened flag matches."
+   },
+   {
+    "id": "i036",
+    "score": 1,
+    "rationale": "The prediction is roughly the outcome entity but hedges between users and accounts and misses the trial nature."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "The subscription identifier matches."
+   },
+   {
+    "id": "i038",
+    "score": 1,
+    "rationale": "It is called a user id rather than an account foreign key."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "A lookup of regions with timezone offsets matches."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "The clicked flag matches."
+   },
+   {
+    "id": "i041",
+    "score": 0,
+    "rationale": "The prediction reads the table as metric snapshots for items, not product usage events."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "The prediction proposes a region reference to GEO_REF, which matches."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "The plan price matches."
+   },
+   {
+    "id": "i044",
+    "score": 0,
+    "rationale": "A price or metric value is not an action duration."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "The subscription start timestamp matches."
+   },
+   {
+    "id": "i046",
+    "score": 1,
+    "rationale": "It is called the subscriber's user id rather than the account."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "The end/cancellation timestamp matches."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Scheduled messages with opened and clicked flags match."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "A grouping code is within the acceptable range."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Paid subscriptions as the conversion record matches."
+   },
+   {
+    "id": "i051",
+    "score": 1,
+    "rationale": "It is called a user id rather than the account foreign key."
+   },
+   {
+    "id": "i052",
+    "score": 0,
+    "rationale": "An event type or status is not severity."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "An amount with negative values for credits matches."
+   },
+   {
+    "id": "i054",
+    "score": 0,
+    "rationale": "The prediction reads the table as item activity events, not support tickets."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "Event code 7 is not mentioned."
+   },
+   {
+    "id": "P2",
+    "verdict": "not_stated",
+    "rationale": "Event code 4 is not mentioned."
+   },
+   {
+    "id": "P3",
+    "verdict": "not_stated",
+    "rationale": "Event code 11 is not mentioned."
+   },
+   {
+    "id": "P4",
+    "verdict": "not_stated",
+    "rationale": "Ticket severity is not mentioned."
+   },
+   {
+    "id": "P5",
+    "verdict": "not_stated",
+    "rationale": "Overall EVT_STRM_01 volume is not linked to conversion."
+   },
+   {
+    "id": "P6",
+    "verdict": "not_stated",
+    "rationale": "EVT_STRM_02 flags are listed only as candidates, with no association or direction claimed."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "No association is claimed for the number of emails sent."
+   }
+  ]
+ }
+}

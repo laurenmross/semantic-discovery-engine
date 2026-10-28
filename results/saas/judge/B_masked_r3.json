@@ -1,0 +1,343 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "ec99e64dd4ceba5a",
+ "seconds": 20.5,
+ "usage": {
+  "input_tokens": 6323,
+  "output_tokens": 2646,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0782,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "Same concept: the end/cancellation timestamp, empty while active."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Identifies the plan the subscription is on."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Plan catalogue with price, tier and seat limit."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Identifier of the billing line; the wording differs but it is the same key."
+   },
+   {
+    "id": "i006",
+    "score": 1,
+    "rationale": "Hedges between a UTC offset (correct) and a score (incorrect)."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "User creation/join timestamp."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Lifecycle emails with opened and clicked flags."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Account creation timestamp, which is the trial start."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "A tier group of the plan, within the acceptable range."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Foreign key to the geography reference."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Product usage event log."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Account identifier."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "An event type code, within the acceptable range."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Identifies the resolution/close time."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Ticket open timestamp."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Plan price."
+   },
+   {
+    "id": "i019",
+    "score": 0,
+    "rationale": "Describes a billing cycle or contract type, not the subscription status."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Geography lookup with region code and UTC offset."
+   },
+   {
+    "id": "i021",
+    "score": 2,
+    "rationale": "User identifier."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Billing lines for subscriptions, including credits."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Users of an account with a role and an inviter."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "Inviting user, null for the account's first user."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Account the email was sent to."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "User who raised the ticket, optional."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Opened flag."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Clicked flag."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Subscription identifier."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Send timestamp."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "A user role/type code, within the acceptable range."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Sequence step number."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Account segment code."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Seat/usage limit of the plan."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Signed amount with negatives as credits."
+   },
+   {
+    "id": "i036",
+    "score": 0,
+    "rationale": "Describes a category or channel, not severity or priority."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Proposes duration in ms as the example reading."
+   },
+   {
+    "id": "i038",
+    "score": 1,
+    "rationale": "A categorical code of the account, but wrongly tied to plan tier rather than channel or source."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "A categorical account attribute, within the acceptable range."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "A categorical line/transaction type."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "A group/region code."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Ticket identifier."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Customer account at signup, with segment attributes."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Account that raised the ticket."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Paid subscription with start and end times."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Optional satisfaction rating."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Event timestamp."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Subscription start (conversion) timestamp."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "User who performed the action."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Plan identifier."
+   },
+   {
+    "id": "i051",
+    "score": 2,
+    "rationale": "Support tickets per account."
+   },
+   {
+    "id": "i052",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i053",
+    "score": 2,
+    "rationale": "Monthly billing timestamp."
+   },
+   {
+    "id": "i054",
+    "score": 2,
+    "rationale": "Primary key of the geography lookup."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   }
+  ],
+  "signals": [
+   {
+    "id": "P1",
+    "verdict": "not_stated",
+    "rationale": "No association with event code 7 is claimed."
+   },
+   {
+    "id": "P2",
+    "verdict": "not_stated",
+    "rationale": "No association with event code 4 is claimed."
+   },
+   {
+    "id": "P3",
+    "verdict": "not_stated",
+    "rationale": "No association with event code 11 is claimed."
+   },
+   {
+    "id": "P4",
+    "verdict": "not_stated",
+    "rationale": "No severity-based claim is made."
+   },
+   {
+    "id": "P5",
+    "verdict": "not_stated",
+    "rationale": "s03 lists usage as a candidate signal but explicitly gives no association."
+   },
+   {
+    "id": "P6",
+    "verdict": "not_stated",
+    "rationale": "Email opens are listed as a candidate signal with no claimed association."
+   },
+   {
+    "id": "N1",
+    "verdict": "not_stated",
+    "rationale": "No claim links the number of emails sent to conversion."
+   }
+  ]
+ }
+}

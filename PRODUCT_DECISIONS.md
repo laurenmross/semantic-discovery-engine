@@ -83,11 +83,20 @@ and **I make no claim that this architecture is novel.**
 
 A competitive review is listed as a next step below.
 
+## What the experiments changed
+
+- **Data the model cannot have seen is a requirement.** Experiment 1 showed that a public benchmark lets the model answer from memory.
+- **Names are the strongest single signal**, even cryptic ones. The product value of structural and outcome evidence is concentrated where names are absent,
+  misleading or inconsistent: raw event streams, code columns, IDs with no documentation. Positioning should follow: an assistant for the *undocumented
+  corners* of a warehouse, not a replacement for reading column names.
+- **Outcome evidence is a prioritization tool.** It reliably says *where to look*. That is a product claim I can now support with measurements. "It tells you what the data means" is not.
+
 ## What I would investigate next
 
-1. **Data the model cannot have seen.** The first run showed the model recognizes `rel-avito` even with names masked. The next test needs either
-   (a) "deep masking": shifted dates, re-scaled and permuted IDs, no text descriptors, perturbed row counts; or (b) a synthetic or private database
-   with known ground truth. Also have a human verify the semantic key and audit the judge.
+1. **Close the loop from discovery to meaning.** Experiment 2 showed outcome evidence finds *which* unknown codes matter, but cannot say what they mean.
+   The natural next step is targeted follow-up: let the system query the data around a high-signal code, for example co-occurring events and the users who trigger it,
+   or ask a human one precise question. Then measure whether interpretation of those specific items improves.
+   Also: have a human audit the judge, and add a completeness check, since one C run silently dropped a table.
 2. **A second, structurally different dataset**, to see whether any effect generalizes.
 3. **Let the LLM ask for evidence**, with a bounded SQL tool. This tests whether *targeted* exploration beats a fixed evidence packet.
 4. **Outcome as the search budget.** Measure how much of the database the system needs to examine to reach a given semantic accuracy, with and without an outcome.
