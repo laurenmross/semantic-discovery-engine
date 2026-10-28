@@ -10,6 +10,19 @@ business meaning and discover insights from unfamiliar datasets.**
 [![Pre-registered evaluation](https://img.shields.io/badge/evaluation-pre--registered-2a78d6)](eval/protocol.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
+## Executive summary
+
+**Can AI learn what unfamiliar business data means without a manually defined semantic layer?**
+
+I built an experimental pipeline that combines structural relationship discovery, outcome-based predictive analysis and LLM interpretation.
+Across two experiments, structural evidence improved semantic interpretation of undocumented synthetic data. Outcome evidence helped identify
+important behavioral signals, but did not improve semantic understanding.
+
+The project investigates where automated reasoning can reduce analysts' work, where existing models fall short, and which capabilities warrant
+further investment. The results, and how they were tested, follow below.
+
+## Results
+
 > **Status: working prototype, two experiments run.**
 > - **Experiment 1 (public RelBench Avito):** inconclusive. The model recognized the dataset even with names masked, so the schema-only baseline hit the ceiling.
 > - **Experiment 2 (synthetic SaaS warehouse the model cannot have seen):**
