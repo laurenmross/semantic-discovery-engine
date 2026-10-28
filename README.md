@@ -6,10 +6,37 @@ business meaning and discover insights from unfamiliar datasets.**
 > **Status: working prototype, two experiments run.**
 > - **Experiment 1 (public RelBench Avito):** inconclusive. The model recognized the dataset even with names masked, so the schema-only baseline hit the ceiling.
 > - **Experiment 2 (synthetic SaaS warehouse the model cannot have seen):**
->   - With names masked, *structural* evidence raised column-meaning accuracy from 0.68 to 0.94.
+>   - With names masked, *structural* evidence raised column-meaning accuracy from 68% to 94% overall, and from 73% to 98.5% on the columns that data can reveal.
 >   - *Outcome* evidence surfaced 94% of the planted business signals, with no wrong-direction or spurious claims, but did not improve interpretation further.
 >   - With real (even cryptic) names, every configuration was near-perfect.
 > - See [EVALUATION.md](EVALUATION.md). The structural result is exploratory: the pre-registered H1 measured relationships and fell inside run-to-run noise.
+
+![With names hidden, structure helps the AI understand the data (73% to 98% of knowable column meanings); outcome evidence helps it discover what matters (0% to 94% of planted business signals found)](docs/results.svg)
+
+## ELI5
+
+**The problem.** Imagine inheriting a giant filing cabinet full of spreadsheets that nobody labeled. Before anyone (or any AI) can answer
+questions from it, someone has to work out what each sheet is: "this one is customers", "this column is a price", "these two sheets link up here".
+Today, people do that by hand, slowly.
+
+**The idea.** Give the AI two kinds of help instead of just the column headers:
+- **A detective's notes on the structure:** which columns are IDs, which sheets point to which, what the numbers look like.
+- **Clues from a business result we already track,** like which free-trial customers ended up paying: what tends to happen before they do?
+
+**How we tested it fairly.**
+1. **First attempt:** a famous public dataset with every name hidden. The AI recognized it anyway, like knowing a famous novel with the cover torn off,
+   so the test couldn't tell us anything.
+2. **Second attempt:** we invented a software company and generated all its data from scratch, so no AI could have seen it.
+   We secretly planted patterns (customers who invite teammates are more likely to pay; customers who hit errors are less likely)
+   plus a decoy that means nothing, and wrote down the answer key *before* running anything.
+
+**What we found** (the chart above):
+- **The structure notes help the AI understand the data:** it got about three-quarters of the knowable column meanings right on its own, and nearly all of them with the notes.
+- **The business clues help it find what matters:** with them, it found almost every planted pattern and never fell for the decoy. But they didn't help it understand
+  *what* things mean. It can say "event code 4 happens before customers pay", not "code 4 means connecting an integration".
+- **Real names do most of the work.** Even cryptic names like `TKT_LOG` gave the AI nearly everything, so this kind of help matters most for the undocumented corners of a database.
+
+**What it isn't.** One made-up dataset, cleaner than real company data, and a small number of runs. It's evidence the idea has legs, not proof that it works everywhere.
 
 ## The problem
 
@@ -106,6 +133,12 @@ Re-score and re-report from the recorded LLM responses without calling the API:
 .venv/bin/python -m sde all --replay-only
 ```
 
+Regenerate the README results chart (`docs/results.svg`) from the saved scores:
+
+```bash
+.venv/bin/python -m sde chart --dataset saas
+```
+
 Run the tests:
 
 ```bash
@@ -155,7 +188,8 @@ eval/protocol.md               pre-registered methodology (committed before any 
 eval/ground_truth/avito.json   answer key: RelBench FK metadata + documented semantics
 sde/                           implementation
 tests/                         pytest suite (leakage, read-only source, masking, scoring)
-results/avito/                 every computed artifact behind every reported number
+results/avito/, results/saas/ every computed artifact behind every reported number
+docs/results.svg               headline chart, generated from results/saas/scores.json
 README.md  PRODUCT_DECISIONS.md  EVALUATION.md
 ```
 

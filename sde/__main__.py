@@ -8,7 +8,7 @@ from .pipeline import Experiment
 
 def main() -> None:
     ap = argparse.ArgumentParser(prog="python -m sde", description=__doc__)
-    ap.add_argument("stage", choices=["prepare", "discover", "outcome", "packets", "interpret", "score", "report", "all"])
+    ap.add_argument("stage", choices=["prepare", "discover", "outcome", "packets", "interpret", "score", "report", "chart", "all"])
     ap.add_argument("--dataset", default="avito")
     ap.add_argument("--runs", type=int, default=3, help="interpretation runs per cell")
     ap.add_argument("--replay-only", action="store_true", help="never call the API; use recorded responses only")
@@ -31,6 +31,9 @@ def main() -> None:
         exp.score()
     elif a.stage == "report":
         exp.discover(); exp.report()
+    elif a.stage == "chart":
+        from .chart import write
+        print(write(a.dataset))
     else:
         exp.run_all()
     print(f"outputs in {exp.out}")

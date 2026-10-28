@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 330" width="820" height="330" role="img" aria-labelledby="t d">
+<style>
+  .surface { fill: #fcfcfb; }
+  .ink { fill: #0b0b0b; } .ink2 { fill: #52514e; } .muted { fill: #898781; }
+  .grid { stroke: #e1e0d9; } .base { stroke: #c3c2b7; } .range { stroke: #52514e; }
+  .sA { fill: #2a78d6; } .sB { fill: #eb6834; } .sC { fill: #1baf7a; }
+  @media (prefers-color-scheme: dark) {
+    .surface { fill: #1a1a19; }
+    .ink { fill: #f0efec; } .ink2 { fill: #c3c2b7; } .muted { fill: #898781; }
+    .grid { stroke: #2c2c2a; } .base { stroke: #383835; } .range { stroke: #c3c2b7; }
+    .sA { fill: #3987e5; } .sB { fill: #d95926; } .sC { fill: #199e70; }
+  }
+  text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+</style>
+<rect class="surface" width="820" height="330" rx="8"/>
+<title id="t">With names hidden, structure helps the AI understand the data; outcome evidence helps it discover what matters</title>
+<desc id="d">Synthetic SaaS warehouse, masked names, mean of 3 runs. A: Column semantics (recoverable) 73%; A: Planted signals recovered 0%; B: Column semantics (recoverable) 98%; B: Planted signals recovered 0%; C: Column semantics (recoverable) 92%; C: Planted signals recovered 94%.</desc>
+<text class="ink" x="24" y="36" font-size="17" font-weight="600">With names hidden, structure helps the AI understand the data;</text>
+<text class="ink" x="24" y="58" font-size="17" font-weight="600">outcome evidence helps it discover what matters</text>
+<text class="ink2" x="24" y="80" font-size="13">Synthetic SaaS warehouse the model cannot have seen · every table and column name masked · mean of 3 runs</text>
+<text class="ink" x="200" y="112" font-size="13" font-weight="600">Understands what columns mean</text>
+<line class="base" x1="200.0" y1="126" x2="200.0" y2="240" stroke-width="1"/>
+<text class="muted" x="200.0" y="256" font-size="11" text-anchor="middle">0%</text>
+<line class="grid" x1="310.0" y1="126" x2="310.0" y2="240" stroke-width="1"/>
+<text class="muted" x="310.0" y="256" font-size="11" text-anchor="middle">50%</text>
+<line class="grid" x1="420.0" y1="126" x2="420.0" y2="240" stroke-width="1"/>
+<text class="muted" x="420.0" y="256" font-size="11" text-anchor="middle">100%</text>
+<path class="sA" d="M200.0,132.0 H357.1 Q361.1,132.0 361.1,136.0 V150.0 Q361.1,154.0 357.1,154.0 H200.0 Z"/>
+<line class="range" x1="330.0" y1="143.0" x2="376.7" y2="143.0" stroke-width="1.5"/>
+<line class="range" x1="330.0" y1="139.0" x2="330.0" y2="147.0" stroke-width="1.5"/>
+<line class="range" x1="376.7" y1="139.0" x2="376.7" y2="147.0" stroke-width="1.5"/>
+<text class="ink" x="384.7" y="147" font-size="13" font-weight="600">73%</text>
+<path class="sB" d="M200.0,172.0 H412.7 Q416.7,172.0 416.7,176.0 V190.0 Q416.7,194.0 412.7,194.0 H200.0 Z"/>
+<text class="ink" x="424.7" y="187" font-size="13" font-weight="600">98%</text>
+<path class="sC" d="M200.0,212.0 H398.3 Q402.3,212.0 402.3,216.0 V230.0 Q402.3,234.0 398.3,234.0 H200.0 Z"/>
+<line class="range" x1="376.7" y1="223.0" x2="416.7" y2="223.0" stroke-width="1.5"/>
+<line class="range" x1="376.7" y1="219.0" x2="376.7" y2="227.0" stroke-width="1.5"/>
+<line class="range" x1="416.7" y1="219.0" x2="416.7" y2="227.0" stroke-width="1.5"/>
+<text class="ink" x="424.7" y="227" font-size="13" font-weight="600">92%</text>
+<text class="ink" x="500" y="112" font-size="13" font-weight="600">Finds the planted business signals</text>
+<line class="base" x1="500.0" y1="126" x2="500.0" y2="240" stroke-width="1"/>
+<text class="muted" x="500.0" y="256" font-size="11" text-anchor="middle">0%</text>
+<line class="grid" x1="610.0" y1="126" x2="610.0" y2="240" stroke-width="1"/>
+<text class="muted" x="610.0" y="256" font-size="11" text-anchor="middle">50%</text>
+<line class="grid" x1="720.0" y1="126" x2="720.0" y2="240" stroke-width="1"/>
+<text class="muted" x="720.0" y="256" font-size="11" text-anchor="middle">100%</text>
+<text class="ink" x="508.0" y="147" font-size="13" font-weight="600">0%</text>
+<text class="ink" x="508.0" y="187" font-size="13" font-weight="600">0%</text>
+<path class="sC" d="M500.0,212.0 H703.8 Q707.8,212.0 707.8,216.0 V230.0 Q707.8,234.0 703.8,234.0 H500.0 Z"/>
+<line class="range" x1="683.3" y1="223.0" x2="720.0" y2="223.0" stroke-width="1.5"/>
+<line class="range" x1="683.3" y1="219.0" x2="683.3" y2="227.0" stroke-width="1.5"/>
+<line class="range" x1="720.0" y1="219.0" x2="720.0" y2="227.0" stroke-width="1.5"/>
+<text class="ink" x="728.0" y="227" font-size="13" font-weight="600">94%</text>
+<text class="ink" x="24" y="147" font-size="13">A · schema only</text>
+<text class="ink" x="24" y="187" font-size="13">B · + structure</text>
+<text class="ink" x="24" y="227" font-size="13">C · + outcome evidence</text>
+<text class="muted" x="24" y="296" font-size="11">Thin line = lowest–highest of 3 runs. With real column names, all three configurations scored ~100% on understanding.</text>
+<text class="muted" x="24" y="312" font-size="11">Generated by `python -m sde chart` from results/saas/scores.json. Details: EVALUATION.md, Experiment 2.</text>
+</svg>
