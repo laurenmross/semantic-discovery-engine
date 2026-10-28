@@ -3,6 +3,13 @@
 **An experimental AI system that combines relational analysis, outcome-driven modeling, and LLM reasoning to automatically infer
 business meaning and discover insights from unfamiliar datasets.**
 
+[![tests](https://github.com/laurenmross/semantic-discovery-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/laurenmross/semantic-discovery-engine/actions/workflows/tests.yml)
+![Python 3.12](https://img.shields.io/badge/python-3.12-3776ab)
+![DuckDB](https://img.shields.io/badge/DuckDB-read--only-fff000)
+![Claude Opus 5.5](https://img.shields.io/badge/LLM-Claude%20Opus%205.5-d97757)
+[![Pre-registered evaluation](https://img.shields.io/badge/evaluation-pre--registered-2a78d6)](eval/protocol.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
+
 > **Status: working prototype, two experiments run.**
 > - **Experiment 1 (public RelBench Avito):** inconclusive. The model recognized the dataset even with names masked, so the schema-only baseline hit the ceiling.
 > - **Experiment 2 (synthetic SaaS warehouse the model cannot have seen):**
