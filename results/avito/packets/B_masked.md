@@ -85,7 +85,7 @@
 - c03: BIGINT; examples ['1', '2', '3']  [S:c:T07.c03]
     profile: nulls=0.0% distinct=3 unique=no min=1 max=3 mean=2.809 top=3:56, 2:11, 1:1
 - c04: BIGINT; examples ['10', '9', '12']  [S:c:T07.c04]
-    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 6:7, 8:7, 9:7
+    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 9:7, 6:7, 8:7
 
 ### Table T08  [S:t:T08]  rows=9254702
 - c01: BIGINT; examples ['806173', '4316980', '2059012']  [S:c:T08.c01]

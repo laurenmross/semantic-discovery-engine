@@ -1,0 +1,859 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "request_sha": "14ff93d33b1464e2",
+ "seconds": 63.1,
+ "usage": {
+  "input_tokens": 31067,
+  "output_tokens": 7933,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.2829,
+ "stop_reason": "end_turn",
+ "output": {
+  "tables": [
+   {
+    "table": "T01",
+    "concept": "User (outcome entity) with device/user-agent attributes",
+    "kind": "entity",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:T01",
+     "S:k:T01.c04",
+     "S:r:21",
+     "S:r:48",
+     "S:r:76"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "concept": "Ad view/visit event log (user viewed an ad from an IP at a time)",
+    "kind": "event",
+    "confidence": 0.65,
+    "evidence": [
+     "S:t:T02",
+     "S:a:129",
+     "S:r:18",
+     "S:r:21",
+     "S:c:T02.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "concept": "Location hierarchy (location with level, region, city)",
+    "kind": "dimension",
+    "confidence": 0.6,
+    "evidence": [
+     "S:t:T03",
+     "S:k:T03.c03",
+     "S:c:T03.c01",
+     "S:r:44",
+     "S:r:59"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "concept": "Search event (a search performed by a user, with category, location, query text, IP, logged-in flag)",
+    "kind": "event",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:T04",
+     "S:k:T04.c08",
+     "S:c:T04.c02",
+     "S:c:T04.c03",
+     "S:r:48",
+     "S:r:114"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "concept": "Ad / listing catalogue (ad with location, category, price, context flag, title)",
+    "kind": "entity",
+    "confidence": 0.7,
+    "evidence": [
+     "S:t:T05",
+     "S:k:T05.c03",
+     "S:c:T05.c06",
+     "S:c:T05.c04",
+     "S:r:18",
+     "S:r:98"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "concept": "Contact/phone-request event log (user requested contact for an ad)",
+    "kind": "event",
+    "confidence": 0.55,
+    "evidence": [
+     "S:t:T06",
+     "S:a:127",
+     "S:r:75",
+     "S:r:76",
+     "S:c:T06.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "concept": "Category hierarchy dimension",
+    "kind": "dimension",
+    "confidence": 0.6,
+    "evidence": [
+     "S:t:T07",
+     "S:k:T07.c02",
+     "S:c:T07.c03",
+     "S:r:39",
+     "S:r:63"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "concept": "Search result impressions (ads shown within a search, with position, type, historical CTR and click flag)",
+    "kind": "event",
+    "confidence": 0.65,
+    "evidence": [
+     "S:t:T08",
+     "S:a:128",
+     "S:r:98",
+     "S:r:114",
+     "S:c:T08.c02",
+     "S:c:T08.c07"
+    ],
+    "needs_human_validation": true
+   }
+  ],
+  "columns": [
+   {
+    "table": "T01",
+    "column": "c01",
+    "meaning": "User-agent identifier (browser string id); not a link to users",
+    "role": "categorical_code",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:T01.c01",
+     "S:r:1",
+     "P:f:f000"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c02",
+    "meaning": "Device or user-agent sub-attribute identifier",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T01.c02",
+     "S:r:4"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c03",
+    "meaning": "User-agent family or OS code (45 values)",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T01.c03",
+     "S:r:7"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T01",
+    "column": "c04",
+    "meaning": "User identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:T01.c04",
+     "S:r:48",
+     "S:r:21"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T01",
+    "column": "c05",
+    "meaning": "User-agent OS or family code (32 values)",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T01.c05",
+     "S:r:13"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c01",
+    "meaning": "Ad viewed",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:18",
+     "S:c:T02.c01"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T02",
+    "column": "c02",
+    "meaning": "IP address identifier (shared id space with T04.c06/T06.c01; no IP table)",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T02.c02",
+     "S:c:T06.c01",
+     "S:c:T04.c06",
+     "S:r:19"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T02",
+    "column": "c03",
+    "meaning": "View timestamp",
+    "role": "timestamp",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:T02.c03"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T02",
+    "column": "c04",
+    "meaning": "User who viewed the ad",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:21",
+     "S:c:T02.c04"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T03",
+    "column": "c01",
+    "meaning": "Location level in hierarchy (1-3; mostly 3)",
+    "role": "categorical_code",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T03.c01",
+     "S:r:24"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c02",
+    "meaning": "Region identifier",
+    "role": "categorical_code",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T03.c02",
+     "S:r:29"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T03",
+    "column": "c03",
+    "meaning": "Location identifier",
+    "role": "primary_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:k:T03.c03",
+     "S:r:59",
+     "S:r:44"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T03",
+    "column": "c04",
+    "meaning": "City identifier",
+    "role": "categorical_code",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T03.c04",
+     "S:r:36"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c01",
+    "meaning": "Search category",
+    "role": "foreign_key",
+    "confidence": 0.6,
+    "evidence": [
+     "S:r:39",
+     "S:c:T04.c01"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c02",
+    "meaning": "Search timestamp",
+    "role": "timestamp",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:T04.c02"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T04",
+    "column": "c03",
+    "meaning": "Free-text search query (often empty)",
+    "role": "text",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:T04.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c04",
+    "meaning": "Search location",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:r:44",
+     "S:c:T04.c04"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T04",
+    "column": "c05",
+    "meaning": "User who searched",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:48",
+     "S:c:T04.c05"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T04",
+    "column": "c06",
+    "meaning": "IP address identifier",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T04.c06",
+     "S:r:51"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c07",
+    "meaning": "User logged-in flag at search time (32% yes)",
+    "role": "flag",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T04.c07"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T04",
+    "column": "c08",
+    "meaning": "Search identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:T04.c08",
+     "S:r:114"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T05",
+    "column": "c01",
+    "meaning": "Ad location",
+    "role": "foreign_key",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:59",
+     "S:c:T05.c01"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T05",
+    "column": "c02",
+    "meaning": "Ad category",
+    "role": "foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:r:63",
+     "S:c:T05.c02"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T05",
+    "column": "c03",
+    "meaning": "Ad identifier",
+    "role": "primary_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:k:T05.c03",
+     "S:r:18",
+     "S:r:98"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T05",
+    "column": "c04",
+    "meaning": "Ad price (with sentinel extreme values)",
+    "role": "measure",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T05.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c05",
+    "meaning": "Contextual/paid ad flag (0.4% positive)",
+    "role": "flag",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T05.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T05",
+    "column": "c06",
+    "meaning": "Ad title (Cyrillic text)",
+    "role": "text",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T05.c06"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T06",
+    "column": "c01",
+    "meaning": "IP address identifier",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T06.c01",
+     "S:r:73"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T06",
+    "column": "c02",
+    "meaning": "Contact request timestamp",
+    "role": "timestamp",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:T06.c02"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T06",
+    "column": "c03",
+    "meaning": "Ad for which contact was requested",
+    "role": "foreign_key",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:75"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T06",
+    "column": "c04",
+    "meaning": "User requesting contact",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:76"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T07",
+    "column": "c01",
+    "meaning": "Subcategory code (separate id space, 1-57)",
+    "role": "categorical_code",
+    "confidence": 0.35,
+    "evidence": [
+     "S:c:T07.c01",
+     "S:r:79",
+     "S:a:63"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "column": "c02",
+    "meaning": "Category identifier",
+    "role": "primary_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:k:T07.c02",
+     "S:r:63"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T07",
+    "column": "c03",
+    "meaning": "Category level (1-3)",
+    "role": "categorical_code",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T07.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T07",
+    "column": "c04",
+    "meaning": "Parent category code (12 values)",
+    "role": "categorical_code",
+    "confidence": 0.45,
+    "evidence": [
+     "S:c:T07.c04",
+     "S:a:62"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c01",
+    "meaning": "Ad shown in search results",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:98"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T08",
+    "column": "c02",
+    "meaning": "Click flag (null for non-tracked ad types; ~0.6% clicks)",
+    "role": "flag",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:T08.c02"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c03",
+    "meaning": "Ad/object type (1-3)",
+    "role": "categorical_code",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T08.c03"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c04",
+    "meaning": "Display position of ad on results page",
+    "role": "categorical_code",
+    "confidence": 0.5,
+    "evidence": [
+     "S:c:T08.c04"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c05",
+    "meaning": "Impression/search timestamp",
+    "role": "timestamp",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:T08.c05"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "T08",
+    "column": "c06",
+    "meaning": "Search in which ad appeared",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:114"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "T08",
+    "column": "c07",
+    "meaning": "Historical click-through rate of ad (null where not applicable)",
+    "role": "measure",
+    "confidence": 0.55,
+    "evidence": [
+     "S:c:T08.c07"
+    ],
+    "needs_human_validation": true
+   }
+  ],
+  "relationships": [
+   {
+    "from_table": "T02",
+    "from_column": "c04",
+    "to_table": "T01",
+    "to_column": "c04",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:21"
+    ]
+   },
+   {
+    "from_table": "T02",
+    "from_column": "c01",
+    "to_table": "T05",
+    "to_column": "c03",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:18"
+    ]
+   },
+   {
+    "from_table": "T04",
+    "from_column": "c05",
+    "to_table": "T01",
+    "to_column": "c04",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:48"
+    ]
+   },
+   {
+    "from_table": "T04",
+    "from_column": "c04",
+    "to_table": "T03",
+    "to_column": "c03",
+    "confidence": 0.7,
+    "evidence": [
+     "S:r:44"
+    ]
+   },
+   {
+    "from_table": "T04",
+    "from_column": "c01",
+    "to_table": "T07",
+    "to_column": "c02",
+    "confidence": 0.55,
+    "evidence": [
+     "S:r:39",
+     "S:a:66"
+    ]
+   },
+   {
+    "from_table": "T05",
+    "from_column": "c01",
+    "to_table": "T03",
+    "to_column": "c03",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:59"
+    ]
+   },
+   {
+    "from_table": "T05",
+    "from_column": "c02",
+    "to_table": "T07",
+    "to_column": "c02",
+    "confidence": 0.7,
+    "evidence": [
+     "S:r:63"
+    ]
+   },
+   {
+    "from_table": "T06",
+    "from_column": "c03",
+    "to_table": "T05",
+    "to_column": "c03",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:75"
+    ]
+   },
+   {
+    "from_table": "T06",
+    "from_column": "c04",
+    "to_table": "T01",
+    "to_column": "c04",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:76"
+    ]
+   },
+   {
+    "from_table": "T08",
+    "from_column": "c01",
+    "to_table": "T05",
+    "to_column": "c03",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:98"
+    ]
+   },
+   {
+    "from_table": "T08",
+    "from_column": "c06",
+    "to_table": "T04",
+    "to_column": "c08",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:114"
+    ]
+   }
+  ],
+  "outcome_insights": [
+   {
+    "statement": "Users with more distinct ads viewed and more view events (T02) before the cutoff are more often engaged; this is the strongest associated signal.",
+    "kind": "observed_association",
+    "confidence": 0.75,
+    "evidence": [
+     "P:f:f066",
+     "P:f:f063",
+     "P:path:1"
+    ]
+   },
+   {
+    "statement": "Higher counts of contact-request events (T06) and of searches (T04) and search impressions (T08) are also associated with engagement, but more weakly.",
+    "kind": "observed_association",
+    "confidence": 0.65,
+    "evidence": [
+     "P:f:f018",
+     "P:f:f015",
+     "P:f:f024",
+     "P:f:f032"
+    ]
+   },
+   {
+    "statement": "More recent activity (fewer days since last view/search) is associated with engagement.",
+    "kind": "observed_association",
+    "confidence": 0.6,
+    "evidence": [
+     "P:f:f065",
+     "P:f:f026",
+     "P:f:f017"
+    ]
+   },
+   {
+    "statement": "Static user attributes in T01 (device/agent codes) show essentially no association with engagement.",
+    "kind": "observed_association",
+    "confidence": 0.65,
+    "evidence": [
+     "P:f:f000",
+     "P:f:f001",
+     "P:f:f002",
+     "P:f:f003"
+    ]
+   },
+   {
+    "statement": "Predictability is modest: the model only slightly beats a single past-activity count, and base rate is high (~0.9), dropping in the test period.",
+    "kind": "observed_association",
+    "confidence": 0.7,
+    "evidence": [
+     "P:m:1",
+     "P:m:2"
+    ]
+   },
+   {
+    "statement": "The 'qualifying interaction' likely corresponds to ad views (T02) or searches, which would explain why past view volume is the dominant predictor (behavioural persistence).",
+    "kind": "hypothesis",
+    "confidence": 0.4,
+    "evidence": [
+     "P:path:1",
+     "P:f:f064"
+    ]
+   }
+  ],
+  "ambiguities": [
+   {
+    "description": "What counts as a 'qualifying interaction' for the outcome (views, searches, contact requests, clicks) is not defined.",
+    "evidence": [
+     "P:path:1"
+    ]
+   },
+   {
+    "description": "Meanings of T01.c01, c02, c03, c05 (device/agent codes) are uncertain; their candidate links to T01.c04/T03.c03/T07.c02 look coincidental.",
+    "evidence": [
+     "S:r:1",
+     "S:r:4",
+     "S:r:7",
+     "S:r:13"
+    ]
+   },
+   {
+    "description": "T02.c02, T04.c06, T06.c01 appear to be an IP-like id with no parent table; candidate links to T04.c08 are likely coincidental.",
+    "evidence": [
+     "S:r:19",
+     "S:r:51",
+     "S:r:73"
+    ]
+   },
+   {
+    "description": "T07.c01 and T07.c04 hierarchy semantics (subcategory vs parent) and T03.c02/c04 (region vs city) unclear.",
+    "evidence": [
+     "S:r:79",
+     "S:r:93",
+     "S:r:29",
+     "S:r:36"
+    ]
+   },
+   {
+    "description": "T08.c02 nulls (53%) roughly match T08.c07 nulls; whether clicks are only tracked for certain ad types is unconfirmed.",
+    "evidence": [
+     "S:c:T08.c02",
+     "S:c:T08.c07",
+     "S:c:T08.c03"
+    ]
+   },
+   {
+    "description": "Positive rate drops from 0.906 to 0.851 in test, suggesting temporal shift or edge effects near the data end date.",
+    "evidence": [
+     "P:m:1"
+    ]
+   }
+  ],
+  "next_investigations": [
+   "Confirm with business the definition of qualifying interaction and which table generates the label.",
+   "Check T08.c05 equals T04.c02 via T08.c06 join to verify denormalized search time.",
+   "Cross-tab T08.c02 nulls with T08.c03 and T05.c05 to confirm click tracking only for contextual ads.",
+   "Verify IP-id overlap among T02.c02, T04.c06, T06.c01.",
+   "Inspect T07 and T03 rows to validate hierarchy columns.",
+   "Investigate the test-period base-rate drop and add windowed/recency features for robustness."
+  ]
+ }
+}

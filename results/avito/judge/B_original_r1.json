@@ -1,0 +1,286 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "f30ea4541b35cdbe",
+ "seconds": 12.2,
+ "usage": {
+  "input_tokens": 4820,
+  "output_tokens": 1648,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0522,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "Same concept: the location hierarchy."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Same concept: category depth."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP identifier."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Same concept: location of the ad."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Same concept: city identifier."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP identifier."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Same concept: the ad that was viewed."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Same concept: ad impressions in search results."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Same concept: the user who viewed the ad."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Same concept: category primary key."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Same concept: price of the item."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Same concept: location filter of the search."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Same concept: search in which the ad was shown."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Same concept: user who performed the search."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "Same concept: ad view timestamp."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Hierarchy level, which is within the acceptable range."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Same concept: click flag, null for non-contextual ads."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Same concept: historical CTR."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "Same concept: ad title."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Same concept: user who requested the phone number."
+   },
+   {
+    "id": "i021",
+    "score": 2,
+    "rationale": "Same concept: ad type codes."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Same concept: region identifier."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Same concept: user-agent identifier."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "Same concept: the ad that was shown."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Same concept: category filter of the search."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "Same concept: category of the ad."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Same concept: users with device attributes."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Same concept: location primary key."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Same concept: browser family."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Same concept: phone request timestamp."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP with no parent table."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Subcategory code is a hierarchy-related identifier, so within the acceptable range."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Same concept: OS identifier."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Same concept: classified ad listings."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Same concept: search primary key."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Same concept: search timestamp."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Same concept: category taxonomy."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "Same concept: device identifier."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Same concept: ad page views."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Same concept: contextual ad flag."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Same concept: ad whose phone number was requested."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Same concept: user primary key."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Same concept: logged-in flag."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Same concept: search timestamp."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Same concept: free-text query."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Same concept: phone requests."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Same concept: parent category."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Same concept: search events."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Same concept: position on the results page."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Same concept: ad primary key."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   }
+  ]
+ }
+}

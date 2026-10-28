@@ -85,7 +85,7 @@
 - c03: BIGINT; examples ['1', '2', '3']  [S:c:T07.c03]
     profile: nulls=0.0% distinct=3 unique=no min=1 max=3 mean=2.809 top=3:56, 2:11, 1:1
 - c04: BIGINT; examples ['10', '9', '12']  [S:c:T07.c04]
-    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 6:7, 8:7, 9:7
+    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 9:7, 6:7, 8:7
 
 ### Table T08  [S:t:T08]  rows=9254702
 - c01: BIGINT; examples ['806173', '4316980', '2059012']  [S:c:T08.c01]
@@ -391,7 +391,7 @@ Relationship paths ranked by summed permutation importance (validation):
 - [P:path:4] importance=0.0031 path: T04.c05 -> T01.c04 then T08.c06 -> T04.c08 features=['f032', 'f033', 'f034', 'f035', 'f036']
 - [P:path:5] importance=0.0015 path: T02.c04 -> T01.c04 then T02.c01 -> T05.c03 features=['f068', 'f069']
 - [P:path:6] importance=0.0015 path: T01.c01 -> T01.c04 features=['f039', 'f040', 'f041', 'f042']
-- [P:path:7] importance=0.0015 path: (target table itself) features=['f000', 'f001', 'f002', 'f003']
+- [P:path:7] importance=0.0014 path: (target table itself) features=['f000', 'f001', 'f002', 'f003']
 - [P:path:8] importance=0.0012 path: T01.c02 -> T01.c04 then T02.c04 -> T01.c04 features=['f061']
 - [P:path:9] importance=0.0012 path: T02.c04 -> T01.c04 then T02.c02 -> T04.c08 features=['f070', 'f071']
 - [P:path:10] importance=0.0011 path: T01.c02 -> T01.c04 features=['f051', 'f052', 'f053', 'f054']
@@ -416,14 +416,14 @@ Relationship paths ranked by summed permutation importance (validation):
 
 Features (agg over the path; window in days before cutoff; univariate AUROC on train/val; direction; stability of direction across training cutoffs; BH-adjusted q-value; permutation importance):
 - [P:f:f066] count_distinct(T02.c01) window=all via T02.c04 -> T01.c04: auroc train=0.639 val=0.688 higher_in_positive stable=yes q=0 perm_imp=0.2798 coverage=100%
-- [P:f:f063] count(T02 rows) window=all via T02.c04 -> T01.c04: auroc train=0.636 val=0.683 higher_in_positive stable=yes q=0 perm_imp=0.0322 coverage=100%
+- [P:f:f063] count(T02 rows) window=all via T02.c04 -> T01.c04: auroc train=0.636 val=0.683 higher_in_positive stable=yes q=0 perm_imp=0.0321 coverage=100%
 - [P:f:f018] count_distinct(T06.c03) window=all via T06.c04 -> T01.c04: auroc train=0.569 val=0.604 higher_in_positive stable=yes q=1e-147 perm_imp=0.0181 coverage=100%
 - [P:f:f067] count_distinct(T02.c02) window=all via T02.c04 -> T01.c04: auroc train=0.578 val=0.553 higher_in_positive stable=yes q=3.2e-163 perm_imp=0.0144 coverage=100%
 - [P:f:f015] count(T06 rows) window=all via T06.c04 -> T01.c04: auroc train=0.568 val=0.603 higher_in_positive stable=yes q=9.5e-147 perm_imp=0.0107 coverage=100%
 - [P:f:f024] count(T04 rows) window=all via T04.c05 -> T01.c04: auroc train=0.594 val=0.621 higher_in_positive stable=yes q=1.1e-207 perm_imp=0.0034 coverage=100%
 - [P:f:f026] days_since_last(T04 rows) window=all via T04.c05 -> T01.c04: auroc train=0.470 val=0.450 lower_in_positive stable=yes q=2.4e-37 perm_imp=0.0021 coverage=43%
 - [P:f:f068] mean(T05.c04) window=all via T02.c04 -> T01.c04 then T02.c01 -> T05.c03: auroc train=0.555 val=0.558 higher_in_positive stable=yes q=4.7e-76 perm_imp=0.0015 coverage=60%
-- [P:f:f000] value(T01.c01) window=all via (target table itself): auroc train=0.507 val=0.512 higher_in_positive stable=yes q=0.12 perm_imp=0.0015 coverage=100%
+- [P:f:f000] value(T01.c01) window=all via (target table itself): auroc train=0.507 val=0.512 higher_in_positive stable=yes q=0.12 perm_imp=0.0014 coverage=100%
 - [P:f:f065] days_since_last(T02 rows) window=all via T02.c04 -> T01.c04: auroc train=0.451 val=0.425 lower_in_positive stable=yes q=1.9e-76 perm_imp=0.0014 coverage=60%
 - [P:f:f025] count(T04 rows) window=4 via T04.c05 -> T01.c04: auroc train=0.584 val=0.601 higher_in_positive stable=yes q=1e-186 perm_imp=0.0012 coverage=100%
 - [P:f:f061] count(T02 rows) window=all via T01.c02 -> T01.c04 then T02.c04 -> T01.c04: auroc train=0.500 val=0.501 higher_in_positive stable=no q=0.69 perm_imp=0.0012 coverage=100%
@@ -476,7 +476,7 @@ Features (agg over the path; window in days before cutoff; univariate AUROC on t
 - [P:f:f069] mean(T05.c05) window=all via T02.c04 -> T01.c04 then T02.c01 -> T05.c03: auroc train=0.500 val=0.500 lower_in_positive stable=no q=1 perm_imp=0.0000 coverage=60%
 - [P:f:f050] mean(T03.c01) window=all via T01.c01 -> T01.c04 then T01.c03 -> T03.c03: auroc train=0.500 val=0.500 higher_in_positive stable=no q=0.81 perm_imp=0.0000 coverage=7%
 - [P:f:f055] count(T03 rows) window=all via T01.c02 -> T01.c04 then T03.c04 -> T01.c04: auroc train=0.500 val=0.500 higher_in_positive stable=no q=1 perm_imp=0.0000 coverage=100%
-- [P:f:f052] mean(T01.c05) window=all via T01.c02 -> T01.c04: auroc train=0.500 val=0.500 lower_in_positive stable=no q=0.92 perm_imp=0.0000 coverage=1%
+- [P:f:f052] mean(T01.c05) window=all via T01.c02 -> T01.c04: auroc train=0.500 val=0.500 lower_in_positive stable=no q=0.92 perm_imp=-0.0000 coverage=1%
 - [P:f:f019] count_distinct(T06.c01) window=all via T06.c04 -> T01.c04: auroc train=0.564 val=0.585 higher_in_positive stable=yes q=1e-133 perm_imp=-0.0000 coverage=100%
 - [P:f:f008] mean(T05.c04) window=all via T03.c04 -> T01.c04 then T05.c01 -> T03.c03: auroc train=0.499 val=0.499 lower_in_positive stable=yes q=0.64 perm_imp=-0.0000 coverage=3%
 - [P:f:f006] count_distinct(T03.c02) window=all via T03.c04 -> T01.c04: auroc train=0.502 val=0.503 higher_in_positive stable=yes q=0.12 perm_imp=-0.0000 coverage=100%

@@ -1,0 +1,286 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "359c837438e34956",
+ "seconds": 11.5,
+ "usage": {
+  "input_tokens": 4457,
+  "output_tokens": 1507,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.048,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "Same concept: a region/city location hierarchy."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Anonymised IP identifier of the viewer, same concept."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "Location of the ad."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "City identifier of the location."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Ad that was viewed."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Ad impressions in search results with position, type and click flag; extra detail is consistent."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Price of the advertised item; the currency guess is consistent."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Hierarchy level, within the acceptable range."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Click flag on the impression."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "Ad title text."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i021",
+    "score": 2,
+    "rationale": "Ad type (regular/highlighted/contextual)."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Region identifier of the location."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "Ad that was shown."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Category filter of the search."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "User with device/browser attributes."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Anonymised IP identifier of the requester."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Subcategory code, a hierarchy-related identifier within the acceptable range."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Classified ad listing with location, category, price and title."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Timestamp of the search."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Ad page views."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Contextual (paid) ad flag."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Phone-number request events."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Parent category."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Search event."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Matches the reference."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Matches the reference."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   }
+  ]
+ }
+}

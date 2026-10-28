@@ -13,8 +13,8 @@ LLM output existed. The git history is the evidence for that ordering.
 |---|---|
 | Structural component (A in the brief) | **Implemented and measured** |
 | Outcome-driven component (B in the brief) | **Implemented and measured** |
-| LLM interpretation, configurations A/B/C × original/masked names | **Implemented and unit-tested; not yet run.** It needs an Anthropic API key. No LLM results are reported below, and none have been estimated. |
-| Blinded LLM judge and human audit of the judge | Implemented (judge) / pending (audit) |
+| LLM interpretation, configurations A/B/C × original/masked names | **Run:** 18 runs plus 18 judge calls on `claude-opus-5-5`, run on 2026-10-27, total cost **$5.55** |
+| Blinded LLM judge | Run. **The human audit of 30 judge decisions is still pending**, as is human verification of the semantic key. |
 
 ## Method in brief
 
@@ -87,14 +87,62 @@ are in the same range, which suggests the rules were not overfit to the developm
 
 ### LLM configurations A/B/C
 
-Not run yet. The run produces:
-- `results/avito/summary.md`, a table of every pre-registered metric per cell with run-to-run ranges;
-- pass/fail calls on H1–H3 under the pre-registered decision rule;
-- a discovery report per naming condition;
-- judge audit sheets for the human check.
+Mean across 3 runs per cell (min–max in parentheses). Full table: [`results/avito/summary.md`](results/avito/summary.md).
 
-Estimated cost for 18 interpretation calls and 18 judge calls on `claude-opus-5-5`: **about $5–10**. This estimate comes from packet sizes
-(A ≈ 1k, B ≈ 11k, C ≈ 16k input tokens) and has not been measured.
+| Metric | A / original | A / masked | B / original | B / masked | C / original | C / masked |
+|---|---|---|---|---|---|---|
+| Relationship F1 | 0.957 (0.957–0.957) | 1.000 (1–1) | 0.957 (0.957–0.957) | 0.986 (0.957–1) | 0.957 (0.957–0.957) | 0.986 (0.957–1) |
+| Entity concept score | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Entity kind accuracy | 1.000 | 1.000 | 0.917 (0.875–1) | 0.875 | 0.958 (0.875–1) | 0.958 (0.875–1) |
+| Column semantics, all 42 | 1.000 | 0.956 (0.929–0.988) | 1.000 | 0.944 (0.929–0.952) | 1.000 | 0.952 (0.929–0.964) |
+| Column semantics, 16 non-obvious | 1.000 | 0.906 (0.844–1) | 1.000 | 0.875 (0.844–0.906) | 1.000 | 0.875 (0.812–0.906) |
+| Invalid citations | 0 | 0 | 0 | 0 | 0 | 0 |
+| Overconfident errors (conf ≥ 0.8 and wrong) | 0 | 0 | 0 | 0 | 0 | 0 |
+| Causal statements (judge) | 0 | 0 | 0 | 0 | 0 | 0.33 (0–1) |
+| Items flagged for human review | 6.7 (6–7) | 39.7 (38–41) | 12.7 (11–14) | 31.0 (31–31) | 13.3 (12–15) | 32.3 (31–33) |
+| Input tokens per run | 4.5k | 4.1k | 25.5k | 22.3k | 36.0k | 31.1k |
+| Cost per run (USD) | 0.18 | 0.20 | 0.28 | 0.25 | 0.32 | 0.29 |
+
+**Pre-registered hypotheses.** All of them come out "no detectable difference", under both naming conditions:
+- **H1** (B beats A on relationships): no detectable difference.
+- **H2** (C beats B on semantics): no detectable difference.
+- **H3** (C adds no overconfident errors): there were none in any cell.
+
+**The result is a ceiling effect, not evidence against the hypothesis.** Schema-only config A already scores at or near the maximum. With
+masked names it recovers 11/11 relationships with no false positives and identifies all 8 tables correctly. This leaves no room for B or C to show an improvement.
+
+#### Why A scores so high: probable recognition of the dataset
+
+With every table and column name masked, the model never names the dataset. But its answers follow the original Avito competition
+documentation too closely for blind inference. For example, it described a masked small-integer column as an ad type of
+"regular, highlighted, context", which is almost word for word the documented values of `ObjectType`. The masked packet still carries fingerprints:
+- Cyrillic ad titles (described, not shown);
+- the exact 2015 date range;
+- distinctive row counts and table shapes;
+- ID values shared across tables, which the model used to pair columns.
+
+**Conclusion:** name masking does not prevent recognition of a well-known public dataset. The pre-registered design therefore **cannot
+answer the central question on `rel-avito`.** This is the most important finding of this run. It is the kind of contamination that makes
+LLM-on-public-data demos look better than they are.
+
+#### What the errors were
+
+| Error | Where | Assessment |
+|---|---|---|
+| `Category.ParentCategoryID -> Category` proposed as a relationship (the only "false positive" with original names; 1 of 3 masked runs in C) | A/B/C original (every run); C masked (1 run) | This was the pre-registered **adjudication candidate**: a plausible self-reference that RelBench's metadata omits. Treated as correct, relationship precision is about 1.0 in every cell. |
+| `Category.SubcategoryID -> Category` | B masked, 1 run | Plausible but unverifiable; the column is undocumented. |
+| `SearchStream` labeled "bridge" instead of "event" | 5 of 6 B runs, 2 of 6 C runs, 0 of 6 A runs | Defensible: it is an impression table that links searches to ads. Notably this appears **only once structural evidence is added**, so the evidence changes how the model frames the table, not whether it understands it. |
+| `UserInfo.UserAgentOSID / UserAgentFamilyID / UserDeviceID` swapped or vague | Masked runs | Four anonymous integer codes. Neither values nor structure can tell them apart. No configuration solved this, and none should be expected to. |
+| One outcome statement judged causal | C masked, run 1 | "...which would explain why past view volume is the dominant predictor (behavioural persistence)". Borderline: an explanatory hypothesis rather than a claim that an intervention would work. |
+
+#### Secondary observations (not pre-registered as primary; treat as exploratory)
+
+- **Calibration of human-review flags.** With masked names, adding evidence reduced the items the model flagged for human review from about 40 (A)
+  to about 31–32 (B, C), with the same accuracy. That gap is larger than the run-to-run range. With real names the flags went *up* (7 → 13).
+  So evidence may help the model judge *what it actually knows*. But with accuracy at the ceiling, this cannot be separated from noise in how the model hedges.
+- **Cost:** B costs about 1.4× A and C about 1.6× A, mostly from 5–8× more input tokens, with no measured accuracy benefit on this dataset.
+- **The judge gave full marks to every original-name answer.** That could mean the answers were all correct, or that the judge is lenient. The pending human audit
+  (`results/avito/judge_audit/`) is needed before trusting the semantic scores.
 
 ## Threats to validity (and what is done about each)
 
@@ -112,6 +160,9 @@ Estimated cost for 18 interpretation calls and 18 judge calls on `claude-opus-5-
 | **Causal language** | Prohibited in the prompt and counted as an unsupported claim (keyword check plus judge). |
 
 ## Lessons learned so far
+
+0. **A public benchmark can be useless for testing semantic discovery, even with names masked.** The model's prior knowledge of the
+   dataset saturated the easiest baseline. The next experiment needs data the model cannot have seen, or much deeper anonymization.
 
 1. **Dense surrogate keys make value-based foreign-key discovery mostly guesswork.** Real warehouses have the same problem (auto-increment IDs).
    The structural component's honest output is a ranked list of candidates, not an answer. This makes the LLM's resolution step the critical one.

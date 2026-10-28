@@ -749,7 +749,7 @@
      "unique": false,
      "min": "1e-05",
      "max": "1.0",
-     "mean": 0.010553375849337325,
+     "mean": 0.010553375849337661,
      "avg_len": null,
      "top_values": [],
      "samples": [

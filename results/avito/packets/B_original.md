@@ -23,7 +23,7 @@
 - Level: BIGINT; examples ['1', '2', '3']  [S:c:Category.Level]
     profile: nulls=0.0% distinct=3 unique=no min=1 max=3 mean=2.809 top=3:56, 2:11, 1:1
 - ParentCategoryID: BIGINT; examples ['10', '9', '12']  [S:c:Category.ParentCategoryID]
-    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 6:7, 8:7, 9:7
+    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 9:7, 6:7, 8:7
 - SubcategoryID: BIGINT; examples ['45', '5', '25']  [S:c:Category.SubcategoryID]
     profile: nulls=0.0% distinct=57 unique=no min=1 max=57 mean=31.59
 

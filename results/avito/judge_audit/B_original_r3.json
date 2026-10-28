@@ -1,0 +1,402 @@
+[
+ {
+  "key": "column:PhoneRequestsStream.PhoneRequestDate",
+  "reference": "Timestamp of the phone-number request.",
+  "prediction": "Timestamp of the phone request (2015-04-25 to 2015-05-20)",
+  "id": "i001",
+  "score": 2,
+  "rationale": "Same concept: when the phone request happened."
+ },
+ {
+  "key": "column:VisitStream.ViewDate",
+  "reference": "Timestamp of the ad view.",
+  "prediction": "Timestamp of the ad visit; used to define the post-cutoff outcome window",
+  "id": "i002",
+  "score": 2,
+  "rationale": "Same concept: when the ad was viewed."
+ },
+ {
+  "key": "column:AdsInfo.Price",
+  "reference": "Price of the item or service advertised.",
+  "prediction": "Asking price of the item (local currency, likely RUB); max 999999999999 looks like a placeholder/outlier",
+  "id": "i003",
+  "score": 2,
+  "rationale": "Same concept: the advertised price."
+ },
+ {
+  "key": "column:Category.SubcategoryID",
+  "reference": "Subcategory identifier / code within the hierarchy. Not documented; acceptable: any hierarchy-related identifier.",
+  "prediction": "Alternative subcategory code (57 distinct); may be a separate coding system rather than a reference to CategoryID",
+  "id": "i004",
+  "score": 2,
+  "rationale": "A subcategory code is a hierarchy-related identifier, so it falls within the acceptable range."
+ },
+ {
+  "key": "table:UserInfo",
+  "reference": "A site user/visitor, described by browser and device attributes (user agent, OS, device).",
+  "prediction": "Registered/tracked users with their browser user-agent, OS and device attributes; the outcome entity",
+  "id": "i005",
+  "score": 2,
+  "rationale": "Same concept: users described by browser, OS and device attributes."
+ },
+ {
+  "key": "column:PhoneRequestsStream.UserID",
+  "reference": "User who requested the phone number (foreign key to UserInfo).",
+  "prediction": "User who requested the phone number",
+  "id": "i006",
+  "score": 2,
+  "rationale": "Same concept: the user who requested the phone number."
+ },
+ {
+  "key": "column:Location.Level",
+  "reference": "Granularity level of the location (e.g., country/region/city). Not documented; acceptable: hierarchy level.",
+  "prediction": "Geographic level (1 country, 2 region, 3 city)",
+  "id": "i007",
+  "score": 2,
+  "rationale": "Geographic level is a hierarchy level, so it falls within the acceptable range."
+ },
+ {
+  "key": "column:VisitStream.UserID",
+  "reference": "User who viewed the ad (foreign key to UserInfo).",
+  "prediction": "User who viewed the ad page",
+  "id": "i008",
+  "score": 2,
+  "rationale": "Same concept: the user who viewed the ad."
+ },
+ {
+  "key": "column:AdsInfo.CategoryID",
+  "reference": "Category of the ad (foreign key to Category).",
+  "prediction": "Category of the ad (52 of 68 categories used, likely leaf categories)",
+  "id": "i009",
+  "score": 2,
+  "rationale": "Same concept: the ad's category."
+ },
+ {
+  "key": "table:VisitStream",
+  "reference": "Ad page views: a user opened/viewed an ad's page at a point in time.",
+  "prediction": "Event log of users viewing/visiting an ad page; the source table for the engagement outcome",
+  "id": "i010",
+  "score": 2,
+  "rationale": "Same concept: log of ad page views."
+ },
+ {
+  "key": "column:UserInfo.UserAgentFamilyID",
+  "reference": "Identifier of the user's browser family.",
+  "prediction": "Browser family code",
+  "id": "i011",
+  "score": 2,
+  "rationale": "Same concept: browser family identifier."
+ },
+ {
+  "key": "column:SearchInfo.UserID",
+  "reference": "User who performed the search (foreign key to UserInfo).",
+  "prediction": "User performing the search (1.3% null, possibly anonymous)",
+  "id": "i012",
+  "score": 2,
+  "rationale": "Same concept: the user who performed the search."
+ },
+ {
+  "key": "column:PhoneRequestsStream.AdID",
+  "reference": "Ad whose seller phone number was requested (foreign key to AdsInfo).",
+  "prediction": "Ad whose phone number was requested",
+  "id": "i013",
+  "score": 2,
+  "rationale": "Same concept: the ad whose phone number was requested."
+ },
+ {
+  "key": "column:VisitStream.IPID",
+  "reference": "Anonymized identifier of the viewer's IP address (not a foreign key).",
+  "prediction": "Anonymised IP identifier of the visit",
+  "id": "i014",
+  "score": 2,
+  "rationale": "Same concept: anonymised IP identifier."
+ },
+ {
+  "key": "column:AdsInfo.IsContext",
+  "reference": "Flag: whether the ad is a contextual (paid, highlighted-in-search) ad rather than a regular listing.",
+  "prediction": "Flag: ad is a contextual (paid/promoted) ad; ~0.4% of ads",
+  "id": "i015",
+  "score": 2,
+  "rationale": "Same concept: contextual/paid ad flag."
+ },
+ {
+  "key": "column:Location.CityID",
+  "reference": "Identifier of the city of the location.",
+  "prediction": "City code of the location; separate code, not a UserID despite value overlap",
+  "id": "i016",
+  "score": 2,
+  "rationale": "Same concept: city identifier of the location."
+ },
+ {
+  "key": "column:AdsInfo.LocationID",
+  "reference": "Location of the ad (foreign key to Location).",
+  "prediction": "Location where the ad is posted",
+  "id": "i017",
+  "score": 2,
+  "rationale": "Same concept: the ad's location."
+ },
+ {
+  "key": "table:Category",
+  "reference": "Ad category taxonomy (a hierarchy of categories and subcategories).",
+  "prediction": "Ad category hierarchy (3 levels: one root, 11 mid-level, 56 leaf categories)",
+  "id": "i018",
+  "score": 2,
+  "rationale": "Same concept: category hierarchy."
+ },
+ {
+  "key": "column:Location.LocationID",
+  "reference": "Unique identifier of the location (primary key).",
+  "prediction": "Unique location identifier",
+  "id": "i019",
+  "score": 2,
+  "rationale": "Same concept: location primary key."
+ },
+ {
+  "key": "table:SearchStream",
+  "reference": "Ad impressions within search results: which ads were shown for each search, at what position, of what type, and whether the ad was clicked.",
+  "prediction": "Impressions of ads shown on search result pages: one row per (search, ad) with display position, ad type, historical CTR and click flag",
+  "id": "i020",
+  "score": 2,
+  "rationale": "Same concept: ad impressions in search results with position, type and click."
+ },
+ {
+  "key": "table:Location",
+  "reference": "Geographic location (region/city hierarchy) of ads and searches.",
+  "prediction": "Geographic location hierarchy (one country-level row, 82 region-level rows, 3429 city-level rows)",
+  "id": "i021",
+  "score": 2,
+  "rationale": "Same concept: geographic location hierarchy."
+ },
+ {
+  "key": "column:SearchStream.IsClick",
+  "reference": "Flag: whether the shown ad was clicked (recorded for contextual ads; missing otherwise).",
+  "prediction": "Flag: the displayed ad was clicked (~0.6% of non-null); 53% null, possibly not tracked for some ad types or withheld for a later period",
+  "id": "i022",
+  "score": 2,
+  "rationale": "Same concept: click flag; the hedge only concerns why values are missing, not what the flag means."
+ },
+ {
+  "key": "column:SearchInfo.SearchQuery",
+  "reference": "Free-text search query entered by the user (may be empty).",
+  "prediction": "Free-text search query (84% null, i.e. most searches are category/location browsing without text)",
+  "id": "i023",
+  "score": 2,
+  "rationale": "Same concept: free-text search query."
+ },
+ {
+  "key": "column:SearchStream.Position",
+  "reference": "Position (rank/slot) of the ad on the search results page.",
+  "prediction": "Display slot of the ad on the result page (only 1,2,6,7,8 present, suggesting only certain slots are logged)",
+  "id": "i024",
+  "score": 2,
+  "rationale": "Same concept: ad position on the results page."
+ },
+ {
+  "key": "column:SearchInfo.SearchDate",
+  "reference": "Timestamp of the search.",
+  "prediction": "Timestamp of the search",
+  "id": "i025",
+  "score": 2,
+  "rationale": "Same concept: search timestamp."
+ },
+ {
+  "key": "column:SearchInfo.IPID",
+  "reference": "Anonymized identifier of the searcher's IP address (not a foreign key).",
+  "prediction": "Anonymised IP identifier of the search",
+  "id": "i026",
+  "score": 2,
+  "rationale": "Same concept: anonymised IP identifier."
+ },
+ {
+  "key": "table:PhoneRequestsStream",
+  "reference": "Contact requests: a user asked to reveal the seller's phone number for an ad (a lead/contact event).",
+  "prediction": "Event log of users requesting the seller's phone number on an ad (a strong-intent contact action)",
+  "id": "i027",
+  "score": 2,
+  "rationale": "Same concept: phone contact requests."
+ },
+ {
+  "key": "column:UserInfo.UserAgentID",
+  "reference": "Identifier of the user's browser user-agent string.",
+  "prediction": "Browser user-agent string identifier (no lookup table)",
+  "id": "i028",
+  "score": 2,
+  "rationale": "Same concept: user-agent identifier."
+ },
+ {
+  "key": "column:SearchInfo.SearchID",
+  "reference": "Unique identifier of the search event (primary key).",
+  "prediction": "Unique search event identifier",
+  "id": "i029",
+  "score": 2,
+  "rationale": "Same concept: search primary key."
+ },
+ {
+  "key": "column:Location.RegionID",
+  "reference": "Identifier of the region containing the location.",
+  "prediction": "Region code the location belongs to (84 regions); separate code, not a LocationID",
+  "id": "i030",
+  "score": 2,
+  "rationale": "Same concept: region identifier of the location."
+ },
+ {
+  "key": "column:SearchInfo.CategoryID",
+  "reference": "Category filter/context of the search (foreign key to Category).",
+  "prediction": "Category filter of the search (0 may mean the root/all categories)",
+  "id": "i031",
+  "score": 2,
+  "rationale": "Same concept: search category filter."
+ },
+ {
+  "key": "column:SearchInfo.LocationID",
+  "reference": "Location filter/context of the search (foreign key to Location).",
+  "prediction": "Location filter of the search",
+  "id": "i032",
+  "score": 2,
+  "rationale": "Same concept: search location filter."
+ },
+ {
+  "key": "column:UserInfo.UserID",
+  "reference": "Unique identifier of the user (primary key).",
+  "prediction": "Unique user identifier; outcome entity",
+  "id": "i033",
+  "score": 2,
+  "rationale": "Same concept: user primary key."
+ },
+ {
+  "key": "column:AdsInfo.Title",
+  "reference": "Title text of the ad.",
+  "prediction": "Ad title text (Russian)",
+  "id": "i034",
+  "score": 2,
+  "rationale": "Same concept: ad title."
+ },
+ {
+  "key": "column:Category.CategoryID",
+  "reference": "Unique identifier of the category (primary key).",
+  "prediction": "Unique category identifier",
+  "id": "i035",
+  "score": 2,
+  "rationale": "Same concept: category primary key."
+ },
+ {
+  "key": "column:SearchStream.AdID",
+  "reference": "The ad that was shown (foreign key to AdsInfo).",
+  "prediction": "Ad displayed in the search results",
+  "id": "i036",
+  "score": 2,
+  "rationale": "Same concept: the ad that was shown."
+ },
+ {
+  "key": "column:Category.ParentCategoryID",
+  "reference": "Identifier of the parent category in the hierarchy.",
+  "prediction": "Parent category in the hierarchy; 12 distinct values matches 1 level-1 + 11 level-2 categories",
+  "id": "i037",
+  "score": 2,
+  "rationale": "Same concept: parent category."
+ },
+ {
+  "key": "column:UserInfo.UserAgentOSID",
+  "reference": "Identifier of the user's operating system.",
+  "prediction": "Operating system code of the user's agent",
+  "id": "i038",
+  "score": 2,
+  "rationale": "Same concept: operating system identifier."
+ },
+ {
+  "key": "table:AdsInfo",
+  "reference": "A classified advertisement (listing) posted on the marketplace, with its category, location, price and title; includes both regular listings and paid contextual ads.",
+  "prediction": "Classified/advertisement listing catalogue (one row per ad, with its location, category, price, title and a flag for contextual/paid ads)",
+  "id": "i039",
+  "score": 2,
+  "rationale": "Same concept: ads catalogue including regular and contextual ads."
+ },
+ {
+  "key": "column:UserInfo.UserDeviceID",
+  "reference": "Identifier of the user's device type/model.",
+  "prediction": "Device model code",
+  "id": "i040",
+  "score": 2,
+  "rationale": "Same concept: device identifier."
+ },
+ {
+  "key": "table:SearchInfo",
+  "reference": "A search event: a user ran a search (a query and/or category/location filters) at a point in time.",
+  "prediction": "Search sessions/queries: one row per search event by a user, with query text, search location/category filters, login state and IP",
+  "id": "i041",
+  "score": 2,
+  "rationale": "Same concept: search events."
+ },
+ {
+  "key": "column:VisitStream.AdID",
+  "reference": "Ad whose page was viewed (foreign key to AdsInfo).",
+  "prediction": "Ad that was viewed",
+  "id": "i042",
+  "score": 2,
+  "rationale": "Same concept: the ad that was viewed."
+ },
+ {
+  "key": "column:SearchStream.SearchDate",
+  "reference": "Timestamp of the search in which the impression occurred.",
+  "prediction": "Timestamp of the search (denormalised copy of SearchInfo.SearchDate)",
+  "id": "i043",
+  "score": 2,
+  "rationale": "Same concept: timestamp of the search for the impression."
+ },
+ {
+  "key": "column:SearchInfo.IsUserLoggedOn",
+  "reference": "Flag: whether the user was logged in when searching.",
+  "prediction": "Flag: user was logged in during the search (~32% of searches)",
+  "id": "i044",
+  "score": 2,
+  "rationale": "Same concept: logged-in flag."
+ },
+ {
+  "key": "column:SearchStream.HistCTR",
+  "reference": "Historical click-through rate of the ad (for contextual ads).",
+  "prediction": "Historical click-through rate of the ad, available only for some ad types (~51% null)",
+  "id": "i045",
+  "score": 2,
+  "rationale": "Same concept: historical click-through rate."
+ },
+ {
+  "key": "column:PhoneRequestsStream.IPID",
+  "reference": "Anonymized identifier of the requester's IP address (not a foreign key to any table).",
+  "prediction": "Anonymised IP address identifier of the request (no IP dimension table)",
+  "id": "i046",
+  "score": 2,
+  "rationale": "Same concept: anonymised IP identifier, not a foreign key."
+ },
+ {
+  "key": "column:AdsInfo.AdID",
+  "reference": "Unique identifier of the ad (primary key).",
+  "prediction": "Unique identifier of an ad",
+  "id": "i047",
+  "score": 2,
+  "rationale": "Same concept: ad primary key."
+ },
+ {
+  "key": "column:SearchStream.SearchID",
+  "reference": "The search in which the ad was shown (foreign key to SearchInfo).",
+  "prediction": "Search event in which the ad was displayed",
+  "id": "i048",
+  "score": 2,
+  "rationale": "Same concept: the search in which the ad was shown."
+ },
+ {
+  "key": "column:SearchStream.ObjectType",
+  "reference": "Type of ad shown: regular, highlighted, or contextual (categorical code).",
+  "prediction": "Type of ad shown (e.g. regular, highlighted, contextual); type 3 count roughly matches non-null HistCTR rows",
+  "id": "i049",
+  "score": 2,
+  "rationale": "Same concept: ad type code."
+ },
+ {
+  "key": "column:Category.Level",
+  "reference": "Depth of the category in the category hierarchy.",
+  "prediction": "Depth in category hierarchy (1 root, 2 mid, 3 leaf)",
+  "id": "i050",
+  "score": 2,
+  "rationale": "Same concept: depth in the category hierarchy."
+ }
+]

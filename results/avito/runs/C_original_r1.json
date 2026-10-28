@@ -1,0 +1,888 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "request_sha": "85d7c0f47ab2b670",
+ "seconds": 70.1,
+ "usage": {
+  "input_tokens": 35958,
+  "output_tokens": 9056,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.325,
+ "stop_reason": "end_turn",
+ "output": {
+  "tables": [
+   {
+    "table": "AdsInfo",
+    "concept": "Advertisement (classified listing) catalogue: one row per ad with its location, category, price, title and a context-ad flag",
+    "kind": "entity",
+    "confidence": 0.85,
+    "evidence": [
+     "S:t:AdsInfo",
+     "S:k:AdsInfo.AdID",
+     "S:c:AdsInfo.Title",
+     "S:c:AdsInfo.Price",
+     "S:r:1",
+     "S:r:11"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "Category",
+    "concept": "Ad/search category hierarchy with 3 levels (1 root, 11 level-2, 56 level-3)",
+    "kind": "dimension",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:Category",
+     "S:k:Category.CategoryID",
+     "S:c:Category.Level",
+     "S:c:Category.ParentCategoryID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "Location",
+    "concept": "Geographic location dimension (country/region/city levels) with region and city codes",
+    "kind": "dimension",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:Location",
+     "S:k:Location.LocationID",
+     "S:c:Location.Level",
+     "S:c:Location.RegionID",
+     "S:c:Location.CityID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PhoneRequestsStream",
+    "concept": "Event log of users requesting a seller's phone number on an ad (contact events)",
+    "kind": "event",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:PhoneRequestsStream",
+     "S:a:127",
+     "S:r:49",
+     "S:r:52",
+     "S:c:PhoneRequestsStream.PhoneRequestDate"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SearchInfo",
+    "concept": "Search session/event: one row per search performed by a user, with query text, search location/category filters, login status and IP",
+    "kind": "event",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:SearchInfo",
+     "S:k:SearchInfo.SearchID",
+     "S:c:SearchInfo.SearchQuery",
+     "S:r:72",
+     "S:r:67",
+     "S:r:55"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchStream",
+    "concept": "Ad impressions shown on search result pages: one row per (search, ad) shown, with position, ad object type, historical CTR and click flag",
+    "kind": "bridge",
+    "confidence": 0.75,
+    "evidence": [
+     "S:t:SearchStream",
+     "S:a:128",
+     "S:r:91",
+     "S:r:75",
+     "S:c:SearchStream.Position",
+     "S:c:SearchStream.IsClick"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "concept": "User entity (outcome entity) with browser/user-agent, OS, device and agent-family codes",
+    "kind": "entity",
+    "confidence": 0.85,
+    "evidence": [
+     "S:t:UserInfo",
+     "S:k:UserInfo.UserID",
+     "S:c:UserInfo.UserAgentID",
+     "S:c:UserInfo.UserDeviceID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "VisitStream",
+    "concept": "Event log of users viewing/visiting ad pages; likely the source of the engagement outcome",
+    "kind": "event",
+    "confidence": 0.8,
+    "evidence": [
+     "S:t:VisitStream",
+     "S:a:129",
+     "S:r:110",
+     "S:r:113",
+     "S:c:VisitStream.ViewDate"
+    ],
+    "needs_human_validation": true
+   }
+  ],
+  "columns": [
+   {
+    "table": "AdsInfo",
+    "column": "AdID",
+    "meaning": "Unique ad identifier",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:AdsInfo.AdID",
+     "S:c:AdsInfo.AdID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "AdsInfo",
+    "column": "LocationID",
+    "meaning": "Location where the ad is posted",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:11",
+     "S:c:AdsInfo.LocationID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "AdsInfo",
+    "column": "CategoryID",
+    "meaning": "Category of the ad",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:1",
+     "S:c:AdsInfo.CategoryID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "AdsInfo",
+    "column": "Price",
+    "meaning": "Listed price of the item (currency unknown, likely RUB); max 999999999999 looks like a placeholder/outlier",
+    "role": "measure",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:AdsInfo.Price"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "AdsInfo",
+    "column": "Title",
+    "meaning": "Ad title text (Russian)",
+    "role": "text",
+    "confidence": 0.9,
+    "evidence": [
+     "S:c:AdsInfo.Title"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "AdsInfo",
+    "column": "IsContext",
+    "meaning": "Flag: ad is a paid contextual ad (~0.4% of ads)",
+    "role": "flag",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:AdsInfo.IsContext"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "Category",
+    "column": "CategoryID",
+    "meaning": "Unique category identifier",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:Category.CategoryID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "Category",
+    "column": "Level",
+    "meaning": "Depth in category hierarchy (1=root, 2, 3=leaf)",
+    "role": "categorical_code",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:Category.Level"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "Category",
+    "column": "ParentCategoryID",
+    "meaning": "Parent category in the hierarchy; 12 distinct values matches 1 level-1 + 11 level-2 categories",
+    "role": "foreign_key",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:Category.ParentCategoryID",
+     "S:c:Category.Level",
+     "S:r:24",
+     "S:a:62"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "Category",
+    "column": "SubcategoryID",
+    "meaning": "Alternative/subcategory code, possibly from a separate numbering scheme; not clearly a reference to CategoryID",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.4,
+    "evidence": [
+     "S:c:Category.SubcategoryID",
+     "S:r:29",
+     "S:a:63"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "Location",
+    "column": "LocationID",
+    "meaning": "Unique location identifier",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:Location.LocationID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "Location",
+    "column": "Level",
+    "meaning": "Geographic level (1=country, 2=region, 3=city)",
+    "role": "categorical_code",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:Location.Level"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "Location",
+    "column": "RegionID",
+    "meaning": "Region code (84 regions); separate code space, not a LocationID",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:Location.RegionID",
+     "S:r:45"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "Location",
+    "column": "CityID",
+    "meaning": "City code; separate code space (overlap with UserID is coincidental)",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:Location.CityID",
+     "S:r:34"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "PhoneRequestsStream",
+    "column": "UserID",
+    "meaning": "User who requested the phone number",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:52"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PhoneRequestsStream",
+    "column": "IPID",
+    "meaning": "Anonymised IP address identifier; no parent table",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:PhoneRequestsStream.IPID",
+     "S:r:50"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PhoneRequestsStream",
+    "column": "AdID",
+    "meaning": "Ad whose phone number was requested",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:49"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "PhoneRequestsStream",
+    "column": "PhoneRequestDate",
+    "meaning": "Timestamp of phone request",
+    "role": "timestamp",
+    "confidence": 0.9,
+    "evidence": [
+     "S:c:PhoneRequestsStream.PhoneRequestDate"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "UserID",
+    "meaning": "User who performed the search",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:72"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "SearchID",
+    "meaning": "Unique search identifier",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:SearchInfo.SearchID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "SearchDate",
+    "meaning": "Timestamp of search",
+    "role": "timestamp",
+    "confidence": 0.9,
+    "evidence": [
+     "S:c:SearchInfo.SearchDate"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "IPID",
+    "meaning": "Anonymised IP identifier",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:SearchInfo.IPID",
+     "S:r:60"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "IsUserLoggedOn",
+    "meaning": "Flag: user was logged in during search (~32%)",
+    "role": "flag",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:SearchInfo.IsUserLoggedOn"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "SearchQuery",
+    "meaning": "Free-text query; 84% null (browsing without query)",
+    "role": "text",
+    "confidence": 0.85,
+    "evidence": [
+     "S:c:SearchInfo.SearchQuery"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "LocationID",
+    "meaning": "Location filter/context of the search",
+    "role": "foreign_key",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:67"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchInfo",
+    "column": "CategoryID",
+    "meaning": "Category filter/context of the search",
+    "role": "foreign_key",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:55",
+     "S:a:66"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchStream",
+    "column": "SearchID",
+    "meaning": "Search on whose result page the ad was shown",
+    "role": "foreign_key",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:91"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchStream",
+    "column": "AdID",
+    "meaning": "Ad shown in search results",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:75"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "SearchStream",
+    "column": "Position",
+    "meaning": "Display slot of the ad on the result page (only 1,2,6,7,8 observed)",
+    "role": "categorical_code",
+    "confidence": 0.75,
+    "evidence": [
+     "S:c:SearchStream.Position"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SearchStream",
+    "column": "ObjectType",
+    "meaning": "Type of ad shown (likely 1=regular, 2=highlighted, 3=contextual)",
+    "role": "categorical_code",
+    "confidence": 0.6,
+    "evidence": [
+     "S:c:SearchStream.ObjectType",
+     "S:c:SearchStream.HistCTR"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SearchStream",
+    "column": "HistCTR",
+    "meaning": "Historical click-through rate of the ad; null share (51.4%) equals share of ObjectType 1+2 rows, so populated only for ObjectType 3",
+    "role": "measure",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:SearchStream.HistCTR",
+     "S:c:SearchStream.ObjectType"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SearchStream",
+    "column": "IsClick",
+    "meaning": "Flag: impression was clicked (~0.6% of non-null); null for non-contextual rows and possibly a held-out period",
+    "role": "flag",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:SearchStream.IsClick",
+     "S:c:SearchStream.ObjectType"
+    ],
+    "needs_human_validation": true
+   },
+   {
+    "table": "SearchStream",
+    "column": "SearchDate",
+    "meaning": "Timestamp of the search (denormalised from SearchInfo)",
+    "role": "timestamp",
+    "confidence": 0.8,
+    "evidence": [
+     "S:c:SearchStream.SearchDate",
+     "S:c:SearchInfo.SearchDate"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "column": "UserID",
+    "meaning": "Unique user identifier (outcome entity)",
+    "role": "primary_key",
+    "confidence": 0.95,
+    "evidence": [
+     "S:k:UserInfo.UserID"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "column": "UserAgentID",
+    "meaning": "Browser user-agent string code; overlap with UserID coincidental",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:UserInfo.UserAgentID",
+     "S:r:97"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "column": "UserAgentOSID",
+    "meaning": "Operating system code",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:UserInfo.UserAgentOSID",
+     "S:r:100"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "column": "UserDeviceID",
+    "meaning": "Device model code",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:UserInfo.UserDeviceID",
+     "S:r:105"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "UserInfo",
+    "column": "UserAgentFamilyID",
+    "meaning": "Browser family code",
+    "role": "categorical_code",
+    "confidence": 0.65,
+    "evidence": [
+     "S:c:UserInfo.UserAgentFamilyID",
+     "S:r:93"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "VisitStream",
+    "column": "UserID",
+    "meaning": "User who viewed the ad",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:113"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "VisitStream",
+    "column": "IPID",
+    "meaning": "Anonymised IP identifier",
+    "role": "identifier_not_foreign_key",
+    "confidence": 0.7,
+    "evidence": [
+     "S:c:VisitStream.IPID",
+     "S:r:111"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "VisitStream",
+    "column": "AdID",
+    "meaning": "Ad that was viewed",
+    "role": "foreign_key",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:110"
+    ],
+    "needs_human_validation": false
+   },
+   {
+    "table": "VisitStream",
+    "column": "ViewDate",
+    "meaning": "Timestamp of ad view",
+    "role": "timestamp",
+    "confidence": 0.9,
+    "evidence": [
+     "S:c:VisitStream.ViewDate"
+    ],
+    "needs_human_validation": false
+   }
+  ],
+  "relationships": [
+   {
+    "from_table": "AdsInfo",
+    "from_column": "CategoryID",
+    "to_table": "Category",
+    "to_column": "CategoryID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:1"
+    ]
+   },
+   {
+    "from_table": "AdsInfo",
+    "from_column": "LocationID",
+    "to_table": "Location",
+    "to_column": "LocationID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:11"
+    ]
+   },
+   {
+    "from_table": "Category",
+    "from_column": "ParentCategoryID",
+    "to_table": "Category",
+    "to_column": "CategoryID",
+    "confidence": 0.55,
+    "evidence": [
+     "S:r:24",
+     "S:c:Category.Level",
+     "S:a:62"
+    ]
+   },
+   {
+    "from_table": "PhoneRequestsStream",
+    "from_column": "AdID",
+    "to_table": "AdsInfo",
+    "to_column": "AdID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:49"
+    ]
+   },
+   {
+    "from_table": "PhoneRequestsStream",
+    "from_column": "UserID",
+    "to_table": "UserInfo",
+    "to_column": "UserID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:52"
+    ]
+   },
+   {
+    "from_table": "SearchInfo",
+    "from_column": "UserID",
+    "to_table": "UserInfo",
+    "to_column": "UserID",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:72"
+    ]
+   },
+   {
+    "from_table": "SearchInfo",
+    "from_column": "LocationID",
+    "to_table": "Location",
+    "to_column": "LocationID",
+    "confidence": 0.8,
+    "evidence": [
+     "S:r:67"
+    ]
+   },
+   {
+    "from_table": "SearchInfo",
+    "from_column": "CategoryID",
+    "to_table": "Category",
+    "to_column": "CategoryID",
+    "confidence": 0.75,
+    "evidence": [
+     "S:r:55"
+    ]
+   },
+   {
+    "from_table": "SearchStream",
+    "from_column": "SearchID",
+    "to_table": "SearchInfo",
+    "to_column": "SearchID",
+    "confidence": 0.9,
+    "evidence": [
+     "S:r:91"
+    ]
+   },
+   {
+    "from_table": "SearchStream",
+    "from_column": "AdID",
+    "to_table": "AdsInfo",
+    "to_column": "AdID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:75"
+    ]
+   },
+   {
+    "from_table": "VisitStream",
+    "from_column": "AdID",
+    "to_table": "AdsInfo",
+    "to_column": "AdID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:110"
+    ]
+   },
+   {
+    "from_table": "VisitStream",
+    "from_column": "UserID",
+    "to_table": "UserInfo",
+    "to_column": "UserID",
+    "confidence": 0.85,
+    "evidence": [
+     "S:r:113"
+    ]
+   }
+  ],
+  "outcome_insights": [
+   {
+    "statement": "Number of distinct ads a user viewed before the cutoff is the strongest single association with future engagement (higher in positives, stable across cutoffs).",
+    "kind": "observed_association",
+    "confidence": 0.85,
+    "evidence": [
+     "P:f:f066",
+     "P:path:1"
+    ]
+   },
+   {
+    "statement": "Overall past visit volume (all-time and last 4 days) is higher among engaged users; the best single count alone reaches test AUROC 0.655.",
+    "kind": "observed_association",
+    "confidence": 0.8,
+    "evidence": [
+     "P:f:f063",
+     "P:f:f064",
+     "P:m:2"
+    ]
+   },
+   {
+    "statement": "Past phone-request and search activity counts are also higher in positives, but weaker than visit activity.",
+    "kind": "observed_association",
+    "confidence": 0.75,
+    "evidence": [
+     "P:f:f018",
+     "P:f:f015",
+     "P:f:f024",
+     "P:f:f032",
+     "P:path:2",
+     "P:path:3"
+    ]
+   },
+   {
+    "statement": "More recent last activity (fewer days since last visit/search/phone request) is associated with positive outcome.",
+    "kind": "observed_association",
+    "confidence": 0.65,
+    "evidence": [
+     "P:f:f065",
+     "P:f:f026",
+     "P:f:f017"
+    ]
+   },
+   {
+    "statement": "The full model adds only modest lift over a single activity count (test AUROC ~0.67 vs 0.655), suggesting engagement is largely captured by prior activity level (habitual users stay engaged).",
+    "kind": "hypothesis",
+    "confidence": 0.6,
+    "evidence": [
+     "P:m:1",
+     "P:m:2"
+    ]
+   },
+   {
+    "statement": "Device/user-agent attributes and the coincidental-overlap paths (CityID->UserID, UserAgentID->UserID, etc.) show near-chance AUROC and ~zero importance, consistent with them not being real relationships.",
+    "kind": "observed_association",
+    "confidence": 0.75,
+    "evidence": [
+     "P:f:f000",
+     "P:f:f004",
+     "P:f:f039",
+     "P:f:f051",
+     "P:path:12",
+     "P:path:24"
+    ]
+   },
+   {
+    "statement": "Users who viewed higher-priced ads have slightly higher engagement rates (weak association).",
+    "kind": "observed_association",
+    "confidence": 0.45,
+    "evidence": [
+     "P:f:f068"
+    ]
+   },
+   {
+    "statement": "Positive rate drops in the test period (0.851 vs ~0.90), indicating temporal drift or end-of-data truncation that may affect performance (test AUROC lower than val).",
+    "kind": "hypothesis",
+    "confidence": 0.5,
+    "evidence": [
+     "P:m:1"
+    ]
+   }
+  ],
+  "ambiguities": [
+   {
+    "description": "Exact definition of the outcome ('visits more than one ad') - presumably counted from VisitStream; unclear whether distinct AdID or row count and whether ads viewed via SearchStream clicks count.",
+    "evidence": [
+     "S:t:VisitStream",
+     "P:f:f066"
+    ]
+   },
+   {
+    "description": "Meaning of SearchStream.ObjectType codes and why IsClick has slightly more nulls than HistCTR (possible held-out test period).",
+    "evidence": [
+     "S:c:SearchStream.ObjectType",
+     "S:c:SearchStream.IsClick",
+     "S:c:SearchStream.HistCTR"
+    ]
+   },
+   {
+    "description": "Category.SubcategoryID semantics: separate code scheme vs reference to CategoryID; flagged weak overlap.",
+    "evidence": [
+     "S:c:Category.SubcategoryID",
+     "S:r:29",
+     "S:a:63"
+    ]
+   },
+   {
+    "description": "Location.RegionID and CityID likely use their own code spaces; their candidate links to LocationID/UserID are probably coincidental.",
+    "evidence": [
+     "S:r:34",
+     "S:r:45",
+     "S:a:8",
+     "S:a:11"
+    ]
+   },
+   {
+    "description": "IPID has no parent table; links to SearchInfo.SearchID are value-range coincidences.",
+    "evidence": [
+     "S:r:50",
+     "S:r:60",
+     "S:r:111"
+    ]
+   },
+   {
+    "description": "AdsInfo.Price contains extreme placeholder-like values (999999999999) and zeros.",
+    "evidence": [
+     "S:c:AdsInfo.Price"
+    ]
+   },
+   {
+    "description": "Days-since-last features cover only 43-60% of users, so many labeled users had no prior activity in some streams; how they are labeled/included is unclear.",
+    "evidence": [
+     "P:f:f065",
+     "P:f:f026",
+     "P:f:f017"
+    ]
+   }
+  ],
+  "next_investigations": [
+   "Confirm the outcome construction (distinct vs total VisitStream rows in 4-day window) and check for leakage near the cutoff.",
+   "Rebuild features excluding coincidental relationships (CityID, UserAgentID, UserDeviceID, IPID links) and re-evaluate model.",
+   "Add recency-weighted and trend features (e.g., visits in last 1/2/7 days, slope) and session-based features from SearchStream clicks.",
+   "Examine engagement by category and location of viewed/searched ads via valid FK joins.",
+   "Investigate the drop in positive rate in the test period (seasonality, data end truncation at 2015-05-20).",
+   "Validate ObjectType/IsClick/HistCTR semantics with business owners and compute contextual-ad click rate per user as a feature.",
+   "Cohort analysis of new users (no prior activity) vs returning users to understand base rates."
+  ]
+ }
+}

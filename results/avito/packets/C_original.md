@@ -23,7 +23,7 @@
 - Level: BIGINT; examples ['1', '2', '3']  [S:c:Category.Level]
     profile: nulls=0.0% distinct=3 unique=no min=1 max=3 mean=2.809 top=3:56, 2:11, 1:1
 - ParentCategoryID: BIGINT; examples ['10', '9', '12']  [S:c:Category.ParentCategoryID]
-    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 6:7, 8:7, 9:7
+    profile: nulls=0.0% distinct=12 unique=no min=1 max=12 mean=6.632 top=12:11, 2:9, 4:8, 9:7, 6:7, 8:7
 - SubcategoryID: BIGINT; examples ['45', '5', '25']  [S:c:Category.SubcategoryID]
     profile: nulls=0.0% distinct=57 unique=no min=1 max=57 mean=31.59
 
@@ -391,7 +391,7 @@ Relationship paths ranked by summed permutation importance (validation):
 - [P:path:4] importance=0.0031 path: SearchInfo.UserID -> UserInfo.UserID then SearchStream.SearchID -> SearchInfo.SearchID features=['f032', 'f033', 'f034', 'f035', 'f036']
 - [P:path:5] importance=0.0015 path: VisitStream.UserID -> UserInfo.UserID then VisitStream.AdID -> AdsInfo.AdID features=['f068', 'f069']
 - [P:path:6] importance=0.0015 path: UserInfo.UserAgentID -> UserInfo.UserID features=['f039', 'f040', 'f041', 'f042']
-- [P:path:7] importance=0.0015 path: (target table itself) features=['f000', 'f001', 'f002', 'f003']
+- [P:path:7] importance=0.0014 path: (target table itself) features=['f000', 'f001', 'f002', 'f003']
 - [P:path:8] importance=0.0012 path: UserInfo.UserDeviceID -> UserInfo.UserID then VisitStream.UserID -> UserInfo.UserID features=['f061']
 - [P:path:9] importance=0.0012 path: VisitStream.UserID -> UserInfo.UserID then VisitStream.IPID -> SearchInfo.SearchID features=['f070', 'f071']
 - [P:path:10] importance=0.0011 path: UserInfo.UserDeviceID -> UserInfo.UserID features=['f051', 'f052', 'f053', 'f054']
@@ -416,14 +416,14 @@ Relationship paths ranked by summed permutation importance (validation):
 
 Features (agg over the path; window in days before cutoff; univariate AUROC on train/val; direction; stability of direction across training cutoffs; BH-adjusted q-value; permutation importance):
 - [P:f:f066] count_distinct(VisitStream.AdID) window=all via VisitStream.UserID -> UserInfo.UserID: auroc train=0.639 val=0.688 higher_in_positive stable=yes q=0 perm_imp=0.2798 coverage=100%
-- [P:f:f063] count(VisitStream rows) window=all via VisitStream.UserID -> UserInfo.UserID: auroc train=0.636 val=0.683 higher_in_positive stable=yes q=0 perm_imp=0.0322 coverage=100%
+- [P:f:f063] count(VisitStream rows) window=all via VisitStream.UserID -> UserInfo.UserID: auroc train=0.636 val=0.683 higher_in_positive stable=yes q=0 perm_imp=0.0321 coverage=100%
 - [P:f:f018] count_distinct(PhoneRequestsStream.AdID) window=all via PhoneRequestsStream.UserID -> UserInfo.UserID: auroc train=0.569 val=0.604 higher_in_positive stable=yes q=1e-147 perm_imp=0.0181 coverage=100%
 - [P:f:f067] count_distinct(VisitStream.IPID) window=all via VisitStream.UserID -> UserInfo.UserID: auroc train=0.578 val=0.553 higher_in_positive stable=yes q=3.2e-163 perm_imp=0.0144 coverage=100%
 - [P:f:f015] count(PhoneRequestsStream rows) window=all via PhoneRequestsStream.UserID -> UserInfo.UserID: auroc train=0.568 val=0.603 higher_in_positive stable=yes q=9.5e-147 perm_imp=0.0107 coverage=100%
 - [P:f:f024] count(SearchInfo rows) window=all via SearchInfo.UserID -> UserInfo.UserID: auroc train=0.594 val=0.621 higher_in_positive stable=yes q=1.1e-207 perm_imp=0.0034 coverage=100%
 - [P:f:f026] days_since_last(SearchInfo rows) window=all via SearchInfo.UserID -> UserInfo.UserID: auroc train=0.470 val=0.450 lower_in_positive stable=yes q=2.4e-37 perm_imp=0.0021 coverage=43%
 - [P:f:f068] mean(AdsInfo.Price) window=all via VisitStream.UserID -> UserInfo.UserID then VisitStream.AdID -> AdsInfo.AdID: auroc train=0.555 val=0.558 higher_in_positive stable=yes q=4.7e-76 perm_imp=0.0015 coverage=60%
-- [P:f:f000] value(UserInfo.UserAgentID) window=all via (target table itself): auroc train=0.507 val=0.512 higher_in_positive stable=yes q=0.12 perm_imp=0.0015 coverage=100%
+- [P:f:f000] value(UserInfo.UserAgentID) window=all via (target table itself): auroc train=0.507 val=0.512 higher_in_positive stable=yes q=0.12 perm_imp=0.0014 coverage=100%
 - [P:f:f065] days_since_last(VisitStream rows) window=all via VisitStream.UserID -> UserInfo.UserID: auroc train=0.451 val=0.425 lower_in_positive stable=yes q=1.9e-76 perm_imp=0.0014 coverage=60%
 - [P:f:f025] count(SearchInfo rows) window=4 via SearchInfo.UserID -> UserInfo.UserID: auroc train=0.584 val=0.601 higher_in_positive stable=yes q=1e-186 perm_imp=0.0012 coverage=100%
 - [P:f:f061] count(VisitStream rows) window=all via UserInfo.UserDeviceID -> UserInfo.UserID then VisitStream.UserID -> UserInfo.UserID: auroc train=0.500 val=0.501 higher_in_positive stable=no q=0.69 perm_imp=0.0012 coverage=100%
@@ -476,7 +476,7 @@ Features (agg over the path; window in days before cutoff; univariate AUROC on t
 - [P:f:f069] mean(AdsInfo.IsContext) window=all via VisitStream.UserID -> UserInfo.UserID then VisitStream.AdID -> AdsInfo.AdID: auroc train=0.500 val=0.500 lower_in_positive stable=no q=1 perm_imp=0.0000 coverage=60%
 - [P:f:f050] mean(Location.Level) window=all via UserInfo.UserAgentID -> UserInfo.UserID then UserInfo.UserAgentFamilyID -> Location.LocationID: auroc train=0.500 val=0.500 higher_in_positive stable=no q=0.81 perm_imp=0.0000 coverage=7%
 - [P:f:f055] count(Location rows) window=all via UserInfo.UserDeviceID -> UserInfo.UserID then Location.CityID -> UserInfo.UserID: auroc train=0.500 val=0.500 higher_in_positive stable=no q=1 perm_imp=0.0000 coverage=100%
-- [P:f:f052] mean(UserInfo.UserAgentOSID) window=all via UserInfo.UserDeviceID -> UserInfo.UserID: auroc train=0.500 val=0.500 lower_in_positive stable=no q=0.92 perm_imp=0.0000 coverage=1%
+- [P:f:f052] mean(UserInfo.UserAgentOSID) window=all via UserInfo.UserDeviceID -> UserInfo.UserID: auroc train=0.500 val=0.500 lower_in_positive stable=no q=0.92 perm_imp=-0.0000 coverage=1%
 - [P:f:f019] count_distinct(PhoneRequestsStream.IPID) window=all via PhoneRequestsStream.UserID -> UserInfo.UserID: auroc train=0.564 val=0.585 higher_in_positive stable=yes q=1e-133 perm_imp=-0.0000 coverage=100%
 - [P:f:f008] mean(AdsInfo.Price) window=all via Location.CityID -> UserInfo.UserID then AdsInfo.LocationID -> Location.LocationID: auroc train=0.499 val=0.499 lower_in_positive stable=yes q=0.64 perm_imp=-0.0000 coverage=3%
 - [P:f:f006] count_distinct(Location.RegionID) window=all via Location.CityID -> UserInfo.UserID: auroc train=0.502 val=0.503 higher_in_positive stable=yes q=0.12 perm_imp=-0.0000 coverage=100%

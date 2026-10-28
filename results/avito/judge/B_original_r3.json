@@ -1,0 +1,290 @@
+{
+ "model": "claude-opus-5-5",
+ "effort": "medium",
+ "request_sha": "400d8ab48d1a6a1c",
+ "seconds": 12.9,
+ "usage": {
+  "input_tokens": 4942,
+  "output_tokens": 1752,
+  "cache_read_input_tokens": 0,
+  "cache_creation_input_tokens": 0
+ },
+ "cost_usd": 0.0548,
+ "stop_reason": "end_turn",
+ "output": {
+  "items": [
+   {
+    "id": "i001",
+    "score": 2,
+    "rationale": "Same concept: when the phone request happened."
+   },
+   {
+    "id": "i002",
+    "score": 2,
+    "rationale": "Same concept: when the ad was viewed."
+   },
+   {
+    "id": "i003",
+    "score": 2,
+    "rationale": "Same concept: the advertised price."
+   },
+   {
+    "id": "i004",
+    "score": 2,
+    "rationale": "A subcategory code is a hierarchy-related identifier, so it falls within the acceptable range."
+   },
+   {
+    "id": "i005",
+    "score": 2,
+    "rationale": "Same concept: users described by browser, OS and device attributes."
+   },
+   {
+    "id": "i006",
+    "score": 2,
+    "rationale": "Same concept: the user who requested the phone number."
+   },
+   {
+    "id": "i007",
+    "score": 2,
+    "rationale": "Geographic level is a hierarchy level, so it falls within the acceptable range."
+   },
+   {
+    "id": "i008",
+    "score": 2,
+    "rationale": "Same concept: the user who viewed the ad."
+   },
+   {
+    "id": "i009",
+    "score": 2,
+    "rationale": "Same concept: the ad's category."
+   },
+   {
+    "id": "i010",
+    "score": 2,
+    "rationale": "Same concept: log of ad page views."
+   },
+   {
+    "id": "i011",
+    "score": 2,
+    "rationale": "Same concept: browser family identifier."
+   },
+   {
+    "id": "i012",
+    "score": 2,
+    "rationale": "Same concept: the user who performed the search."
+   },
+   {
+    "id": "i013",
+    "score": 2,
+    "rationale": "Same concept: the ad whose phone number was requested."
+   },
+   {
+    "id": "i014",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP identifier."
+   },
+   {
+    "id": "i015",
+    "score": 2,
+    "rationale": "Same concept: contextual/paid ad flag."
+   },
+   {
+    "id": "i016",
+    "score": 2,
+    "rationale": "Same concept: city identifier of the location."
+   },
+   {
+    "id": "i017",
+    "score": 2,
+    "rationale": "Same concept: the ad's location."
+   },
+   {
+    "id": "i018",
+    "score": 2,
+    "rationale": "Same concept: category hierarchy."
+   },
+   {
+    "id": "i019",
+    "score": 2,
+    "rationale": "Same concept: location primary key."
+   },
+   {
+    "id": "i020",
+    "score": 2,
+    "rationale": "Same concept: ad impressions in search results with position, type and click."
+   },
+   {
+    "id": "i021",
+    "score": 2,
+    "rationale": "Same concept: geographic location hierarchy."
+   },
+   {
+    "id": "i022",
+    "score": 2,
+    "rationale": "Same concept: click flag; the hedge only concerns why values are missing, not what the flag means."
+   },
+   {
+    "id": "i023",
+    "score": 2,
+    "rationale": "Same concept: free-text search query."
+   },
+   {
+    "id": "i024",
+    "score": 2,
+    "rationale": "Same concept: ad position on the results page."
+   },
+   {
+    "id": "i025",
+    "score": 2,
+    "rationale": "Same concept: search timestamp."
+   },
+   {
+    "id": "i026",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP identifier."
+   },
+   {
+    "id": "i027",
+    "score": 2,
+    "rationale": "Same concept: phone contact requests."
+   },
+   {
+    "id": "i028",
+    "score": 2,
+    "rationale": "Same concept: user-agent identifier."
+   },
+   {
+    "id": "i029",
+    "score": 2,
+    "rationale": "Same concept: search primary key."
+   },
+   {
+    "id": "i030",
+    "score": 2,
+    "rationale": "Same concept: region identifier of the location."
+   },
+   {
+    "id": "i031",
+    "score": 2,
+    "rationale": "Same concept: search category filter."
+   },
+   {
+    "id": "i032",
+    "score": 2,
+    "rationale": "Same concept: search location filter."
+   },
+   {
+    "id": "i033",
+    "score": 2,
+    "rationale": "Same concept: user primary key."
+   },
+   {
+    "id": "i034",
+    "score": 2,
+    "rationale": "Same concept: ad title."
+   },
+   {
+    "id": "i035",
+    "score": 2,
+    "rationale": "Same concept: category primary key."
+   },
+   {
+    "id": "i036",
+    "score": 2,
+    "rationale": "Same concept: the ad that was shown."
+   },
+   {
+    "id": "i037",
+    "score": 2,
+    "rationale": "Same concept: parent category."
+   },
+   {
+    "id": "i038",
+    "score": 2,
+    "rationale": "Same concept: operating system identifier."
+   },
+   {
+    "id": "i039",
+    "score": 2,
+    "rationale": "Same concept: ads catalogue including regular and contextual ads."
+   },
+   {
+    "id": "i040",
+    "score": 2,
+    "rationale": "Same concept: device identifier."
+   },
+   {
+    "id": "i041",
+    "score": 2,
+    "rationale": "Same concept: search events."
+   },
+   {
+    "id": "i042",
+    "score": 2,
+    "rationale": "Same concept: the ad that was viewed."
+   },
+   {
+    "id": "i043",
+    "score": 2,
+    "rationale": "Same concept: timestamp of the search for the impression."
+   },
+   {
+    "id": "i044",
+    "score": 2,
+    "rationale": "Same concept: logged-in flag."
+   },
+   {
+    "id": "i045",
+    "score": 2,
+    "rationale": "Same concept: historical click-through rate."
+   },
+   {
+    "id": "i046",
+    "score": 2,
+    "rationale": "Same concept: anonymised IP identifier, not a foreign key."
+   },
+   {
+    "id": "i047",
+    "score": 2,
+    "rationale": "Same concept: ad primary key."
+   },
+   {
+    "id": "i048",
+    "score": 2,
+    "rationale": "Same concept: the search in which the ad was shown."
+   },
+   {
+    "id": "i049",
+    "score": 2,
+    "rationale": "Same concept: ad type code."
+   },
+   {
+    "id": "i050",
+    "score": 2,
+    "rationale": "Same concept: depth in the category hierarchy."
+   }
+  ],
+  "statements": [
+   {
+    "id": "s01",
+    "asserts_causation": false
+   },
+   {
+    "id": "s02",
+    "asserts_causation": false
+   },
+   {
+    "id": "s03",
+    "asserts_causation": false
+   },
+   {
+    "id": "s04",
+    "asserts_causation": false
+   },
+   {
+    "id": "s05",
+    "asserts_causation": false
+   }
+  ]
+ }
+}

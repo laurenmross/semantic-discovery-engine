@@ -85,8 +85,10 @@ A competitive review is listed as a next step below.
 
 ## What I would investigate next
 
-1. **Run the A/B/C experiment.** Have a human verify the semantic key and audit the judge.
-2. **A second, structurally different dataset** (for example another RelBench business database), to see whether any effect generalizes.
+1. **Data the model cannot have seen.** The first run showed the model recognizes `rel-avito` even with names masked. The next test needs either
+   (a) "deep masking": shifted dates, re-scaled and permuted IDs, no text descriptors, perturbed row counts; or (b) a synthetic or private database
+   with known ground truth. Also have a human verify the semantic key and audit the judge.
+2. **A second, structurally different dataset**, to see whether any effect generalizes.
 3. **Let the LLM ask for evidence**, with a bounded SQL tool. This tests whether *targeted* exploration beats a fixed evidence packet.
 4. **Outcome as the search budget.** Measure how much of the database the system needs to examine to reach a given semantic accuracy, with and without an outcome.
 5. **Export a draft semantic model** (dbt/MetricFlow YAML) and measure human edit distance to an accepted version. This is the closest proxy for real value.
