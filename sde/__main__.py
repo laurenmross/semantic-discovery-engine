@@ -12,6 +12,7 @@ def main() -> None:
     ap.add_argument("--dataset", default="avito")
     ap.add_argument("--runs", type=int, default=3, help="interpretation runs per cell")
     ap.add_argument("--replay-only", action="store_true", help="never call the API; use recorded responses only")
+    ap.add_argument("--rebuild", action="store_true", help="recompute outcome.json and packets even if saved copies exist")
     a = ap.parse_args()
     exp = Experiment(a.dataset, runs=a.runs, replay_only=a.replay_only)
     if a.stage == "prepare":
@@ -19,10 +20,11 @@ def main() -> None:
     elif a.stage == "discover":
         exp.discover()
     elif a.stage == "outcome":
-        exp.outcome()
+        exp.outcome(rebuild=True)
     elif a.stage == "packets":
+        exp.outcome(rebuild=a.rebuild)
         for cfg, naming in exp.cells():
-            exp.packet(cfg, naming)
+            exp.packet(cfg, naming, rebuild=True)
     elif a.stage == "interpret":
         exp.interpret()
     elif a.stage == "score":

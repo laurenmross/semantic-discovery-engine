@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from pathlib import Path
 
@@ -49,13 +50,17 @@ class Experiment:
             _dump(self.out / "structural_scores.json", scoring.structural_scores(self._s, self.truth))
         return self._s
 
-    def outcome(self) -> dict:
+    def outcome(self, rebuild: bool = False) -> dict:
+        # The saved outcome analysis is the evidence of record: reuse it unless asked to rebuild.
+        if self._o is None and not rebuild and (self.out / "outcome.json").exists():
+            self._o = json.loads((self.out / "outcome.json").read_text())
         if self._o is None:
             s = self.discover()
             t0 = time.time()
             res = outcome.analyze(self.con, s, self.ds.outcome).to_dict()
             # Data-validity check only (not given to the LLM): does the label match its stated definition?
-            res["label_check"] = outcome.check_label(self.con, self.ds.outcome, "VisitStream", "UserID", "ViewDate")
+            lc = self.ds.outcome.label_check
+            res["label_check"] = outcome.check_label(self.con, self.ds.outcome, **lc) if lc else {}
             self.timings["outcome_analysis_s"] = round(time.time() - t0, 1)
             self._o = res
             _dump(self.out / "outcome.json", res)
@@ -66,12 +71,16 @@ class Experiment:
             for naming in evidence.NAMINGS:
                 yield cfg, naming
 
-    def packet(self, cfg: str, naming: str):
+    def packet(self, cfg: str, naming: str, rebuild: bool = False):
+        """Evidence packet for one cell. A saved packet is reused, so recorded LLM runs always match what the model saw."""
         s = self.discover()
         namer = evidence.Namer(s, masked=(naming == "masked"))
+        p = self.out / "packets" / f"{cfg}_{naming}.md"
+        if p.exists() and not rebuild:
+            text = p.read_text()
+            return text, set(re.findall(r"\[([SP]:[^\]\s]+)\]", text)), namer
         o = self.outcome() if cfg == "C" else None
         text, ids = evidence.build(cfg, s, self.ds.outcome, o, namer)
-        p = self.out / "packets" / f"{cfg}_{naming}.md"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(text)
         return text, ids, namer
@@ -99,7 +108,7 @@ class Experiment:
                 rec = json.loads(run_path.read_text())
                 items, missing, statements = scoring.judge_items(rec["output"], namer, self.truth, seed=r)
                 jrec = scoring.run_judge(self.out / "judge" / f"{cfg}_{naming}_r{r}.json", items, statements,
-                                         replay_only=self.replay_only)
+                                         replay_only=self.replay_only, signals=scoring.judge_signals(self.truth))
                 sc = scoring.score_run(rec["output"], namer, self.truth, ids, jrec, items, missing, statements)
                 sc["cost_usd"] = rec["cost_usd"]
                 sc["judge_cost_usd"] = jrec["cost_usd"]

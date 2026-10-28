@@ -25,6 +25,8 @@ class Outcome:
     description: str           # business definition, with names unmasked
     description_masked: str    # same definition with {table}/{key} placeholders, for masked runs
     splits: dict = field(default_factory=dict)  # split name -> parquet path (relative to DATA)
+    per_value_counts: bool = False   # count rows per value of small categorical columns (amendment 2)
+    label_check: dict | None = None  # data-validity check only: {table, fk, time_col, min_count}
 
 
 @dataclass(frozen=True)
@@ -32,6 +34,7 @@ class Dataset:
     name: str
     urls: dict                 # local zip name -> URL
     outcome: Outcome | None = None
+    synthetic: bool = False    # generated locally by sde/synth.py instead of downloaded
 
     @property
     def dir(self) -> Path:
@@ -67,6 +70,33 @@ DATASETS = {
                 "val": "avito/tasks/user-visits/val.parquet",
                 "test": "avito/tasks/user-visits/test.parquet",
             },
+            label_check={"table": "VisitStream", "fk": "UserID", "time_col": "ViewDate", "min_count": 2},
+        ),
+    ),
+    "saas": Dataset(
+        name="saas",
+        urls={},
+        synthetic=True,
+        outcome=Outcome(
+            entity_table="ACCT_MSTR",
+            entity_key="acct_key",
+            label_column="converted",
+            horizon_days=16,
+            description=(
+                "Trial-to-paid conversion: whether the account starts a paid subscription in the 16 days after "
+                "the cutoff (cutoff = day 5 of the free trial; accounts already converted by then are excluded)."
+            ),
+            description_masked=(
+                "Conversion: whether the entity identified by {table}.{key} reaches the business's conversion "
+                "milestone in the 16 days after the cutoff timestamp (entities that already reached it are excluded)."
+            ),
+            splits={
+                "train": "saas/tasks/trial-conversion/train.parquet",
+                "val": "saas/tasks/trial-conversion/val.parquet",
+                "test": "saas/tasks/trial-conversion/test.parquet",
+            },
+            per_value_counts=True,
+            label_check={"table": "SUB_HDR", "fk": "acct_key", "time_col": "st_ts", "min_count": 1},
         ),
     ),
     # Development dataset: used only to sanity-check structural heuristics.
@@ -75,7 +105,12 @@ DATASETS = {
 
 
 def download(ds: Dataset) -> None:
-    """Fetch and unzip the raw parquet files. Idempotent."""
+    """Fetch and unzip the raw parquet files (or generate them, for synthetic datasets). Idempotent."""
+    if ds.synthetic:
+        if not (ds.dir / "db").exists():
+            from .synth import generate
+            print(generate(ds.dir))
+        return
     raw = ds.dir / "raw"
     raw.mkdir(parents=True, exist_ok=True)
     for fname, url in ds.urls.items():

@@ -123,11 +123,46 @@ def judge_items(output: dict, namer: Namer, truth: dict, seed: int):
     return items, missing, statements
 
 
-def run_judge(record_path: Path, items: list, statements: list, replay_only: bool = False) -> dict:
+SIGNALS_SYSTEM = """
+
+Finally, you receive a list of reference findings (true associations planted in the data, and null findings that have no
+association) and the full list of outcome statements. For each reference finding, decide whether the statements, taken
+together, state that finding: "correct" (stated, same direction), "wrong_direction" (stated, opposite direction),
+or "not_stated". For a null finding, "correct" means the statements claim an association that does not exist (a spurious claim);
+"not_stated" means they do not. A finding is stated only if the statements identify the specific thing (for example the specific
+table and code value); a generic remark such as "more activity predicts conversion" states only a finding about overall activity."""
+
+
+def _judge_schema(with_signals: bool) -> dict:
+    if not with_signals:
+        return JUDGE_SCHEMA
+    schema = json.loads(json.dumps(JUDGE_SCHEMA))
+    schema["required"].append("signals")
+    schema["properties"]["signals"] = {"type": "array", "items": {
+        "type": "object", "additionalProperties": False, "required": ["id", "verdict", "rationale"],
+        "properties": {"id": {"type": "string"},
+                       "verdict": {"type": "string", "enum": ["correct", "wrong_direction", "not_stated"]},
+                       "rationale": {"type": "string"}}}}
+    return schema
+
+
+def run_judge(record_path: Path, items: list, statements: list, replay_only: bool = False,
+              signals: list | None = None) -> dict:
     payload = {"items": [{"id": it["id"], "reference": it["reference"], "prediction": it["prediction"]} for it in items],
                "statements": statements}
+    system = JUDGE_SYSTEM
+    if signals:
+        payload["reference_findings"] = signals
+        system = JUDGE_SYSTEM + SIGNALS_SYSTEM
     user = "Grade these items and statements.\n\n" + json.dumps(payload, ensure_ascii=False, indent=1)
-    return llm.call_json(record_path, JUDGE_SYSTEM, user, JUDGE_SCHEMA, effort="medium", replay_only=replay_only)
+    return llm.call_json(record_path, system, user, _judge_schema(bool(signals)), effort="medium", replay_only=replay_only)
+
+
+def judge_signals(truth: dict) -> list | None:
+    """Planted and null findings in judge-facing form (ids only, no labels saying which is which)."""
+    if "planted_signals" not in truth:
+        return None
+    return [{"id": s["id"], "finding": s["description"]} for s in truth["planted_signals"] + truth.get("null_signals", [])]
 
 
 def score_run(output: dict, namer: Namer, truth: dict, packet_ids: set, judge_rec: dict,
@@ -150,8 +185,11 @@ def score_run(output: dict, namer: Namer, truth: dict, packet_ids: set, judge_re
 
     ent_keys = [f"table:{t}" for t in truth["entities"]]
     col_keys = [f"column:{c}" for c in truth["columns"]]
-    nonobv = [f"column:{c}" for c in truth["non_obvious_columns"]]
-    kind_acc = sum(1 for t, ref in truth["entities"].items() if tables.get(t, {}).get("kind") == ref["kind"]) / len(truth["entities"])
+    nonobv = [f"column:{c}" for c in truth.get("non_obvious_columns", [])]
+    def kind_ok(t, ref):
+        kinds = ref["kind"] if isinstance(ref["kind"], list) else [ref["kind"]]
+        return tables.get(t, {}).get("kind") in kinds
+    kind_acc = sum(1 for t, ref in truth["entities"].items() if kind_ok(t, ref)) / len(truth["entities"])
 
     # Unsupported claims.
     cited = [e for sec in ("tables", "columns", "relationships", "outcome_insights", "ambiguities")
@@ -164,7 +202,22 @@ def score_run(output: dict, namer: Namer, truth: dict, packet_ids: set, judge_re
     causal_judge = [s["id"] for s in judge_rec["output"]["statements"] if s["asserts_causation"]]
     flagged = sum(1 for sec in ("tables", "columns") for x in output.get(sec, []) if x.get("needs_human_validation"))
 
+    extra = {}
+    if "recoverable_columns" in truth:
+        extra["column_semantics_recoverable"] = acc([f"column:{c}" for c in truth["recoverable_columns"]])
+    if "planted_signals" in truth:
+        verdicts = {s["id"]: s["verdict"] for s in judge_rec["output"].get("signals", [])}
+        planted = [s["id"] for s in truth["planted_signals"]]
+        nulls = [s["id"] for s in truth.get("null_signals", [])]
+        extra["signals"] = {
+            "planted_recovered": round(sum(verdicts.get(i) == "correct" for i in planted) / len(planted), 3),
+            "planted_wrong_direction": sum(verdicts.get(i) == "wrong_direction" for i in planted),
+            "spurious_null_claims": sum(verdicts.get(i) == "correct" for i in nulls),
+            "verdicts": verdicts,
+        }
+
     return {
+        **extra,
         "relationships": rel,
         "relationships_unresolved_names": len(unresolved),
         "adjudication_edges_predicted": [list(e) for e in adjudicate],

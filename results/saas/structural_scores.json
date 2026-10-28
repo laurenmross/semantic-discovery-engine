@@ -1,0 +1,38 @@
+{
+ "all_candidates": {
+  "precision": 0.303,
+  "recall": 1.0,
+  "f1": 0.465,
+  "tp": 10,
+  "fp": 23,
+  "fn": 0,
+  "n_pred": 33
+ },
+ "preferred_parent": {
+  "precision": 0.429,
+  "recall": 0.9,
+  "f1": 0.581,
+  "tp": 9,
+  "fp": 12,
+  "fn": 1,
+  "n_pred": 21
+ },
+ "feature_eligible": {
+  "precision": 1.0,
+  "recall": 0.7,
+  "f1": 0.824,
+  "tp": 7,
+  "fp": 0,
+  "fn": 3,
+  "n_pred": 7
+ },
+ "keys": {
+  "precision": 0.7,
+  "recall": 1.0,
+  "f1": 0.824,
+  "tp": 7,
+  "fp": 3,
+  "fn": 0,
+  "n_pred": 10
+ }
+}

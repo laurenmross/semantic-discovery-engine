@@ -41,9 +41,10 @@ class Feature:
     path: list            # [[child_table, child_column, parent_table, parent_column], ...] from the target outward
     table: str            # table being aggregated
     column: str | None    # aggregated column (None for counts / recency)
-    agg: str              # count | mean | count_distinct | days_since_last | value
+    agg: str              # count | count_where | mean | count_distinct | days_since_last | value
     window_days: int | None
     time_column: str | None
+    value: float | None = None   # for count_where: rows where column = value
 
 
 @dataclass
@@ -91,6 +92,18 @@ def _time_col(s: Structure, table: str):
     return cols[0] if cols else None
 
 
+def _categorical(s: Structure, table: str) -> list:
+    """(column, values) for small integer-coded columns that are not keys or relationship endpoints."""
+    keys = {c for t, c in s.keys if t == table}
+    edges = _edge_cols(s)
+    out = []
+    for p in s.tables[table]["columns"]:
+        if (p.family in ("int", "integral_float") and 2 < p.distinct <= 20 and p.column not in keys
+                and (table, p.column) not in edges and p.top_values):
+            out.append((p.column, sorted(float(v) for v, _ in p.top_values if v not in (None, "None"))))
+    return out
+
+
 def plan_features(s: Structure, outcome: Outcome) -> list[Feature]:
     T, K = outcome.entity_table, outcome.entity_key
     feats: list[Feature] = []
@@ -115,6 +128,10 @@ def plan_features(s: Structure, outcome: Outcome) -> list[Feature]:
             add(path=[e1], table=C, column=None, agg="days_since_last", window_days=None, time_column=tc)
         for col in _numeric_attrs(s, C):
             add(path=[e1], table=C, column=col, agg="mean", window_days=None, time_column=tc)
+        if outcome.per_value_counts:
+            for col, values in _categorical(s, C):
+                for v in values:
+                    add(path=[e1], table=C, column=col, agg="count_where", window_days=None, time_column=tc, value=v)
         for r2 in eligible:
             if r2.child_table == C and r2.child_column != r.child_column:
                 add(path=[e1], table=C, column=r2.child_column, agg="count_distinct", window_days=None, time_column=tc)
@@ -127,6 +144,11 @@ def plan_features(s: Structure, outcome: Outcome) -> list[Feature]:
                 add(path=[e1, e2], table=g.child_table, column=None, agg="count", window_days=None, time_column=gt or tc)
                 for col in _numeric_attrs(s, g.child_table):
                     add(path=[e1, e2], table=g.child_table, column=col, agg="mean", window_days=None, time_column=gt or tc)
+                if outcome.per_value_counts:
+                    for col, values in _categorical(s, g.child_table):
+                        for v in values:
+                            add(path=[e1, e2], table=g.child_table, column=col, agg="count_where",
+                                window_days=None, time_column=gt or tc, value=v)
         # Two hops up: attributes of the parents C points to (other than the target).
         for u in eligible:
             if u.child_table == C and u.child_column != r.child_column and u.parent_table not in (T, C):
@@ -168,6 +190,8 @@ def _feature_sql(f: Feature, outcome: Outcome) -> str:
     where = ("WHERE " + " AND ".join(conds)) if conds else ""
     if f.agg == "count":
         expr = "count(*)::DOUBLE"
+    elif f.agg == "count_where":
+        expr = f"count(*) FILTER (WHERE {alias}.{q(f.column)} = {float(f.value)})::DOUBLE"
     elif f.agg == "mean":
         expr = f"avg({alias}.{q(f.column)}::DOUBLE)"
     elif f.agg == "count_distinct":
@@ -215,7 +239,7 @@ def build_features(con, s: Structure, outcome: Outcome, feats: list[Feature], la
         assert part["rid"].is_unique, f"{f.id}: aggregation produced duplicate label rows"
         X = X.merge(part, on="rid", how="left")
         assert len(X) == n, f"{f.id}: row count changed after join"
-        if f.agg in ("count", "count_distinct"):
+        if f.agg in ("count", "count_where", "count_distinct"):
             X[f.id] = X[f.id].fillna(0.0)
     return X.set_index("rid")
 
@@ -223,14 +247,14 @@ def build_features(con, s: Structure, outcome: Outcome, feats: list[Feature], la
 # ---------------------------------------------------------------------------------------------
 # Label sanity check (does the supplied outcome match its stated definition?)
 
-def check_label(con, outcome: Outcome, table: str, fk: str, time_col: str) -> dict:
-    """Recompute 'more than one row in [t, t+horizon)' from an event table and compare to the label."""
+def check_label(con, outcome: Outcome, table: str, fk: str, time_col: str, min_count: int = 2) -> dict:
+    """Recompute 'at least min_count rows in [t, t+horizon)' from an event table and compare to the label."""
     df = con.execute(f"""
         SELECT L.rid, L.y, count(E.{q(fk)}) AS n FROM labels L
         LEFT JOIN src.{q(table)} E ON E.{q(fk)} = L.key
              AND E.{q(time_col)} >= L.t AND E.{q(time_col)} < L.t + INTERVAL {outcome.horizon_days} DAY
         GROUP BY L.rid, L.y""").df()
-    pred = (df["n"] > 1).astype(int)
+    pred = (df["n"] >= min_count).astype(int)
     return {"table": table, "agreement": float((pred == df["y"]).mean()), "rows": int(len(df))}
 
 
@@ -297,7 +321,11 @@ def evaluate(X: pd.DataFrame, labels: pd.DataFrame, feats: list[Feature], seed: 
 
     # Univariate association on train, BH-corrected; stability across train cutoffs.
     tr = Xs["train"]
-    cutoffs = labels.loc[labels["split"] == "train", "t"].to_numpy()
+    cutoffs = labels.loc[labels["split"] == "train", "t"]
+    if cutoffs.nunique() > 12:
+        # Continuous cutoffs (one per entity): measure stability across calendar months instead.
+        cutoffs = cutoffs.dt.to_period("M").astype(str)
+    cutoffs = cutoffs.to_numpy()
     stats = []
     pvals = []
     for i, f in enumerate(feats):

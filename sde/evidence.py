@@ -221,11 +221,14 @@ def build(config: str, s: Structure, outcome: Outcome, outcome_result: dict | No
     stats = sorted(r["feature_stats"], key=lambda d: -d["perm_importance_mean"])
     for st in stats:
         f = feats[st["feature"]]
-        col = namer.col(f["table"], f["column"]) if f["column"] else namer.table(f["table"]) + " rows"
+        if f["agg"] == "count_where":
+            col = f"{namer.table(f['table'])} rows where {namer.col(f['table'], f['column'])} = {f['value']:g}"
+        else:
+            col = namer.col(f["table"], f["column"]) if f["column"] else namer.table(f["table"]) + " rows"
         out.append(
             f"- [{eid('P:f:' + f['id'])}] {f['agg']}({col}) window={f['window_days'] or 'all'} via {_path_str(f['path'], namer)}: "
             f"auroc train={st['train_auroc']:.3f} val={st['val_auroc']:.3f} {st['direction']} "
-            f"stable={'yes' if st['direction_stable'] else 'no'} q={st['q_value_bh']:.2g} "
+            f"stable={('yes' if st['direction_stable'] else 'no') if st['n_cutoffs'] else 'n/a'} q={st['q_value_bh']:.2g} "
             f"perm_imp={st['perm_importance_mean']:.4f} coverage={st['coverage']:.0%}")
     return "\n".join(out), ids
 

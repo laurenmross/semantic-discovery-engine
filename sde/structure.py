@@ -136,7 +136,7 @@ def profile_column(con, table: str, column: str, dtype: str) -> ColumnProfile:
     if distinct <= 20:
         p.top_values = [
             (str(v), n) for v, n in con.execute(
-                f"SELECT {c}::VARCHAR, count(*) n FROM {t} GROUP BY 1 ORDER BY n DESC LIMIT 8"
+                f"SELECT {c}::VARCHAR, count(*) n FROM {t} GROUP BY 1 ORDER BY n DESC, 1 LIMIT 20"
             ).fetchall()
         ]
     p.samples = [
