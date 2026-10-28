@@ -13,6 +13,11 @@ business meaning and discover insights from unfamiliar datasets.**
 
 ![With names hidden, structure helps the AI understand the data (73% to 98% of knowable column meanings); outcome evidence helps it discover what matters (0% to 94% of planted business signals found)](docs/results.svg)
 
+**Takeaway: the two kinds of evidence do different jobs.**
+- **Structural analysis is a comprehension tool.** It turns the AI's guesses about what columns mean (73%, erratic across runs) into near-complete understanding (98%, consistent).
+- **Outcome analysis is a prioritization tool.** It finds which unknown behaviors predict the business result (94% of planted signals, with no wrong-direction or spurious claims). It tells you *where to look*, not *what you're looking at*: adding it did not improve understanding further.
+- **Where it matters:** with real column names, even cryptic ones, every configuration scored about 100%. This approach earns its keep in the undocumented corners of a database, not the well-labeled ones.
+
 ## ELI5
 
 **The problem.** Imagine inheriting a giant filing cabinet full of spreadsheets that nobody labeled. Before anyone (or any AI) can answer
