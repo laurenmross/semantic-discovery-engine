@@ -252,7 +252,7 @@ Total cost of Experiment 2: **$5.93**.
 | **Invalid joins in features** | Present and documented (see above). Features from spurious edges are kept, not hidden, because a real system would face the same noise. |
 | **Multiple testing** | Benjamini–Hochberg on 72 univariate tests, plus a stability check across 3 training cutoffs. |
 | **Causal language** | Prohibited in the prompt and counted as an unsupported claim (keyword check plus judge). |
-| **Redacted Avito artifacts** | Raw ad titles and search queries are third-party Kaggle data, so the committed `structure.json` and `*_original.md` packets replace those samples with placeholders. The model saw 3 real examples per column. Replaying therefore warns that the 9 original-name records came from a different prompt; scores are unchanged. Masked packets only ever showed descriptors such as `<text, ~19 chars, Cyrillic script>`. |
+| **Redacted Avito artifacts** | Raw ad titles and search queries are third-party Kaggle data, so the committed `structure.json` and `*_original.md` packets replace those samples with placeholders. The model saw 3 real examples per column. Replaying therefore warns that the 9 original-name records came from a different prompt; scores are unchanged. Masked packets only ever showed descriptors such as `<text, ~19 chars, Cyrillic script>`. The pipeline now applies the same redaction whenever it writes these artifacts (`Dataset.redact`), so a re-run cannot put the raw text back. |
 
 ## Lessons learned so far
 

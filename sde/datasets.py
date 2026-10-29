@@ -35,6 +35,9 @@ class Dataset:
     urls: dict                 # local zip name -> URL
     outcome: Outcome | None = None
     synthetic: bool = False    # generated locally by sde/synth.py instead of downloaded
+    # "Table.Column" -> label, for columns whose raw values must never be written under results/
+    # (third-party text). The model still sees the real values; only the saved artifacts are redacted.
+    redact: dict = field(default_factory=dict)
 
     @property
     def dir(self) -> Path:
@@ -72,6 +75,7 @@ DATASETS = {
             },
             label_check={"table": "VisitStream", "fk": "UserID", "time_col": "ViewDate", "min_count": 2},
         ),
+        redact={"AdsInfo.Title": "ad title", "SearchInfo.SearchQuery": "search query"},
     ),
     "saas": Dataset(
         name="saas",

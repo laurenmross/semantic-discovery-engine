@@ -18,6 +18,30 @@ def _dump(path: Path, obj) -> None:
     path.write_text(json.dumps(obj, indent=1, default=str, ensure_ascii=False))
 
 
+def redact_structure(d: dict, cols: dict) -> dict:
+    """Copy of a Structure dict with the raw values of each "Table.Column" in `cols` replaced by its label."""
+    d = json.loads(json.dumps(d, default=str))
+    for tc, label in cols.items():
+        table, col = tc.split(".", 1)
+        tag = f"[redacted {label}]"
+        for c in d["tables"].get(table, {}).get("columns", []):
+            if c["column"] == col:
+                c["samples"] = [tag] * len(c["samples"])
+                c["top_values"] = [[tag, n] for _, n in c["top_values"]]
+                for k in ("min", "max"):
+                    if c.get(k):
+                        c[k] = tag
+    return d
+
+
+def redact_packet(text: str, cols: dict) -> str:
+    """Replace the example values on packet lines for `cols`. Masked packets cite masked IDs, so never match."""
+    for tc, label in cols.items():
+        text = re.sub(rf"(examples )\[.*?\](?=  \[S:c:{re.escape(tc)}\])",
+                      lambda m: m.group(1) + str([f"[redacted {label}]"] * 3), text)
+    return text
+
+
 class Experiment:
     def __init__(self, dataset: str = "avito", runs: int = 3, replay_only: bool = False):
         self.ds = DATASETS[dataset]
@@ -46,7 +70,7 @@ class Experiment:
             t0 = time.time()
             self._s = structure.discover(self.con, self.ds.name)
             self.timings["structural_discovery_s"] = round(time.time() - t0, 1)
-            _dump(self.out / "structure.json", self._s.to_dict())
+            _dump(self.out / "structure.json", redact_structure(self._s.to_dict(), self.ds.redact))
             _dump(self.out / "structural_scores.json", scoring.structural_scores(self._s, self.truth))
         return self._s
 
@@ -82,7 +106,7 @@ class Experiment:
         o = self.outcome() if cfg == "C" else None
         text, ids = evidence.build(cfg, s, self.ds.outcome, o, namer)
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(text)
+        p.write_text(redact_packet(text, self.ds.redact))
         return text, ids, namer
 
     def interpret(self):
