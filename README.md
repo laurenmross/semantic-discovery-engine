@@ -220,3 +220,5 @@ README.md  PRODUCT_DECISIONS.md  EVALUATION.md
 
 Data: [RelBench](https://relbench.stanford.edu) (`rel-avito`, `rel-f1`), downloaded at run time and never committed. `rel-avito` comes from
 the Avito Context Ad Clicks Kaggle competition. Check the original licence terms before redistributing any data.
+The committed Avito artifacts redact the raw ad-title and search-query samples (`AdsInfo.Title`, `SearchInfo.SearchQuery`) in
+`structure.json` and the original-name packets; the model saw the unredacted values. See EVALUATION.md, Threats to validity.
